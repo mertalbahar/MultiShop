@@ -48,7 +48,7 @@ public class CategoriesController : ControllerBase
         return Ok("Kategori başarıyla silindi.");
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
     {
         await _categoryService.UpdateCategoryAsync(updateCategoryDto);

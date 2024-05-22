@@ -47,7 +47,7 @@ public class ProductDetailsController : ControllerBase
         return Ok("Ürün detayı başarıyla silindi.");
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
     {
         await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);

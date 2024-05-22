@@ -47,7 +47,7 @@ public class ProductImagesController : ControllerBase
         return Ok("Ürün resmi başarıyla silindi.");
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateProductImage(UpdateProductImageDto updateProductImageDto)
     {
         await _productImageService.UpdateProductImageAsync(updateProductImageDto);

@@ -47,7 +47,7 @@ public class ProductsController : ControllerBase
         return Ok("Ürün başarıyla silindi.");
     }
 
-    [HttpPost("update")]
+    [HttpPut("update")]
     public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
     {
         await _productService.UpdateProductAsync(updateProductDto);
