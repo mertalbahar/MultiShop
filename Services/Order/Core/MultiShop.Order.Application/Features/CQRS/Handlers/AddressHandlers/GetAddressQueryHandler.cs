@@ -28,7 +28,7 @@ public class GetAddressQueryHandler
             City = x.City,
             Detail = x.Detail,
             District = x.District,
-            UserId = x.UserId,
+            UserId = x.UserId
         }).ToList();
     }
 }
