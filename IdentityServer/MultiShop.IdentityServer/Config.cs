@@ -27,6 +27,11 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceOrder")
             {
                 Scopes = {"OrderFullPermission"}
+            },
+
+            new ApiResource("ResourceCargo")
+            {
+                Scopes = {"CargoFullPermission"}
             }
         };
 
@@ -46,7 +51,9 @@ namespace MultiShop.IdentityServer
 
             new ApiScope("DiscountFullPermission", "Full authority for discount operations"),
 
-            new ApiScope("OrderFullPermission", "Full authority for order operations")
+            new ApiScope("OrderFullPermission", "Full authority for order operations"),
+
+            new ApiScope("CargoFullPermission", "Full authority for cargo operations")
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -66,7 +73,7 @@ namespace MultiShop.IdentityServer
                 ClientName = "MultiShop Manager User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
-                AllowedScopes = { "CatalogFullPermission" }
+                AllowedScopes = { "CatalogFullPermission", "CargoFullPermission" }
             },
 
             new Client
@@ -77,13 +84,14 @@ namespace MultiShop.IdentityServer
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
                 AllowedScopes =
                 {
-                    "CatalogFullPermission",
-                    "DiscountFullPermission",
-                    "OrderFullPermission",
                     IdentityServerConstants.LocalApi.ScopeName,
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Email,
-                    IdentityServerConstants.StandardScopes.Profile
+                    IdentityServerConstants.StandardScopes.Profile,
+                    "CatalogFullPermission",
+                    "DiscountFullPermission",
+                    "OrderFullPermission",
+                    "CargoFullPermission"
                 },
                 AccessTokenLifetime = 600
             }
