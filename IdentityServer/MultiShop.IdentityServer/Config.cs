@@ -32,6 +32,11 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceCargo")
             {
                 Scopes = {"CargoFullPermission"}
+            },
+
+            new ApiResource("ResourceBasket")
+            {
+                Scopes = {"BasketFullPermission"}
             }
         };
 
@@ -53,7 +58,9 @@ namespace MultiShop.IdentityServer
 
             new ApiScope("OrderFullPermission", "Full authority for order operations"),
 
-            new ApiScope("CargoFullPermission", "Full authority for cargo operations")
+            new ApiScope("CargoFullPermission", "Full authority for cargo operations"),
+
+            new ApiScope("BasketFullPermission", "Full authority for basket operations")
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -71,7 +78,7 @@ namespace MultiShop.IdentityServer
             {
                 ClientId = "MultiShopManagerId",
                 ClientName = "MultiShop Manager User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
                 AllowedScopes = { "CatalogFullPermission", "CargoFullPermission" }
             },
@@ -80,7 +87,7 @@ namespace MultiShop.IdentityServer
             {
                 ClientId = "MultiShopAdminId",
                 ClientName = "MultiShop Admin User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
                 AllowedScopes =
                 {
@@ -91,7 +98,8 @@ namespace MultiShop.IdentityServer
                     "CatalogFullPermission",
                     "DiscountFullPermission",
                     "OrderFullPermission",
-                    "CargoFullPermission"
+                    "CargoFullPermission",
+                    "BasketFullPermission"
                 },
                 AccessTokenLifetime = 600
             }
