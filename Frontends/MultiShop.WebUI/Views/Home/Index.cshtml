@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Carousel Start -->
+@await Component.InvokeAsync("_CarouselComponentPartial")
+<!-- Carousel End -->
+
+<!-- Featured Start -->
+@await Component.InvokeAsync("_FeatureComponentPartial")
+<!-- Featured End -->
+
+<!-- Categories Start -->
+@await Component.InvokeAsync("_CategoriesComponentPartial")
+<!-- Categories End -->
+
+<!-- Featured Products Start -->
+@await Component.InvokeAsync("_FeaturedProductsComponentPartial")
+<!-- Featured Products End -->
+
+<!-- Discount Offer Start -->
+@await Component.InvokeAsync("_DiscountOfferComponentPartial")
+<!-- Discount Offer End -->
+
+<!-- Recent Products Start -->
+@await Component.InvokeAsync("_RecentProductsComponentPartial")
+<!-- Recent Products End -->
+
+<!-- Vendor Start -->
+@await Component.InvokeAsync("_VendorComponentPartial")
+<!-- Vendor End -->
