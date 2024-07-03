@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
+namespace MultiShop.WebUI.ViewComponents.ProductDetailViewComponents
 {
-    public class _RecentProductsComponentPartial : ViewComponent
+    public class _ProductDetailImageSliderComponentPartial: ViewComponent
     {
         public IViewComponentResult Invoke()
         {

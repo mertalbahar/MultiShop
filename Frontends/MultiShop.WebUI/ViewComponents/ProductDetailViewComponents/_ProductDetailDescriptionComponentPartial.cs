@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
+namespace MultiShop.WebUI.ViewComponents.ProductDetailViewComponents
 {
-    public class _CarouselComponentPartial : ViewComponent
+    public class _ProductDetailDescriptionComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

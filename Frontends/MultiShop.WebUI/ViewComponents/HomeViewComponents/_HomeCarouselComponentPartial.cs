@@ -2,7 +2,7 @@
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
-    public class _CategoriesComponentPartial : ViewComponent
+    public class _HomeCarouselComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

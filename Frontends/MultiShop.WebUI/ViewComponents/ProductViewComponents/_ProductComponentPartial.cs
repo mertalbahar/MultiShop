@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
+namespace MultiShop.WebUI.ViewComponents.ProductListViewComponents
 {
-    public class _DiscountOfferComponentPartial : ViewComponent
+    public class _ProductComponentPartial: ViewComponent
     {
         public IViewComponentResult Invoke()
         {
