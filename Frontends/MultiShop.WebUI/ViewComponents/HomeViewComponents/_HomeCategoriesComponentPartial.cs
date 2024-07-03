@@ -2,7 +2,7 @@
 
 namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
 {
-    public class _FeaturedProductsComponentPartial : ViewComponent
+    public class _HomeCategoriesComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
