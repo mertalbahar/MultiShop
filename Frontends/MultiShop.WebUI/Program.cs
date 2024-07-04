@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -29,6 +30,8 @@ app.UseEndpoints(endpoints =>
         );
 
     endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+    endpoints.MapRazorPages();
 });
 
 app.Run();
