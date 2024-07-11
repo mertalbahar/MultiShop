@@ -63,7 +63,7 @@ public class AddressesController : ControllerBase
         return Ok("Adres bilgisi başarıyla güncellendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteAddress(int id)
     {
         await _removeAddressCommandHandler.Handle(new RemoveAddressCommand(id));

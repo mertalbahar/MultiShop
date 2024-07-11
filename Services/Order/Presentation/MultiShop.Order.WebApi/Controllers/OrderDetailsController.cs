@@ -63,7 +63,7 @@ public class OrderDetailsController : ControllerBase
         return Ok("Sipari detayı başarıyla güncellendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteOrderDetail(int id)
     {
         await _removeOrderDetailCommandHandler.Handle(new RemoveOrderDetailCommand(id));

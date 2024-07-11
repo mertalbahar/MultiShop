@@ -44,7 +44,11 @@
             @await Component.InvokeAsync("_DashboardBreadcrumbComponentPartial")
 
             <!-- Main content -->
-            @RenderBody()
+            <section class="content container-fluid">
+                <div class="row">
+                    @RenderBody()
+                </div>
+            </section>
             <!-- content -->
         </div>
         <!-- content-wrapper -->

@@ -7,7 +7,7 @@ using MultiShop.Catalog.Services.CategoryServices;
 namespace MultiShop.Catalog.Controllers;
 
 
-[Authorize]
+
 [Route("api/[controller]")]
 [ApiController]
 public class CategoriesController : ControllerBase
@@ -27,7 +27,7 @@ public class CategoriesController : ControllerBase
         return Ok(values);
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetCategoryById(string id)
     {
         var value = await _categoryService.GetByIdCategoryAsync(id);
@@ -43,7 +43,7 @@ public class CategoriesController : ControllerBase
         return Ok("Kategori başarıyla eklendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteCategory(string id)
     {
         await _categoryService.DeleteCategoryAsync(id);

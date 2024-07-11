@@ -25,7 +25,7 @@ public class ProductsController : ControllerBase
         return Ok(values);
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetProductById(string id)
     {
         var value = await _productService.GetByIdProductAsync(id);
@@ -41,7 +41,7 @@ public class ProductsController : ControllerBase
         return Ok("Ürün başarıyla eklendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteProduct(string id)
     {
         await _productService.DeleteProductAsync(id);

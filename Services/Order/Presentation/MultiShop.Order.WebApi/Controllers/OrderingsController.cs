@@ -52,7 +52,7 @@ public class OrderingsController : ControllerBase
         return Ok("Sipariş başarıyla güncellendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteOrdering(int id)
     {
         await _mediator.Send(new RemoveOrderingCommand(id));

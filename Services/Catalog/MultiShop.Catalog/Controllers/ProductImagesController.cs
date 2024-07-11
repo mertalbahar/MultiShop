@@ -25,7 +25,7 @@ public class ProductImagesController : ControllerBase
         return Ok(values);
     }
 
-    [HttpGet("id")]
+    [HttpGet("{id}")]
     public async Task<IActionResult> GetProductImageById(string id)
     {
         var value = await _productImageService.GetByIdProductImageAsync(id);
@@ -41,7 +41,7 @@ public class ProductImagesController : ControllerBase
         return Ok("Ürün resmi başarıyla eklendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteProductImage(string id)
     {
         await _productImageService.DeleteProductImageAsync(id);
