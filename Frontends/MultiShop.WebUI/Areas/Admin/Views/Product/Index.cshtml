@@ -1,0 +1,58 @@
+﻿@model List<ResultProductDto>
+
+@{
+    ViewData["Title"] = "Product";
+    int counter = 1;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Ürün Listesi</h4>
+        <p>Ürün ile ilgili işlemlerinizi gerçekleştirebilirsiniz.</p>
+        <div class="text-right">
+            <a class="btn btn-rounded btn-success" asp-area="Admin" asp-controller="Product" asp-action="CreateProduct"><i class="fa fa-lg fa-plus-square-o"></i></a>
+        </div>
+        <br />
+        <div class="bs-example" data-example-id="simple-table">
+            <table class="table table-bordered">
+                <caption>
+                    Ürünler
+                </caption>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Ürün Resmi</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Kategori</th>
+                        <th>Ürün Fiyatı</th>
+                        <th>Ürün Açıklama</th>
+                        <th style="width: 140px">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>
+                                <img src="~/templates/ovioadmin/html/dist/img/img3.jpg" class="img-circle img-responsive" alt="@item.Name">
+                            </td>
+                            <td>@item.Name</td>
+                            <td>@item.CategoryId</td>
+                            <td class="text-right">@item.Price</td>
+                            <td>@item.Description</td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-rounded btn-warning" asp-area="Admin" asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@item.Id"><i class="fa fa-lg fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-rounded btn-danger" asp-area="Admin" asp-controller="Product" asp-action="DeleteProduct" asp-route-id="@item.Id" onclick="return confirm('Ürün silinecektir, onaylıyor musunuz?')"><i class="fa fa-lg fa-trash-o"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
