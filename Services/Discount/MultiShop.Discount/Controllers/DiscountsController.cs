@@ -42,7 +42,7 @@ public class DiscountsController : ControllerBase
         return Ok("İndirim kuponu başarıyla oluşturuldu.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteDiscountCoupon(int id)
     {
         await _discountService.DeleteDiscountCouponAsync(id);

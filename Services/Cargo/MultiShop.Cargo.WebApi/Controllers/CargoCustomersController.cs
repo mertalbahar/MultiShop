@@ -71,7 +71,7 @@ public class CargoCustomersController : ControllerBase
         return Ok("Kargo müşterisi başarıyla güncellendi.");
     }
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id}")]
     public IActionResult RemoveCargoCustomer(int id)
     {
         _cargoCustomerService.TDelete(id);
