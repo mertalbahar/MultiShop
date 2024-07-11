@@ -2,16 +2,20 @@
 
 <div class="col-md-12">
     <div class="chart-box">
+        <h4>Kategori Güncelleme</h4>
+        <p>Mevcut kategori bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <br />
         <form method="post">
-            <div class="form-group">
-                <label class="control-label">Kategori ID</label>
-                <input type="text" class="form-control" asp-for="Id" readonly>
-            </div>
+            <input type="hidden" asp-for="Id" readonly>
+
             <div class="form-group">
                 <label class="control-label">Kategori Adı</label>
                 <input type="text" class="form-control" placeholder="Kategori adını giriniz" asp-for="Name">
             </div>
-            <button type="submit" class="btn btn-default">Güncelle</button>
+            <div>
+                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Category" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+            </div>
         </form>
     </div>
 </div>
