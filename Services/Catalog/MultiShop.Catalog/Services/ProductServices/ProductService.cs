@@ -8,14 +8,16 @@ namespace MultiShop.Catalog.Services.ProductServices;
 
 public class ProductService : IProductService
 {
-    private readonly IMongoCollection<Product> _productCollection;
     private readonly IMapper _mapper;
+    private readonly IMongoCollection<Product> _productCollection;
+    private readonly IMongoCollection<Category> _categoryCollection;
 
     public ProductService(IDatabaseSettings _databaseSettings, IMapper mapper)
     {
         MongoClient client = new MongoClient(_databaseSettings.ConnectionString);
         IMongoDatabase database = client.GetDatabase(_databaseSettings.DatabaseName);
         _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
+        _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
         _mapper = mapper;
     }
 
@@ -33,8 +35,20 @@ public class ProductService : IProductService
     public async Task<List<ResultProductDto>> GetAllProductAsync()
     {
         List<Product> values = await _productCollection.Find(p => true).ToListAsync();
+        List<Category> categories = await _categoryCollection.Find(c => true).ToListAsync();
+        var result = _mapper.Map<List<ResultProductDto>>(values);
 
-        return _mapper.Map<List<ResultProductDto>>(values);
+        foreach (var item in result)
+        {
+            var category = categories.FirstOrDefault(c => c.Id.Equals(item.CategoryId));
+            
+            if (category != null)
+            {
+                item.CategoryName =category.Name;
+            }
+        }
+
+        return result;
     }
 
     public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
