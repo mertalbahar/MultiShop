@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace MultiShop.DtoLayer.CatalogDtos.CategoryDtos
     {
         public string Id { get; set; }
         public string Name { get; set; }
+        public List<ResultProductDto> Products { get; set; }
     }
 }

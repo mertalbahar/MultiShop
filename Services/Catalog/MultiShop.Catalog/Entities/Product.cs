@@ -15,5 +15,5 @@ public class Product
     public string Description { get; set; }
 
     [BsonIgnore]
-    public Category Category { get; set; }
+    public virtual Category? Category { get; set; }
 }

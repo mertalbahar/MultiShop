@@ -9,4 +9,7 @@ public class Category
     [BsonRepresentation(BsonType.ObjectId)]
     public string Id { get; set; }
     public string Name { get; set; }
+
+    [BsonIgnore]
+    public virtual ICollection<Product> Products { get; set; }
 }
