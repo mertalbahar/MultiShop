@@ -22,7 +22,7 @@ public class CategoriesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> CategoryList()
     {
-        var values = await _categoryService.GetAllCategoryAsync();
+        List<ResultCategoryDto> values = await _categoryService.GetAllCategoryAsync();
 
         return Ok(values);
     }
@@ -30,7 +30,7 @@ public class CategoriesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCategoryById(string id)
     {
-        var value = await _categoryService.GetByIdCategoryAsync(id);
+        GetByIdCategoryDto value = await _categoryService.GetByIdCategoryAsync(id);
         
         return Ok(value);
     }

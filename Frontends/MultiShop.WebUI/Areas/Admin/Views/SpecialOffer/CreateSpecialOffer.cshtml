@@ -1,0 +1,27 @@
+﻿@model CreateSpecialOfferDto
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Özel Teklif Ekleme</h4>
+        <p>Yeni özel teklif eklemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <br />
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label" asp-for="Title">Özel Teklif Adı</label>
+                <input type="text" class="form-control" placeholder="Özel Teklif adını giriniz" asp-for="Title">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="SubTitle">Özel Teklif Alt Adı</label>
+                <input type="text" class="form-control" placeholder="Özel Teklif alt adını giriniz" asp-for="SubTitle">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="ImageUrl">Özel Teklif Resmi</label>
+                <input type="text" class="form-control" placeholder="Özel Teklif resmini giriniz" asp-for="ImageUrl">
+            </div>
+            <div>
+                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="SpecialOffer" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
