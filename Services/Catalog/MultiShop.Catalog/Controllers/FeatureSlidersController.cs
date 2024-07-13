@@ -20,7 +20,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> FeatureSliderList()
         {
-            var values = await _featureSliderService.GetAllFeatureSliderAsync();
+            List<ResultFeatureSliderDto> values = await _featureSliderService.GetAllFeatureSliderAsync();
 
             return Ok(values);
         }
@@ -28,7 +28,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFeatureSliderById(string id)
         {
-            var value = await _featureSliderService.GetByIdFeatureSliderAsync(id);
+            GetByIdFeatureSliderDto value = await _featureSliderService.GetByIdFeatureSliderAsync(id);
 
             return Ok(value);
         }
