@@ -3,7 +3,7 @@
 <div class="col-md-12">
     <div class="chart-box">
         <h4>Ürün Güncelleme</h4>
-        <p>Mevcut Ürün bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <p>Mevcut ürün bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
         <br />
         <form method="post">
             <input type="hidden" asp-for="Id" readonly>
@@ -12,25 +12,25 @@
                 <img src="~/templates/ovioadmin/html/dist/img/img3.jpg" class="img-circle img-responsive" alt="@Model.Name">
             </div>
             <div class="form-group">
-                <label class="control-label">Ürün Adı</label>
+                <label class="control-label" asp-for="Name">Ürün Adı</label>
                 <input type="text" class="form-control" placeholder="Ürün adını giriniz" asp-for="Name">
             </div>
             <div class="form-group">
-                <label class="control-label">Ürün Kategori</label>
+                <label class="control-label" asp-for="CategoryId">Ürün Kategori</label>
                 <select class="form-control" style="padding: 0 6px" asp-for="CategoryId" asp-items="@(ViewBag.Categories as SelectList)"></select>
             </div>
             <div class="form-group">
-                <label class="control-label">Ürün Fiyatı</label>
+                <label class="control-label" asp-for="Price">Ürün Fiyatı</label>
                 <input type="text" class="form-control" placeholder="Ürün fiyatını giriniz" asp-for="Price">
             </div>
             <div class="form-group">
                 <fieldset class="form-group">
-                    <label>Ürün Açıklama</label>
+                    <label asp-for="Description">Ürün Açıklama</label>
                     <textarea class="form-control" placeholder="Ürün açıklaması giriniz" id="basicTextarea" rows="3" asp-for="Description"></textarea>
                 </fieldset>
             </div>
             <div class="form-group">
-                <label class="control-label">Ürün Adı</label>
+                <label class="control-label" asp-for="ImageUrl">Ürün Resmi</label>
                 <input type="text" class="form-control" placeholder="Ürün resmini giriniz" asp-for="ImageUrl">
             </div>
             <div>
