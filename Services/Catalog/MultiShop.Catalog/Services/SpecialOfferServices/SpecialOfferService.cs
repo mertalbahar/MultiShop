@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
 
         public async Task DeleteSpecialOfferAsync(string id)
         {
-            await _specialOfferCollection.DeleteOneAsync(so => so.Id.Equals(id));
+            await _specialOfferCollection.DeleteOneAsync(x => x.Id.Equals(id));
         }
 
         public async Task<List<ResultSpecialOfferDto>> GetAllSpecialOfferAsync()
@@ -39,7 +39,7 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
 
         public async Task<GetByIdSpecialOfferDto> GetByIdSpecialOfferAsync(string id)
         {
-            SpecialOffer value = await _specialOfferCollection.Find<SpecialOffer>(so => so.Id.Equals(id)).FirstOrDefaultAsync();
+            SpecialOffer value = await _specialOfferCollection.Find<SpecialOffer>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
             return _mapper.Map<GetByIdSpecialOfferDto>(value);
         }
@@ -47,7 +47,7 @@ namespace MultiShop.Catalog.Services.SpecialOfferServices
         public async Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
             var value = _mapper.Map<SpecialOffer>(updateSpecialOfferDto);
-            await _specialOfferCollection.FindOneAndReplaceAsync(so => so.Id.Equals(updateSpecialOfferDto.Id), value);
+            await _specialOfferCollection.FindOneAndReplaceAsync(x => x.Id.Equals(updateSpecialOfferDto.Id), value);
         }
     }
 }

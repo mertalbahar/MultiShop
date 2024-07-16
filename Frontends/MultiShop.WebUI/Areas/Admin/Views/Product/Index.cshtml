@@ -35,11 +35,11 @@
                         <tr>
                             <th scope="row">@counter</th>
                             <td>
-                                <img src="~/templates/ovioadmin/html/dist/img/img3.jpg" class="img-circle img-responsive" alt="@item.Name">
+                                <img src="@item.ImageUrl" class="img-thumbnail img-responsive" style="width: 150px" alt="@item.Name">
                             </td>
                             <td>@item.Name</td>
                             <td>@item.CategoryName</td>
-                            <td class="text-right">@item.Price</td>
+                            <td class="text-right">@item.Price.ToString("C2")</td>
                             <td>@item.Description</td>
                             <td class="text-center">
                                 <div class="btn-group">

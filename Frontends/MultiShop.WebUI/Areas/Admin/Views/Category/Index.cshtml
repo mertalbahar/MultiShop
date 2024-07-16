@@ -21,6 +21,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Kategori Resmi</th>
                         <th>Kategori Adı</th>
                         <th>Kategori Ürünleri</th>
                         <th style="width: 140px">İşlemler</th>
@@ -31,6 +32,9 @@
                     {
                         <tr>
                             <th scope="row">@counter</th>
+                            <td>
+                                <img src="@item.ImageUrl" class="img-thumbnail img-responsive" style="width: 150px" alt="@item.Name">
+                            </td>
                             <td>@item.Name</td>
                             <td>
                                 <ul class="list-group">

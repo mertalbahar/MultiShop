@@ -27,7 +27,7 @@ public class ProductDetailService : IProductDetailService
 
     public async Task DeleteProductDetailAsync(string id)
     {
-        await _productDetailCollection.DeleteOneAsync(pd => pd.Id.Equals(id));
+        await _productDetailCollection.DeleteOneAsync(x => x.Id.Equals(id));
     }
 
     public async Task<List<ResultProductDetailDto>> GetAllProductDetailAsync()
@@ -39,7 +39,7 @@ public class ProductDetailService : IProductDetailService
 
     public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
     {
-        ProductDetail value = await _productDetailCollection.Find<ProductDetail>(pd => pd.Id.Equals(id)).FirstOrDefaultAsync();
+        ProductDetail value = await _productDetailCollection.Find<ProductDetail>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
         return _mapper.Map<GetByIdProductDetailDto>(value);
     }
@@ -47,6 +47,6 @@ public class ProductDetailService : IProductDetailService
     public async Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto)
     {
         ProductDetail value = _mapper.Map<ProductDetail>(updateProductDetailDto);
-        await _productDetailCollection.FindOneAndReplaceAsync(pd => pd.Id.Equals(updateProductDetailDto.Id), value);
+        await _productDetailCollection.FindOneAndReplaceAsync(x => x.Id.Equals(updateProductDetailDto.Id), value);
     }
 }

@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Services.FeatureSliderServices
 
         public async Task DeleteFeatureSliderAsync(string id)
         {
-            await _featureSliderCollection.DeleteOneAsync(fs => fs.Id.Equals(id));
+            await _featureSliderCollection.DeleteOneAsync(x => x.Id.Equals(id));
         }
 
         public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync()
@@ -39,7 +39,7 @@ namespace MultiShop.Catalog.Services.FeatureSliderServices
 
         public async Task<GetByIdFeatureSliderDto> GetByIdFeatureSliderAsync(string id)
         {
-            FeatureSlider value = await _featureSliderCollection.Find<FeatureSlider>(fs => fs.Id.Equals(id)).FirstOrDefaultAsync();
+            FeatureSlider value = await _featureSliderCollection.Find<FeatureSlider>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
             return _mapper.Map<GetByIdFeatureSliderDto>(value);
         }
@@ -47,7 +47,7 @@ namespace MultiShop.Catalog.Services.FeatureSliderServices
         public async Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
             FeatureSlider value = _mapper.Map<FeatureSlider>(updateFeatureSliderDto);
-            await _featureSliderCollection.FindOneAndReplaceAsync(fs => fs.Id.Equals(updateFeatureSliderDto.Id), value);
+            await _featureSliderCollection.FindOneAndReplaceAsync(x => x.Id.Equals(updateFeatureSliderDto.Id), value);
         }
     }
 }

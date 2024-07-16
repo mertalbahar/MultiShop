@@ -29,7 +29,7 @@ public class ProductService : IProductService
 
     public async Task DeleteProductAsync(string id)
     {
-        await _productCollection.DeleteOneAsync(p => p.Id.Equals(id));
+        await _productCollection.DeleteOneAsync(x => x.Id.Equals(id));
     }
 
     public async Task<List<ResultProductDto>> GetAllProductAsync()
@@ -53,7 +53,7 @@ public class ProductService : IProductService
 
     public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
     {
-        Product value = await _productCollection.Find<Product>(p => p.Id.Equals(id)).FirstOrDefaultAsync();
+        Product value = await _productCollection.Find<Product>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
         return _mapper.Map<GetByIdProductDto>(value);
     }
@@ -61,6 +61,6 @@ public class ProductService : IProductService
     public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
     {
         Product value = _mapper.Map<Product>(updateProductDto);
-        await _productCollection.FindOneAndReplaceAsync(p => p.Id.Equals(updateProductDto.Id), value);
+        await _productCollection.FindOneAndReplaceAsync(x => x.Id.Equals(updateProductDto.Id), value);
     }
 }

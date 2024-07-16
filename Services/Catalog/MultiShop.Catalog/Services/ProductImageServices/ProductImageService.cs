@@ -27,7 +27,7 @@ public class ProductImageService : IProductImageService
 
     public async Task DeleteProductImageAsync(string id)
     {
-        await _productImageCollection.DeleteOneAsync(pi => pi.Id.Equals(id));
+        await _productImageCollection.DeleteOneAsync(x => x.Id.Equals(id));
     }
 
     public async Task<List<ResultProductImageDto>> GetAllProductImageAsync()
@@ -39,7 +39,7 @@ public class ProductImageService : IProductImageService
 
     public async Task<GetByIdProductImageDto> GetByIdProductImageAsync(string id)
     {
-        ProductImage value = await _productImageCollection.Find<ProductImage>(pi => pi.Id.Equals(id)).FirstOrDefaultAsync();
+        ProductImage value = await _productImageCollection.Find<ProductImage>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
         return _mapper.Map<GetByIdProductImageDto>(value);
     }
@@ -47,6 +47,6 @@ public class ProductImageService : IProductImageService
     public async Task UpdateProductImageAsync(UpdateProductImageDto updateProductImageDto)
     {
         ProductImage value = _mapper.Map<ProductImage>(updateProductImageDto);
-        await _productImageCollection.FindOneAndReplaceAsync(pi => pi.Id.Equals(updateProductImageDto.Id), value);
+        await _productImageCollection.FindOneAndReplaceAsync(x => x.Id.Equals(updateProductImageDto.Id), value);
     }
 }

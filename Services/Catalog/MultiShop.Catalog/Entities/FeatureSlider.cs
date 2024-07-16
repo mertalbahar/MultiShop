@@ -1,13 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MultiShop.Core.Entities;
 
 namespace MultiShop.Catalog.Entities
 {
-    public class FeatureSlider
+    public class FeatureSlider : MongoEntityBase
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public string ImageUrl { get; set; }

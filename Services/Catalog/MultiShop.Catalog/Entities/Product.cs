@@ -1,13 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using MultiShop.Core.Entities;
 
 namespace MultiShop.Catalog.Entities;
 
-public class Product
+public class Product : MongoEntityBase
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
     public string CategoryId { get; set; }
     public string Name { get; set; }
     public decimal Price { get; set; }
