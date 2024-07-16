@@ -1,14 +1,12 @@
-﻿using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MultiShop.Core.Entities;
 
 namespace MultiShop.Catalog.Entities;
 
-public class Category
+public class Category : MongoEntityBase
 {
-    [BsonId]
-    [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
     public string Name { get; set; }
+    public string ImageUrl { get; set; }
 
     [BsonIgnore]
     public virtual ICollection<Product> Products { get; set; }

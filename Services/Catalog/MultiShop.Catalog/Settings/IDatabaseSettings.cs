@@ -8,6 +8,8 @@ public interface IDatabaseSettings
     public string ProductImageCollectionName { get; set; }
     public string FeatureSliderCollectionName { get; set; }
     public string SpecialOfferCollectionName { get; set; }
+    public string DiscountOfferCollectionName { get; set; }
+    public string BrandCollectionName { get; set; }
     public string ConnectionString { get; set; }
     public string DatabaseName { get; set; }
 }

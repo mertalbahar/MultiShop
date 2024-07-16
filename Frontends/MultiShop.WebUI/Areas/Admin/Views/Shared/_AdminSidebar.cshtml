@@ -10,11 +10,18 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li> <a asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i> <span>Anasayfa</span></a> </li>
-            <li class="header dark-bg">Menu</li>
+            <li class="header dark-bg">Menü</li>
             <li> <a asp-area="Admin" asp-controller="Category" asp-action="Index"> <i class="fa fa-th"></i> <span>Kategoriler</span></a> </li>
-            <li> <a asp-area="Admin" asp-controller="Product" asp-action="Index"> <i class="fa fa-th"></i> <span>Ürünler</span></a> </li>
-            <li> <a asp-area="Admin" asp-controller="FeatureSlider" asp-action="Index"> <i class="fa fa-th"></i> <span>Öne Çıkan Ürünler</span></a> </li>
-            <li> <a asp-area="Admin" asp-controller="SpecialOffer" asp-action="Index"> <i class="fa fa-th"></i> <span>Özel Teklifler</span></a> </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-th"></i> <span>Ürün Menüsü</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                <ul class="treeview-menu">
+                    <li> <a asp-area="Admin" asp-controller="Product" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Ürünler</span></a> </li>
+                    <li> <a asp-area="Admin" asp-controller="FeatureSlider" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Öne Çıkan Ürünler</span></a> </li>
+                    <li> <a asp-area="Admin" asp-controller="SpecialOffer" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Özel Teklifler</span></a> </li>
+                    <li> <a asp-area="Admin" asp-controller="DiscountOffer" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>İndirim Teklifler</span></a> </li>
+                </ul>
+            </li>
+            <li> <a asp-area="Admin" asp-controller="Brand" asp-action="Index"> <i class="fa fa-th"></i> <span>Markalar</span></a> </li>
             <li class="header dark-bg">Components</li>
             <li class="treeview">
                 <a href="#"><i class="fa fa-briefcase"></i> <span>UI Components</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
