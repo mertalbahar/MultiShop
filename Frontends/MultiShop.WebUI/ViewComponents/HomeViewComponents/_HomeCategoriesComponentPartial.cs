@@ -23,7 +23,10 @@ namespace MultiShop.WebUI.ViewComponents.DefaultViewComponents
                 var jsonData = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
 
-                return View(values);
+                var random = new Random();
+                var result = values.OrderBy(x => random.Next()).Take(12).ToList();
+
+                return View(result);
             }
 
             return View();

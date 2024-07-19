@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.SpecialOfferDtos;
-using MultiShop.Catalog.Services.SpecialOfferServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers
 {
@@ -10,17 +9,17 @@ namespace MultiShop.Catalog.Controllers
     [ApiController]
     public class SpecialOffersController : ControllerBase
     {
-        private readonly ISpecialOfferService _specialOfferService;
+        private readonly IServiceManager _manager;
 
-        public SpecialOffersController(ISpecialOfferService specialOfferService)
+        public SpecialOffersController(IServiceManager manager)
         {
-            _specialOfferService = specialOfferService;
+            _manager = manager;
         }
 
         [HttpGet]
         public async Task<IActionResult> SpecialOfferList()
         {
-            List<ResultSpecialOfferDto> values = await _specialOfferService.GetAllSpecialOfferAsync();
+            List<ResultSpecialOfferDto> values = await _manager.SpecialOfferService.GetAllSpecialOfferAsync();
 
             return Ok(values);
         }
@@ -28,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSpecialOfferById(string id)
         {
-            GetByIdSpecialOfferDto value = await _specialOfferService.GetByIdSpecialOfferAsync(id);
+            GetByIdSpecialOfferDto value = await _manager.SpecialOfferService.GetByIdSpecialOfferAsync(id);
 
             return Ok(value);
         }
@@ -36,7 +35,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateSpecialOffer(CreateSpecialOfferDto createSpecialOfferDto)
         {
-            await _specialOfferService.CreateSpecialOfferAsync(createSpecialOfferDto);
+            await _manager.SpecialOfferService.CreateSpecialOfferAsync(createSpecialOfferDto);
 
             return Ok("Özel teklif başarıyla eklendi.");
         }
@@ -44,7 +43,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteSpecialOffer(string id)
         {
-            await _specialOfferService.DeleteSpecialOfferAsync(id);
+            await _manager.SpecialOfferService.DeleteSpecialOfferAsync(id);
 
             return Ok("Özel teklif başarıyla silindi.");
         }
@@ -52,7 +51,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateSpecialOffer(UpdateSpecialOfferDto updateSpecialOfferDto)
         {
-            await _specialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);
+            await _manager.SpecialOfferService.UpdateSpecialOfferAsync(updateSpecialOfferDto);
 
             return Ok("Özel teklif başarıyla güncellendi.");
         }

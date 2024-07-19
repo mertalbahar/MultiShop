@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductImageDtos;
-using MultiShop.Catalog.Services.ProductImageServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers;
 
@@ -10,17 +10,17 @@ namespace MultiShop.Catalog.Controllers;
 [ApiController]
 public class ProductImagesController : ControllerBase
 {
-    private readonly IProductImageService _productImageService;
+    private readonly IServiceManager _manager;
 
-    public ProductImagesController(IProductImageService productImageService)
+    public ProductImagesController(IServiceManager manager)
     {
-        _productImageService = productImageService;
+        _manager = manager;
     }
 
     [HttpGet]
     public async Task<IActionResult> ProductImageList()
     {
-        List<ResultProductImageDto> values = await _productImageService.GetAllProductImageAsync();
+        List<ResultProductImageDto> values = await _manager.ProductImageService.GetAllProductImageAsync();
 
         return Ok(values);
     }
@@ -28,7 +28,7 @@ public class ProductImagesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductImageById(string id)
     {
-        GetByIdProductImageDto value = await _productImageService.GetByIdProductImageAsync(id);
+        GetByIdProductImageDto value = await _manager.ProductImageService.GetByIdProductImageAsync(id);
 
         return Ok(value);
     }
@@ -36,7 +36,7 @@ public class ProductImagesController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateProductImage(CreateProductImageDto createProductImageDto)
     {
-        await _productImageService.CreateProductImageAsync(createProductImageDto);
+        await _manager.ProductImageService.CreateProductImageAsync(createProductImageDto);
 
         return Ok("Ürün resmi başarıyla eklendi.");
     }
@@ -44,7 +44,7 @@ public class ProductImagesController : ControllerBase
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteProductImage(string id)
     {
-        await _productImageService.DeleteProductImageAsync(id);
+        await _manager.ProductImageService.DeleteProductImageAsync(id);
 
         return Ok("Ürün resmi başarıyla silindi.");
     }
@@ -52,7 +52,7 @@ public class ProductImagesController : ControllerBase
     [HttpPut("update")]
     public async Task<IActionResult> UpdateProductImage(UpdateProductImageDto updateProductImageDto)
     {
-        await _productImageService.UpdateProductImageAsync(updateProductImageDto);
+        await _manager.ProductImageService.UpdateProductImageAsync(updateProductImageDto);
 
         return Ok("Ürün resmi başarıyla güncellendi.");
     }

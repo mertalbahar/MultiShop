@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductDetailDtos;
-using MultiShop.Catalog.Services.ProductDetailServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers;
 
@@ -10,17 +10,17 @@ namespace MultiShop.Catalog.Controllers;
 [ApiController]
 public class ProductDetailsController : ControllerBase
 {
-    private readonly IProductDetailService _productDetailService;
+    private readonly IServiceManager _manager;
 
-    public ProductDetailsController(IProductDetailService productDetailService)
+    public ProductDetailsController(IServiceManager manager)
     {
-        _productDetailService = productDetailService;
+        _manager = manager;
     }
 
     [HttpGet]
     public async Task<IActionResult> ProductDetailList()
     {
-        List<ResultProductDetailDto> values = await _productDetailService.GetAllProductDetailAsync();
+        List<ResultProductDetailDto> values = await _manager.ProductDetailService.GetAllProductDetailAsync();
 
         return Ok(values);
     }
@@ -28,7 +28,7 @@ public class ProductDetailsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductDetailById(string id)
     {
-        GetByIdProductDetailDto value = await _productDetailService.GetByIdProductDetailAsync(id);
+        GetByIdProductDetailDto value = await _manager.ProductDetailService.GetByIdProductDetailAsync(id);
 
         return Ok(value);
     }
@@ -36,7 +36,7 @@ public class ProductDetailsController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateProductDetail(CreateProductDetailDto createProductDetailDto)
     {
-        await _productDetailService.CreateProductDetailAsync(createProductDetailDto);
+        await _manager.ProductDetailService.CreateProductDetailAsync(createProductDetailDto);
 
         return Ok("Ürün detayı başarıyla eklendi.");
     }
@@ -44,7 +44,7 @@ public class ProductDetailsController : ControllerBase
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteProductDetail(string id)
     {
-        await _productDetailService.DeleteProductDetailAsync(id);
+        await _manager.ProductDetailService.DeleteProductDetailAsync(id);
 
         return Ok("Ürün detayı başarıyla silindi.");
     }
@@ -52,7 +52,7 @@ public class ProductDetailsController : ControllerBase
     [HttpPut("update")]
     public async Task<IActionResult> UpdateProductDetail(UpdateProductDetailDto updateProductDetailDto)
     {
-        await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
+        await _manager.ProductDetailService.UpdateProductDetailAsync(updateProductDetailDto);
 
         return Ok("Ürün detayı başarıyla güncellendi.");
     }

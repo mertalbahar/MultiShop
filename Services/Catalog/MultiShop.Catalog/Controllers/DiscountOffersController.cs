@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.DiscountOfferDtos;
-using MultiShop.Catalog.Services.DiscountOfferServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers
 {
@@ -9,17 +9,17 @@ namespace MultiShop.Catalog.Controllers
     [ApiController]
     public class DiscountOffersController : ControllerBase
     {
-        private readonly IDiscountOfferService _discountOfferService;
+        private readonly IServiceManager _manager;
 
-        public DiscountOffersController(IDiscountOfferService discountOfferService)
+        public DiscountOffersController(IServiceManager manager)
         {
-            _discountOfferService = discountOfferService;
+            _manager = manager;
         }
 
         [HttpGet]
         public async Task<IActionResult> DiscountOfferList()
         {
-            List<ResultDiscountOfferDto> values = await _discountOfferService.GetAllDiscountOfferAsync();
+            List<ResultDiscountOfferDto> values = await _manager.DiscountOfferService.GetAllDiscountOfferAsync();
 
             return Ok(values);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDiscountOfferById(string id)
         {
-            GetByIdDiscountOfferDto value = await _discountOfferService.GetByIdDiscountOfferAsync(id);
+            GetByIdDiscountOfferDto value = await _manager.DiscountOfferService.GetByIdDiscountOfferAsync(id);
 
             return Ok(value);
         }
@@ -35,7 +35,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateDiscountOffer(CreateDiscountOfferDto createDiscountOfferDto)
         {
-            await _discountOfferService.CreateDiscountOfferAsync(createDiscountOfferDto);
+            await _manager.DiscountOfferService.CreateDiscountOfferAsync(createDiscountOfferDto);
 
             return Ok("İndirim teklifi başarıyla eklendi.");
         }
@@ -43,7 +43,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteDiscountOffer(string id)
         {
-            await _discountOfferService.DeleteDiscountOfferAsync(id);
+            await _manager.DiscountOfferService.DeleteDiscountOfferAsync(id);
 
             return Ok("İndirim teklifi başarıyla silindi.");
         }
@@ -51,7 +51,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateDiscountOffer(UpdateDiscountOfferDto updateDiscountOfferDto)
         {
-            await _discountOfferService.UpdateDiscountOfferAsync(updateDiscountOfferDto);
+            await _manager.DiscountOfferService.UpdateDiscountOfferAsync(updateDiscountOfferDto);
 
             return Ok("İndirim teklifi başarıyla güncellendi.");
         }
