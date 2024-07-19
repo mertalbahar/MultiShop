@@ -11,9 +11,9 @@ namespace MultiShop.Catalog.Controllers
     {
         private readonly IBrandService _brandService;
 
-        public BrandsController(IBrandService BrandService)
+        public BrandsController(IBrandService brandService)
         {
-            _brandService = BrandService;
+            _brandService = brandService;
         }
 
         [HttpGet]
