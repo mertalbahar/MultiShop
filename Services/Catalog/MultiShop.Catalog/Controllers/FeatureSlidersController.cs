@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.FeatureSliderDtos;
-using MultiShop.Catalog.Services.FeatureSliderServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers
 {
@@ -10,17 +9,17 @@ namespace MultiShop.Catalog.Controllers
     [ApiController]
     public class FeatureSlidersController : ControllerBase
     {
-        private readonly IFeatureSliderService _featureSliderService;
+        private readonly IServiceManager _manager;
 
-        public FeatureSlidersController(IFeatureSliderService featureSliderService)
+        public FeatureSlidersController(IServiceManager manager)
         {
-            _featureSliderService = featureSliderService;
+            _manager = manager;
         }
 
         [HttpGet]
         public async Task<IActionResult> FeatureSliderList()
         {
-            List<ResultFeatureSliderDto> values = await _featureSliderService.GetAllFeatureSliderAsync();
+            List<ResultFeatureSliderDto> values = await _manager.FeatureSliderService.GetAllFeatureSliderAsync();
 
             return Ok(values);
         }
@@ -28,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetFeatureSliderById(string id)
         {
-            GetByIdFeatureSliderDto value = await _featureSliderService.GetByIdFeatureSliderAsync(id);
+            GetByIdFeatureSliderDto value = await _manager.FeatureSliderService.GetByIdFeatureSliderAsync(id);
 
             return Ok(value);
         }
@@ -36,7 +35,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateFeatureSlider(CreateFeatureSliderDto createFeatureSliderDto)
         {
-            await _featureSliderService.CreateFeatureSliderAsync(createFeatureSliderDto);
+            await _manager.FeatureSliderService.CreateFeatureSliderAsync(createFeatureSliderDto);
 
             return Ok("Öne çıkan görsel başarıyla eklendi.");
         }
@@ -44,7 +43,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteFeatureSlider(string id)
         {
-            await _featureSliderService.DeleteFeatureSliderAsync(id);
+            await _manager.FeatureSliderService.DeleteFeatureSliderAsync(id);
 
             return Ok("Öne çıkan görsel başarıyla silindi.");
         }
@@ -52,7 +51,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateFeatureSlider(UpdateFeatureSliderDto updateFeatureSliderDto)
         {
-            await _featureSliderService.UpdateFeatureSliderAsync(updateFeatureSliderDto);
+            await _manager.FeatureSliderService.UpdateFeatureSliderAsync(updateFeatureSliderDto);
 
             return Ok("Öne çıkan görsel başarıyla güncellendi.");
         }

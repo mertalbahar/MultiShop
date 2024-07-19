@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductDtos;
-using MultiShop.Catalog.Services.ProductServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers;
 
@@ -10,17 +9,17 @@ namespace MultiShop.Catalog.Controllers;
 [ApiController]
 public class ProductsController : ControllerBase
 {
-    private readonly IProductService _productService;
+    private readonly IServiceManager _manager;
 
-    public ProductsController(IProductService productService)
+    public ProductsController(IServiceManager manager)
     {
-        _productService = productService;
+        _manager = manager;
     }
 
     [HttpGet]
     public async Task<IActionResult> ProductList()
     {
-        List<ResultProductDto> values = await _productService.GetAllProductAsync();
+        List<ResultProductDto> values = await _manager.ProductService.GetAllProductAsync();
 
         return Ok(values);
     }
@@ -28,7 +27,7 @@ public class ProductsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductById(string id)
     {
-        GetByIdProductDto value = await _productService.GetByIdProductAsync(id);
+        GetByIdProductDto value = await _manager.ProductService.GetByIdProductAsync(id);
 
         return Ok(value);
     }
@@ -36,7 +35,7 @@ public class ProductsController : ControllerBase
     [HttpPost("create")]
     public async Task<IActionResult> CreateProduct(CreateProductDto createProductDto)
     {
-        await _productService.CreateProductAsync(createProductDto);
+        await _manager.ProductService.CreateProductAsync(createProductDto);
 
         return Ok("Ürün başarıyla eklendi.");
     }
@@ -44,7 +43,7 @@ public class ProductsController : ControllerBase
     [HttpDelete("delete/{id}")]
     public async Task<IActionResult> DeleteProduct(string id)
     {
-        await _productService.DeleteProductAsync(id);
+        await _manager.ProductService.DeleteProductAsync(id);
 
         return Ok("Ürün başarıyla silindi.");
     }
@@ -52,7 +51,7 @@ public class ProductsController : ControllerBase
     [HttpPut("update")]
     public async Task<IActionResult> UpdateProduct(UpdateProductDto updateProductDto)
     {
-        await _productService.UpdateProductAsync(updateProductDto);
+        await _manager.ProductService.UpdateProductAsync(updateProductDto);
 
         return Ok("Ürün başarıyla güncellendi.");
     }

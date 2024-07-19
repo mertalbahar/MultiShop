@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.BrandDtos;
-using MultiShop.Catalog.Services.BrandServices;
+using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers
 {
@@ -9,17 +9,17 @@ namespace MultiShop.Catalog.Controllers
     [ApiController]
     public class BrandsController : ControllerBase
     {
-        private readonly IBrandService _brandService;
+        private readonly IServiceManager _manager;
 
-        public BrandsController(IBrandService BrandService)
+        public BrandsController(IServiceManager manager)
         {
-            _brandService = BrandService;
+            _manager = manager;
         }
 
         [HttpGet]
         public async Task<IActionResult> BrandList()
         {
-            List<ResultBrandDto> values = await _brandService.GetAllBrandAsync();
+            List<ResultBrandDto> values = await _manager.BrandService.GetAllBrandAsync();
 
             return Ok(values);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBrandById(string id)
         {
-            GetByIdBrandDto value = await _brandService.GetByIdBrandAsync(id);
+            GetByIdBrandDto value = await _manager.BrandService.GetByIdBrandAsync(id);
 
             return Ok(value);
         }
@@ -35,7 +35,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto)
         {
-            await _brandService.CreateBrandAsync(createBrandDto);
+            await _manager.BrandService.CreateBrandAsync(createBrandDto);
 
             return Ok("Marka başarıyla eklendi.");
         }
@@ -43,7 +43,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteBrand(string id)
         {
-            await _brandService.DeleteBrandAsync(id);
+            await _manager.BrandService.DeleteBrandAsync(id);
 
             return Ok("Marka başarıyla silindi.");
         }
@@ -51,7 +51,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpPut("update")]
         public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto)
         {
-            await _brandService.UpdateBrandAsync(updateBrandDto);
+            await _manager.BrandService.UpdateBrandAsync(updateBrandDto);
 
             return Ok("Marka başarıyla güncellendi.");
         }
