@@ -30,14 +30,14 @@ namespace MultiShop.Catalog.Services.AboutServices
             await _aboutCollection.DeleteOneAsync(x => x.Id.Equals(id));
         }
 
-        public async Task<List<ResultAboutDto>> GetAllAboutAsync()
+        public async Task<List<ResultAboutDto>> GetAllAboutsAsync()
         {
             List<About> values = await _aboutCollection.Find(so => true).ToListAsync();
 
             return _mapper.Map<List<ResultAboutDto>>(values);
         }
 
-        public async Task<GetByIdAboutDto> GetByIdAboutAsync(string id)
+        public async Task<GetByIdAboutDto> GetAboutByIdAsync(string id)
         {
             About value = await _aboutCollection.Find<About>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 

@@ -20,7 +20,7 @@ public class ProductImagesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ProductImageList()
     {
-        List<ResultProductImageDto> values = await _manager.ProductImageService.GetAllProductImageAsync();
+        List<ResultProductImageDto> values = await _manager.ProductImageService.GetAllProductImagesAsync();
 
         return Ok(values);
     }
@@ -28,7 +28,7 @@ public class ProductImagesController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductImageById(string id)
     {
-        GetByIdProductImageDto value = await _manager.ProductImageService.GetByIdProductImageAsync(id);
+        GetByIdProductImageDto value = await _manager.ProductImageService.GetProductImageByIdAsync(id);
 
         return Ok(value);
     }

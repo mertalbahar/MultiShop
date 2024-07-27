@@ -4,8 +4,9 @@ namespace MultiShop.WebUI.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index([FromRoute(Name = "id")] string id)
         {
+            ViewBag.Id = id;
             return View();
         }
 

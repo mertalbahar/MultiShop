@@ -30,14 +30,14 @@ namespace MultiShop.Catalog.Services.DiscountOfferServices
             await _discountOfferCollection.DeleteOneAsync(x => x.Id.Equals(id));
         }
 
-        public async Task<List<ResultDiscountOfferDto>> GetAllDiscountOfferAsync()
+        public async Task<List<ResultDiscountOfferDto>> GetAllDiscountOffersAsync()
         {
             List<DiscountOffer> values = await _discountOfferCollection.Find(so => true).ToListAsync();
 
             return _mapper.Map<List<ResultDiscountOfferDto>>(values);
         }
 
-        public async Task<GetByIdDiscountOfferDto> GetByIdDiscountOfferAsync(string id)
+        public async Task<GetByIdDiscountOfferDto> GetDiscountOfferByIdAsync(string id)
         {
             DiscountOffer value = await _discountOfferCollection.Find<DiscountOffer>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 

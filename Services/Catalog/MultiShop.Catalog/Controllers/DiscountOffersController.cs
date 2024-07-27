@@ -19,7 +19,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> DiscountOfferList()
         {
-            List<ResultDiscountOfferDto> values = await _manager.DiscountOfferService.GetAllDiscountOfferAsync();
+            List<ResultDiscountOfferDto> values = await _manager.DiscountOfferService.GetAllDiscountOffersAsync();
 
             return Ok(values);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetDiscountOfferById(string id)
         {
-            GetByIdDiscountOfferDto value = await _manager.DiscountOfferService.GetByIdDiscountOfferAsync(id);
+            GetByIdDiscountOfferDto value = await _manager.DiscountOfferService.GetDiscountOfferByIdAsync(id);
 
             return Ok(value);
         }

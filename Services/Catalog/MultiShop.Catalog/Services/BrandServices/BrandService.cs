@@ -30,14 +30,14 @@ namespace MultiShop.Catalog.Services.BrandServices
             await _brandCollection.DeleteOneAsync(x => x.Id.Equals(id));
         }
 
-        public async Task<List<ResultBrandDto>> GetAllBrandAsync()
+        public async Task<List<ResultBrandDto>> GetAllBrandsAsync()
         {
             List<Brand> values = await _brandCollection.Find(so => true).ToListAsync();
 
             return _mapper.Map<List<ResultBrandDto>>(values);
         }
 
-        public async Task<GetByIdBrandDto> GetByIdBrandAsync(string id)
+        public async Task<GetByIdBrandDto> GetBrandByIdAsync(string id)
         {
             Brand value = await _brandCollection.Find<Brand>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
