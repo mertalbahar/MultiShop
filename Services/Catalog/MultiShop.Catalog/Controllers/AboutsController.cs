@@ -19,7 +19,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> AboutList()
         {
-            List<ResultAboutDto> values = await _manager.AboutService.GetAllAboutAsync();
+            List<ResultAboutDto> values = await _manager.AboutService.GetAllAboutsAsync();
 
             return Ok(values);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetAboutById(string id)
         {
-            GetByIdAboutDto value = await _manager.AboutService.GetByIdAboutAsync(id);
+            GetByIdAboutDto value = await _manager.AboutService.GetAboutByIdAsync(id);
 
             return Ok(value);
         }

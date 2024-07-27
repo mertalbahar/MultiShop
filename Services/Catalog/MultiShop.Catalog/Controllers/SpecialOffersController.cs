@@ -19,7 +19,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> SpecialOfferList()
         {
-            List<ResultSpecialOfferDto> values = await _manager.SpecialOfferService.GetAllSpecialOfferAsync();
+            List<ResultSpecialOfferDto> values = await _manager.SpecialOfferService.GetAllSpecialOffersAsync();
 
             return Ok(values);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetSpecialOfferById(string id)
         {
-            GetByIdSpecialOfferDto value = await _manager.SpecialOfferService.GetByIdSpecialOfferAsync(id);
+            GetByIdSpecialOfferDto value = await _manager.SpecialOfferService.GetSpecialOfferByIdAsync(id);
 
             return Ok(value);
         }

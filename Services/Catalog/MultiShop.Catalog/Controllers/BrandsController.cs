@@ -19,7 +19,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet]
         public async Task<IActionResult> BrandList()
         {
-            List<ResultBrandDto> values = await _manager.BrandService.GetAllBrandAsync();
+            List<ResultBrandDto> values = await _manager.BrandService.GetAllBrandsAsync();
 
             return Ok(values);
         }
@@ -27,7 +27,7 @@ namespace MultiShop.Catalog.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetBrandById(string id)
         {
-            GetByIdBrandDto value = await _manager.BrandService.GetByIdBrandAsync(id);
+            GetByIdBrandDto value = await _manager.BrandService.GetBrandByIdAsync(id);
 
             return Ok(value);
         }

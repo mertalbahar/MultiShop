@@ -3,6 +3,7 @@ using MongoDB.Driver;
 using MultiShop.Catalog.Dtos.ProductDtos;
 using MultiShop.Catalog.Entities;
 using MultiShop.Catalog.Settings;
+using System.Linq.Expressions;
 
 namespace MultiShop.Catalog.Services.ProductServices;
 
@@ -32,30 +33,47 @@ public class ProductService : IProductService
         await _productCollection.DeleteOneAsync(x => x.Id.Equals(id));
     }
 
-    public async Task<List<ResultProductDto>> GetAllProductAsync()
+    public async Task<List<ResultProductDto>> GetAllProductsAsync()
     {
-        List<Product> values = await _productCollection.Find(p => true).ToListAsync();
-        List<Category> categories = await _categoryCollection.Find(c => true).ToListAsync();
+        List<Product> values = await _productCollection.Find(x => true).ToListAsync();
+        List<Category> categories = await _categoryCollection.Find(x => true).ToListAsync();
         var result = _mapper.Map<List<ResultProductDto>>(values);
 
         foreach (var item in result)
         {
-            var category = categories.FirstOrDefault(c => c.Id.Equals(item.CategoryId));
-            
+            var category = categories.FirstOrDefault(x => x.Id.Equals(item.CategoryId));
+
             if (category != null)
             {
-                item.CategoryName =category.Name;
+                item.CategoryName = category.Name;
             }
         }
 
         return result;
     }
 
-    public async Task<GetByIdProductDto> GetByIdProductAsync(string id)
+    public async Task<GetByIdProductDto> GetProductByIdAsync(string id)
     {
         Product value = await _productCollection.Find<Product>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 
         return _mapper.Map<GetByIdProductDto>(value);
+    }
+
+    public async Task<List<ResultProductDto>> GetProductsByCategoryId(string categoryId)
+    {
+        List<Product> values = await _productCollection.Find(x => x.CategoryId.Equals(categoryId)).ToListAsync();
+        Category category = await _categoryCollection.Find(x => x.Id.Equals(categoryId)).FirstOrDefaultAsync();
+        var result = _mapper.Map<List<ResultProductDto>>(values);
+
+        foreach (var item in result)
+        {
+            if (category != null)
+            {
+                item.CategoryName = category.Name;
+            }
+        }
+
+        return result;
     }
 
     public async Task UpdateProductAsync(UpdateProductDto updateProductDto)

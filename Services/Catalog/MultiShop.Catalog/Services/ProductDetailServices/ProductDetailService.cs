@@ -30,14 +30,14 @@ public class ProductDetailService : IProductDetailService
         await _productDetailCollection.DeleteOneAsync(x => x.Id.Equals(id));
     }
 
-    public async Task<List<ResultProductDetailDto>> GetAllProductDetailAsync()
+    public async Task<List<ResultProductDetailDto>> GetAllProductDetailsAsync()
     {
         List<ProductDetail> values = await _productDetailCollection.Find(pd => true).ToListAsync();
 
         return _mapper.Map<List<ResultProductDetailDto>>(values);
     }
 
-    public async Task<GetByIdProductDetailDto> GetByIdProductDetailAsync(string id)
+    public async Task<GetByIdProductDetailDto> GetProductDetailByIdAsync(string id)
     {
         ProductDetail value = await _productDetailCollection.Find<ProductDetail>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 

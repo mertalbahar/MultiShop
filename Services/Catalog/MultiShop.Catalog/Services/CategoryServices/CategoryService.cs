@@ -32,7 +32,7 @@ public class CategoryService : ICategoryService
         await _categoryCollection.DeleteOneAsync(x => x.Id.Equals(id));
     }
 
-    public async Task<List<ResultCategoryDto>> GetAllCategoryAsync()
+    public async Task<List<ResultCategoryDto>> GetAllCategoriesAsync()
     {
         List<Category> values = await _categoryCollection.Find(x => true).ToListAsync();
 
@@ -44,7 +44,7 @@ public class CategoryService : ICategoryService
         return _mapper.Map<List<ResultCategoryDto>>(values);
     }
 
-    public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id)
+    public async Task<GetByIdCategoryDto> GetCategoryByIdAsync(string id)
     {
         Category value = await _categoryCollection.Find<Category>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 

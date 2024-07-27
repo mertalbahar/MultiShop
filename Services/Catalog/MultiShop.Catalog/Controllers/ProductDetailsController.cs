@@ -20,7 +20,7 @@ public class ProductDetailsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ProductDetailList()
     {
-        List<ResultProductDetailDto> values = await _manager.ProductDetailService.GetAllProductDetailAsync();
+        List<ResultProductDetailDto> values = await _manager.ProductDetailService.GetAllProductDetailsAsync();
 
         return Ok(values);
     }
@@ -28,7 +28,7 @@ public class ProductDetailsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductDetailById(string id)
     {
-        GetByIdProductDetailDto value = await _manager.ProductDetailService.GetByIdProductDetailAsync(id);
+        GetByIdProductDetailDto value = await _manager.ProductDetailService.GetProductDetailByIdAsync(id);
 
         return Ok(value);
     }

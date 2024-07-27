@@ -30,14 +30,14 @@ namespace MultiShop.Catalog.Services.FeatureSliderServices
             await _featureSliderCollection.DeleteOneAsync(x => x.Id.Equals(id));
         }
 
-        public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync()
+        public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSlidersAsync()
         {
             List<FeatureSlider> values = await _featureSliderCollection.Find(fs => true).ToListAsync();
 
             return _mapper.Map<List<ResultFeatureSliderDto>>(values);
         }
 
-        public async Task<GetByIdFeatureSliderDto> GetByIdFeatureSliderAsync(string id)
+        public async Task<GetByIdFeatureSliderDto> GetFeatureSliderByIdAsync(string id)
         {
             FeatureSlider value = await _featureSliderCollection.Find<FeatureSlider>(x => x.Id.Equals(id)).FirstOrDefaultAsync();
 

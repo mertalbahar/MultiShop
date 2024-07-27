@@ -19,7 +19,7 @@ public class ProductsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> ProductList()
     {
-        List<ResultProductDto> values = await _manager.ProductService.GetAllProductAsync();
+        List<ResultProductDto> values = await _manager.ProductService.GetAllProductsAsync();
 
         return Ok(values);
     }
@@ -27,7 +27,7 @@ public class ProductsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetProductById(string id)
     {
-        GetByIdProductDto value = await _manager.ProductService.GetByIdProductAsync(id);
+        GetByIdProductDto value = await _manager.ProductService.GetProductByIdAsync(id);
 
         return Ok(value);
     }
@@ -54,5 +54,13 @@ public class ProductsController : ControllerBase
         await _manager.ProductService.UpdateProductAsync(updateProductDto);
 
         return Ok("Ürün başarıyla güncellendi.");
+    }
+
+    [HttpGet("categoryId")]
+    public async Task<IActionResult> ProductListByCategoryId(string id)
+    {
+        List<ResultProductDto> values = await _manager.ProductService.GetProductsByCategoryId(id);
+
+        return Ok(values);
     }
 }
