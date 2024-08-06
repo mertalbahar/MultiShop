@@ -32,7 +32,7 @@ namespace MultiShop.Catalog.Services.DiscountOfferServices
 
         public async Task<List<ResultDiscountOfferDto>> GetAllDiscountOffersAsync()
         {
-            List<DiscountOffer> values = await _discountOfferCollection.Find(so => true).ToListAsync();
+            List<DiscountOffer> values = await _discountOfferCollection.Find(x => true).ToListAsync();
 
             return _mapper.Map<List<ResultDiscountOfferDto>>(values);
         }

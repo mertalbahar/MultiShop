@@ -32,7 +32,7 @@ namespace MultiShop.Catalog.Services.BrandServices
 
         public async Task<List<ResultBrandDto>> GetAllBrandsAsync()
         {
-            List<Brand> values = await _brandCollection.Find(so => true).ToListAsync();
+            List<Brand> values = await _brandCollection.Find(x => true).ToListAsync();
 
             return _mapper.Map<List<ResultBrandDto>>(values);
         }

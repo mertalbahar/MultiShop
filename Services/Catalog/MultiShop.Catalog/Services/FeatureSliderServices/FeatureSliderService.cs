@@ -32,7 +32,7 @@ namespace MultiShop.Catalog.Services.FeatureSliderServices
 
         public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSlidersAsync()
         {
-            List<FeatureSlider> values = await _featureSliderCollection.Find(fs => true).ToListAsync();
+            List<FeatureSlider> values = await _featureSliderCollection.Find(x => true).ToListAsync();
 
             return _mapper.Map<List<ResultFeatureSliderDto>>(values);
         }

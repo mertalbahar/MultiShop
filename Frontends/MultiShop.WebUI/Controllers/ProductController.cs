@@ -10,8 +10,9 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
 
-        public IActionResult ProductDetail()
+        public IActionResult ProductDetail([FromRoute(Name = "id")] string id)
         {
+            ViewBag.Id = id;
             return View();
         }
     }

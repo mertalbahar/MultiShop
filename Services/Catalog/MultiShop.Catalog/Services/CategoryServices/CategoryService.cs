@@ -38,7 +38,7 @@ public class CategoryService : ICategoryService
 
         foreach (var item in values)
         {
-            item.Products = await _productCollection.Find(p => p.CategoryId.Equals(item.Id)).ToListAsync();
+            item.Products = await _productCollection.Find(x => x.CategoryId.Equals(item.Id)).ToListAsync();
         }
 
         return _mapper.Map<List<ResultCategoryDto>>(values);

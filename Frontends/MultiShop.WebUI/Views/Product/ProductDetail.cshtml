@@ -20,11 +20,11 @@
 <div class="container-fluid pb-5">
     <div class="row px-xl-5">
         <!-- Product Image Slider Start -->
-        @await Component.InvokeAsync("_ProductDetailImageSliderComponentPartial")
+        @await Component.InvokeAsync("_ProductDetailImageSliderComponentPartial", new { id = ViewBag.Id })
         <!-- Product Image Slider End -->
 
         <!-- Product Detail Start -->
-        @await Component.InvokeAsync("_ProductDetailComponentPartial")
+        @await Component.InvokeAsync("_ProductDetailComponentPartial", new { id = ViewBag.Id })
         <!-- Product Detail End -->
     </div>
 

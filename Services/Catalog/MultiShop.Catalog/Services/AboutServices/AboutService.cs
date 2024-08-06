@@ -32,7 +32,7 @@ namespace MultiShop.Catalog.Services.AboutServices
 
         public async Task<List<ResultAboutDto>> GetAllAboutsAsync()
         {
-            List<About> values = await _aboutCollection.Find(so => true).ToListAsync();
+            List<About> values = await _aboutCollection.Find(x => true).ToListAsync();
 
             return _mapper.Map<List<ResultAboutDto>>(values);
         }

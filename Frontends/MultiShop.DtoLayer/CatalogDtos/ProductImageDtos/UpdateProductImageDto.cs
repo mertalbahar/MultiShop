@@ -1,6 +1,6 @@
-﻿namespace MultiShop.Catalog.Dtos.ProductImageDtos;
+﻿namespace MultiShop.DtoLayer.CatalogDtos.ProductImageDtos;
 
-public class ResultProductImageDto
+public class UpdateProductImageDto
 {
     public string Id { get; set; }
     public string ProductId { get; set; }
@@ -8,5 +8,4 @@ public class ResultProductImageDto
     public string Image2 { get; set; }
     public string Image3 { get; set; }
     public string ProductName { get; set; }
-    public string ProductImageUrl { get; set; }
 }
