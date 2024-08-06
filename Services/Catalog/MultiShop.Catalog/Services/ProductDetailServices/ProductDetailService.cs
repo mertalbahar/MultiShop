@@ -32,7 +32,7 @@ public class ProductDetailService : IProductDetailService
 
     public async Task<List<ResultProductDetailDto>> GetAllProductDetailsAsync()
     {
-        List<ProductDetail> values = await _productDetailCollection.Find(pd => true).ToListAsync();
+        List<ProductDetail> values = await _productDetailCollection.Find(x => true).ToListAsync();
 
         return _mapper.Map<List<ResultProductDetailDto>>(values);
     }

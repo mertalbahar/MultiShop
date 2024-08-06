@@ -5,7 +5,7 @@ using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers;
 
-[Authorize]
+
 [Route("api/[controller]")]
 [ApiController]
 public class ProductImagesController : ControllerBase
@@ -55,5 +55,13 @@ public class ProductImagesController : ControllerBase
         await _manager.ProductImageService.UpdateProductImageAsync(updateProductImageDto);
 
         return Ok("Ürün resmi başarıyla güncellendi.");
+    }
+
+    [HttpGet("productId")]
+    public async Task<IActionResult> GetProductImagesByProductId(string id)
+    {
+        GetByIdProductImageDto values = await _manager.ProductImageService.GetProductImageByProductIdAsync(id);
+
+        return Ok(values);
     }
 }

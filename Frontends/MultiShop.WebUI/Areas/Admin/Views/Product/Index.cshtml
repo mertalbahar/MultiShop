@@ -26,6 +26,7 @@
                         <th>Ürün Kategori</th>
                         <th>Ürün Fiyatı</th>
                         <th>Ürün Açıklama</th>
+                        <th>Diğer Görseller</th>
                         <th style="width: 140px">İşlemler</th>
                     </tr>
                 </thead>
@@ -34,13 +35,16 @@
                     {
                         <tr>
                             <th scope="row">@counter</th>
-                            <td>
+                            <td class="text-center">
                                 <img src="@item.ImageUrl" class="img-thumbnail img-responsive" style="width: 150px" alt="@item.Name">
                             </td>
                             <td>@item.Name</td>
                             <td>@item.CategoryName</td>
                             <td class="text-right">@item.Price.ToString("C2")</td>
                             <td>@item.Description</td>
+                            <td>
+                                <a class="btn btn-default" asp-area="Admin" asp-controller="ProductImage" asp-action="UpdateProductImage" asp-route-productId="@item.Id">Ürün Görselleri</a>
+                            </td>
                             <td class="text-center">
                                 <div class="btn-group">
                                     <a class="btn btn-rounded btn-warning" asp-area="Admin" asp-controller="Product" asp-action="UpdateProduct" asp-route-id="@item.Id"><i class="fa fa-lg fa-pencil-square-o"></i></a>
