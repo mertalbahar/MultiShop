@@ -1,0 +1,31 @@
+﻿@model CreateProductDetailDto
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Ürün Detay Ekleme</h4>
+        <p>Yeni Ürün detay eklemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <br />
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label" asp-for="ProductId">Ürün Adı</label>
+                <select class="form-control" style="padding: 0 6px" asp-for="ProductId" asp-items="@(ViewBag.Products as SelectList)"></select>
+            </div>
+            <div class="form-group">
+                <fieldset class="form-group">
+                    <label asp-for="Description">Ürün Açıklama</label>
+                    <textarea class="form-control" placeholder="Ürün açıklaması giriniz" id="basicTextarea" rows="3" asp-for="Description"></textarea>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset class="form-group">
+                    <label asp-for="Info">Ürün Bilgi</label>
+                    <textarea class="form-control" placeholder="Ürün bilgisi giriniz" id="basicTextarea" rows="3" asp-for="Info"></textarea>
+                </fieldset>
+            </div>
+            <div>
+                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="ProductDetail" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+            </div>
+        </form>
+    </div>
+</div>

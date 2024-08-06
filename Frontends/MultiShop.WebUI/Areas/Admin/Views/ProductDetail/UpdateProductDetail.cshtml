@@ -1,0 +1,34 @@
+﻿@model UpdateProductDetailDto
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Ürün Detay Güncelleme</h4>
+        <p>Mevcut Ürün detay bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <br />
+        <form method="post">
+            <input type="hidden" asp-for="Id" readonly>
+            <input type="hidden" asp-for="ProductId" readonly>
+
+            <div class="form-group">
+                <label class="control-label" asp-for="ProductName">Ürün Adı</label>
+                <input type="text" class="form-control" asp-for="ProductName" readonly>
+            </div>
+            <div class="form-group">
+                <fieldset class="form-group">
+                    <label asp-for="Description">Ürün Açıklama</label>
+                    <textarea class="form-control" placeholder="Ürün açıklaması giriniz" id="basicTextarea" rows="3" asp-for="Description"></textarea>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset class="form-group">
+                    <label asp-for="Info">Ürün Bilgi</label>
+                    <textarea class="form-control" placeholder="Ürün bilgisi giriniz" id="basicTextarea" rows="3" asp-for="Info"></textarea>
+                </fieldset>
+            </div>
+            <div>
+                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Product" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
