@@ -29,7 +29,7 @@
                 <div class="checkbox">
                     <label asp-for="Status">
                         <input type="checkbox" asp-for="Status">
-                        Öne Çıkan Görsel Durumu
+                        <td>@(Model.Status ? "Aktif" : "Pasif")</td>
                     </label>
                 </div>
             </div>
