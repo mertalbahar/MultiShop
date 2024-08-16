@@ -21,12 +21,14 @@ namespace MultiShop.Comment.Infrastructures.Extensions
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddScoped<IUserCommentRepository, UserCommentRepository>();
+            services.AddScoped<IContactRepository, ContactRepository>();
         }
 
         public static void ServiceRegistration(this IServiceCollection services)
         {
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IUserCommentService, UserCommentService>();
+            services.AddScoped<IContactService, ContactService>();
         }
     }
 }

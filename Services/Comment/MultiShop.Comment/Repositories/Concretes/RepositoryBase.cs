@@ -28,13 +28,13 @@ namespace MultiShop.Comment.Repositories.Concretes
         public IQueryable<T> FindAll(Expression<Func<T, bool>> expression = null)
         {
             return expression == null
-                ? _context.Set<T>()
+                    ? _context.Set<T>()
                 : _context.Set<T>().Where(expression);
         }
 
         public T? FindByCondition(Expression<Func<T, bool>> expression)
         {
-            return _context.Set<T>().Where(expression).SingleOrDefault();
+            return _context.Set<T>().Where(expression).AsNoTracking().SingleOrDefault();
         }
 
         public void Update(T entity)

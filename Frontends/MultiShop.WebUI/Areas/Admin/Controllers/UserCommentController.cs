@@ -55,7 +55,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             return new SelectList(new List<SelectListItem>());
         }
 
-        public async Task<IActionResult> DeleteCategory([FromRoute(Name = "id")] string id)
+        public async Task<IActionResult> DeleteUserComment([FromRoute(Name = "id")] string id)
         {
             HttpClient client = _httpClientFactory.CreateClient();
             HttpResponseMessage response = await client.DeleteAsync("https://localhost:7075/api/UserComments/delete/" + id);

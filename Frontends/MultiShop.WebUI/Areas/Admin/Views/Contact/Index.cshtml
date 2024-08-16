@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ResultContactDto>
+
+@{
+    ViewData["Title"] = "Contact";
+    int counter = 1;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>İletişim Listesi</h4>
+        <p>İletişim ile ilgili işlemlerinizi gerçekleştirebilirsiniz.</p>
+        <div class="bs-example" data-example-id="simple-table">
+            <table class="table table-bordered">
+                <caption>
+                    İletişimler
+                </caption>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Kullanıcı Soyadı</th>
+                        <th>Kullanıcı Email</th>
+                        <th>Konu</th>
+                        <th>Mesaj</th>
+                        <th>Oluşturma Tarihi</th>
+                        <th>Durumu</th>
+                        <th style="width: 140px">İşlemler</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.Name</td>
+                            <td>@item.Surname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Subject</td>
+                            <td>@item.Message</td>
+                            <td>@item.CreatedDate</td>
+                            <td>
+                                <label asp-for="@item.IsRead">
+                                    <input type="checkbox" asp-for="@item.IsRead">
+                                    @(@item.IsRead ? "Okundu" : "Yeni")
+                                </label>
+                            </td>
+                            <td class="text-center">
+                                <div class="btn-group">
+                                    <a class="btn btn-rounded btn-warning" asp-area="Admin" asp-controller="Contact" asp-action="UpdateContact" asp-route-id="@item.Id"><i class="fa fa-lg fa-pencil-square-o"></i></a>
+                                    <a class="btn btn-rounded btn-danger" asp-area="Admin" asp-controller="Contact" asp-action="DeleteContact" asp-route-id="@item.Id" onclick="return confirm('İletişim silinecektir, onaylıyor musunuz?')"><i class="fa fa-lg fa-trash-o"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

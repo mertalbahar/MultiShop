@@ -1,0 +1,51 @@
+﻿@model UpdateContactDto
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>İletişim Güncelleme</h4>
+        <p>Mevcut yorum bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <br />
+        <form method="post">
+            <input type="hidden" asp-for="Id" readonly>
+
+            <div class="form-group">
+                <label class="control-label" asp-for="Name">Kullanıcı Adı</label>
+                <input type="text" class="form-control" readonly asp-for="Name">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Surname">Kullanıcı Soyadı</label>
+                <input type="text" class="form-control" readonly asp-for="Surname">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Email">Kullanıcı Email</label>
+                <input type="text" class="form-control" readonly asp-for="Email">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Subject">Konu</label>
+                <input type="text" class="form-control" readonly asp-for="Subject">
+            </div>
+            <div class="form-group">
+                <fieldset class="form-group">
+                    <label asp-for="Message">Yorum</label>
+                    <textarea class="form-control" readonly id="basicTextarea" rows="3" asp-for="Message"></textarea>
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label asp-for="IsRead">
+                        <input type="checkbox" asp-for="IsRead">
+                        @(Model.IsRead ? "Okundu" : "Yeni")
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="CreatedDate">Oluşturma Zamanı</label>
+                <input type="text" class="form-control" asp-for="CreatedDate" readonly>
+            </div>
+            <div>
+                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Contact" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
