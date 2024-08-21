@@ -1,8 +1,13 @@
-using MultiShop.Comment.Contexts;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.Comment.Infrastructures.Extensions;
-using MultiShop.Comment.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    opt.Authority = builder.Configuration["IdentityServerUrl"];
+    opt.Audience = "ResourceComment";
+});
 
 // Add services to the container.
 builder.Services.DbContextRegistration(builder.Configuration);

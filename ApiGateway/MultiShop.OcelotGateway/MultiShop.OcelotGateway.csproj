@@ -8,8 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.28" />
-    <PackageReference Include="StackExchange.Redis" Version="2.7.17" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Ocelot" Version="23.3.3" />
   </ItemGroup>
 
 </Project>
