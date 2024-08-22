@@ -2,6 +2,7 @@
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
+using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 
 namespace MultiShop.WebUI.Services.Concretes
@@ -13,15 +14,18 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<IAboutService> _aboutService;
         private readonly Lazy<IBrandService> _brandService;
+        private readonly Lazy<IFeatureSliderService> _featureSliderService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
-            ICategoryService categoryService, IProductService productService, IAboutService aboutService, IBrandService brandService)
+            ICategoryService categoryService, IProductService productService, IAboutService aboutService,
+            IBrandService brandService, IFeatureSliderService featureSliderService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
             _categoryService = new Lazy<ICategoryService>(() => categoryService);
             _productService = new Lazy<IProductService>(() => productService);
             _aboutService = new Lazy<IAboutService>(() => aboutService);
             _brandService = new Lazy<IBrandService>(() => brandService);
+            _featureSliderService = new Lazy<IFeatureSliderService>(() => featureSliderService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -32,5 +36,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public IAboutService AboutService => _aboutService.Value;
 
         public IBrandService BrandService => _brandService.Value;
+
+        public IFeatureSliderService FeatureSliderService => _featureSliderService.Value;
     }
 }
