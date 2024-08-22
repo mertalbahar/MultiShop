@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
+using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 
@@ -14,6 +15,8 @@ namespace MultiShop.WebUI.Infrastructures.Mappers
             CreateMap<GetByIdProductDto, UpdateProductDto>();
 
             CreateMap<GetByIdAboutDto, UpdateAboutDto>();
+
+            CreateMap<GetByIdBrandDto, UpdateBrandDto>();
         }
     }
 }
