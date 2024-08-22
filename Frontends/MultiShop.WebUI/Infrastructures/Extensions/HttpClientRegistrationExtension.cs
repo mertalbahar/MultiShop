@@ -6,6 +6,7 @@ using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.DiscountOfferServices;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.Concretes;
@@ -31,7 +32,17 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
-            
+
+            services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
+
+            services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
+
             services.AddHttpClient<IAboutService, AboutService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
@@ -53,11 +64,6 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
             
             services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
-            {
-                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
-            }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
-            
-            services.AddHttpClient<IProductDetailService, ProductDetailService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();

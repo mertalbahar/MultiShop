@@ -1,58 +1,43 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductImageDtos;
-using Newtonsoft.Json;
-using System.Text;
+using MultiShop.WebUI.Services.Abstracts;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductImageController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IServiceManager _manager;
+        private readonly IMapper _mapper;
 
-        public ProductImageController(IHttpClientFactory httpClientFactory)
+        public ProductImageController(IServiceManager manager, IMapper mapper)
         {
-            _httpClientFactory = httpClientFactory;
+            _manager = manager;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/ProductImages");
+            List<ResultProductImageDto> values = await _manager.ProductImageService.GetAllProductImagesAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductImageDto>>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(values);
         }
 
         private async Task<SelectList> GetProductsSelectList()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/Products");
+            List<ResultProductDto> values = await _manager.ProductService.GetAllProductsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                List<SelectListItem> ProductValues = (from x in values
-                                                       select new SelectListItem
-                                                       {
-                                                           Text = x.Name,
-                                                           Value = x.Id
-                                                       }).ToList();
+            List<SelectListItem> ProductValues = (from x in values
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.Name,
+                                                      Value = x.Id
+                                                  }).ToList();
 
-                return new SelectList(ProductValues, "Value", "Text");
-            }
-
-            return new SelectList(new List<SelectListItem>());
+            return new SelectList(ProductValues, "Value", "Text");
         }
 
         [HttpGet]
@@ -67,65 +52,36 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProductImage([FromForm] CreateProductImageDto createProductImageDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createProductImageDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7070/api/ProductImages/create", stringContent);
+            await _manager.ProductImageService.CreateProductImageAsync(createProductImageDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "ProductImage", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "ProductImage", new { area = "Admin" });
         }
 
         public async Task<IActionResult> DeleteProductImage([FromRoute(Name = "id")] string id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.DeleteAsync("https://localhost:7070/api/ProductImages/delete/" + id);
+            await _manager.ProductImageService.DeleteProductImageAsync(id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "ProductImage", new { area = "Admin" });
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "ProductImage", new { area = "Admin" });
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateProductImage(string productId)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/ProductImages/productId?id=" + productId);
+            GetByIdProductImageDto values = await _manager.ProductImageService.GetProductImageByProductIdAsync(productId);
+            UpdateProductImageDto result = _mapper.Map<UpdateProductImageDto>(values);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateProductImageDto>(jsonData);
-                ViewBag.Products = await GetProductsSelectList();
+            ViewBag.Products = await GetProductsSelectList();
 
-                return View(values);
-            }
-
-            return View();
+            return View(result);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateProductImage([FromForm] UpdateProductImageDto updateProductImageDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateProductImageDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync("https://localhost:7070/api/ProductImages/update", stringContent);
+            await _manager.ProductImageService.UpdateProductImageAsync(updateProductImageDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
     }
 }

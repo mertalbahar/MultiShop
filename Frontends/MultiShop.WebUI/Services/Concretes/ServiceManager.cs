@@ -5,6 +5,7 @@ using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.DiscountOfferServices;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 
@@ -21,11 +22,12 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IDiscountOfferService> _discountOfferService;
         private readonly Lazy<ISpecialOfferService> _specialOfferService;
         private readonly Lazy<IProductDetailService> _productDetailService;
+        private readonly Lazy<IProductImageService> _productImageService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
-            ISpecialOfferService specialOfferService, IProductDetailService productDetailService)
+            ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
             _categoryService = new Lazy<ICategoryService>(() => categoryService);
@@ -36,6 +38,7 @@ namespace MultiShop.WebUI.Services.Concretes
             _discountOfferService = new Lazy<IDiscountOfferService>(() => discountOfferService);
             _specialOfferService = new Lazy<ISpecialOfferService>(() => specialOfferService);
             _productDetailService = new Lazy<IProductDetailService>(() => productDetailService);
+            _productImageService = new Lazy<IProductImageService>(() => productImageService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -54,5 +57,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public ISpecialOfferService SpecialOfferService => _specialOfferService.Value;
 
         public IProductDetailService ProductDetailService => _productDetailService.Value;
+
+        public IProductImageService ProductImageService => _productImageService.Value;
     }
 }
