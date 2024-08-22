@@ -4,6 +4,7 @@ using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.DiscountOfferServices;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 
@@ -19,11 +20,12 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IFeatureSliderService> _featureSliderService;
         private readonly Lazy<IDiscountOfferService> _discountOfferService;
         private readonly Lazy<ISpecialOfferService> _specialOfferService;
+        private readonly Lazy<IProductDetailService> _productDetailService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
-            ISpecialOfferService specialOfferService)
+            ISpecialOfferService specialOfferService, IProductDetailService productDetailService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
             _categoryService = new Lazy<ICategoryService>(() => categoryService);
@@ -33,6 +35,7 @@ namespace MultiShop.WebUI.Services.Concretes
             _featureSliderService = new Lazy<IFeatureSliderService>(() => featureSliderService);
             _discountOfferService = new Lazy<IDiscountOfferService>(() => discountOfferService);
             _specialOfferService = new Lazy<ISpecialOfferService>(() => specialOfferService);
+            _productDetailService = new Lazy<IProductDetailService>(() => productDetailService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -49,5 +52,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public IDiscountOfferService DiscountOfferService => _discountOfferService.Value;
 
         public ISpecialOfferService SpecialOfferService => _specialOfferService.Value;
+
+        public IProductDetailService ProductDetailService => _productDetailService.Value;
     }
 }

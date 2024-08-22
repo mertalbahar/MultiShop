@@ -4,6 +4,7 @@ using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
 using MultiShop.DtoLayer.CatalogDtos.DiscountOfferDtos;
 using MultiShop.DtoLayer.CatalogDtos.FeatureSliderDtos;
+using MultiShop.DtoLayer.CatalogDtos.ProductDetailDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDtos;
 
@@ -16,6 +17,7 @@ namespace MultiShop.WebUI.Infrastructures.Mappers
             CreateMap<GetByIdCategoryDto, UpdateCategoryDto>();
 
             CreateMap<GetByIdProductDto, UpdateProductDto>();
+            CreateMap<GetByIdProductDetailDto, UpdateProductDetailDto>();
 
             CreateMap<GetByIdAboutDto, UpdateAboutDto>();
 
