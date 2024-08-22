@@ -5,6 +5,7 @@ using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.DiscountOfferServices;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
@@ -17,10 +18,12 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IBrandService> _brandService;
         private readonly Lazy<IFeatureSliderService> _featureSliderService;
         private readonly Lazy<IDiscountOfferService> _discountOfferService;
+        private readonly Lazy<ISpecialOfferService> _specialOfferService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
-            IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService)
+            IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
+            ISpecialOfferService specialOfferService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
             _categoryService = new Lazy<ICategoryService>(() => categoryService);
@@ -29,6 +32,7 @@ namespace MultiShop.WebUI.Services.Concretes
             _brandService = new Lazy<IBrandService>(() => brandService);
             _featureSliderService = new Lazy<IFeatureSliderService>(() => featureSliderService);
             _discountOfferService = new Lazy<IDiscountOfferService>(() => discountOfferService);
+            _specialOfferService = new Lazy<ISpecialOfferService>(() => specialOfferService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -43,5 +47,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public IFeatureSliderService FeatureSliderService => _featureSliderService.Value;
 
         public IDiscountOfferService DiscountOfferService => _discountOfferService.Value;
+
+        public ISpecialOfferService SpecialOfferService => _specialOfferService.Value;
     }
 }

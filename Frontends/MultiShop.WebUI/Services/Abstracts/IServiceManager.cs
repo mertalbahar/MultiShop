@@ -4,6 +4,7 @@ using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.DiscountOfferServices;
 using MultiShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
+using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
 {
@@ -15,5 +16,6 @@ namespace MultiShop.WebUI.Services.Abstracts
         IBrandService BrandService { get; }
         IFeatureSliderService FeatureSliderService { get; }
         IDiscountOfferService DiscountOfferService { get; }
+        ISpecialOfferService SpecialOfferService { get; }
     }
 }
