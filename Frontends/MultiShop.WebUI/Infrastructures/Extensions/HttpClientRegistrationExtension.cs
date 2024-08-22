@@ -1,6 +1,7 @@
 ﻿using MultiShop.WebUI.Handlers;
 using MultiShop.WebUI.Services.Abstracts;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
+using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.Concretes;
 using MultiShop.WebUI.Settings;
 
@@ -16,6 +17,11 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             services.AddHttpClient<IClientCredentialsTokenService, ClientCredentialsTokenService>();
 
             services.AddHttpClient<ICategoryService, CategoryService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
+            }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
+            
+            services.AddHttpClient<IProductService, ProductService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
