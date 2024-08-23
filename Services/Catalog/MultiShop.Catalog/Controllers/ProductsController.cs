@@ -60,7 +60,7 @@ public class ProductsController : ControllerBase
     [HttpGet("categoryId")]
     public async Task<IActionResult> ProductListByCategoryId(string id)
     {
-        List<ResultProductDto> values = await _manager.ProductService.GetProductsByCategoryId(id);
+        List<ResultProductDto> values = await _manager.ProductService.GetProductsByCategoryIdAsync(id);
 
         return Ok(values);
     }

@@ -12,6 +12,9 @@
         <div class="col-lg-6 text-center text-lg-right">
             <div class="d-inline-flex align-items-center">
                 <div class="btn-group">
+                    <a class="btn btn-sm btn-light" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
+                </div>
+                <div class="btn-group mx-2">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hesabım</button>
                     <div class="dropdown-menu dropdown-menu-right">
                         <button class="dropdown-item" type="button">Giriş Yap</button>
@@ -73,11 +76,10 @@
     </div>
 </div>
 <!-- Topbar End -->
-
 <!-- Navbar Start -->
 <div class="container-fluid bg-dark mb-30">
     <div class="row px-xl-5">
-        
+
         @await Component.InvokeAsync("_HomeCategoriesMenuComponentPartial")
 
         <div class="col-lg-9">
@@ -91,9 +93,8 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a class="nav-item nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
                         <a class="nav-item nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Anasayfa</a>
-                        <a class="nav-item nav-link" asp-area="" asp-controller="Product" asp-action="Index">Ürünler</a>
+                        <a class="nav-item nav-link" asp-area="" asp-controller="Product" asp-action="Index" asp-route-id="">Ürünler</a>
                         <a class="nav-item nav-link" href="#">Alışveriş Detayı</a>
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
