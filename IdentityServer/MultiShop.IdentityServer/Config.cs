@@ -37,6 +37,16 @@ namespace MultiShop.IdentityServer
             new ApiResource("ResourceBasket")
             {
                 Scopes = {"BasketFullPermission"}
+            },
+
+            new ApiResource("ResourceComment")
+            {
+                Scopes = {"CommentFullPermission"}
+            },
+
+            new ApiResource("ResourceOcelot")
+            {
+                Scopes = {"OcelotFullPermission"}
             }
         };
 
@@ -60,7 +70,11 @@ namespace MultiShop.IdentityServer
 
             new ApiScope("CargoFullPermission", "Full authority for cargo operations"),
 
-            new ApiScope("BasketFullPermission", "Full authority for basket operations")
+            new ApiScope("BasketFullPermission", "Full authority for basket operations"),
+
+            new ApiScope("CommentFullPermission", "Full authority for comment operations"),
+
+            new ApiScope("OcelotFullPermission", "Full authority for ocelot operations")
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -71,7 +85,7 @@ namespace MultiShop.IdentityServer
                 ClientName = "MultiShop Visitor User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission" }
+                AllowedScopes = { "CatalogFullPermission", "CommentFullPermission", "OcelotFullPermission" }
             },
 
             new Client
@@ -80,7 +94,7 @@ namespace MultiShop.IdentityServer
                 ClientName = "MultiShop Manager User",
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("multishopsecret".Sha256())},
-                AllowedScopes = { "CatalogFullPermission", "CargoFullPermission" }
+                AllowedScopes = { "CatalogFullPermission", "CargoFullPermission", "CommentFullPermission", "OcelotFullPermission" }
             },
 
             new Client
@@ -99,7 +113,9 @@ namespace MultiShop.IdentityServer
                     "DiscountFullPermission",
                     "OrderFullPermission",
                     "CargoFullPermission",
-                    "BasketFullPermission"
+                    "BasketFullPermission",
+                    "CommentFullPermission",
+                    "OcelotFullPermission"
                 },
                 AccessTokenLifetime = 600
             }

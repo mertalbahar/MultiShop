@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.Catalog.Dtos.ProductDtos;
 using MultiShop.Catalog.Services;
 
 namespace MultiShop.Catalog.Controllers;
 
-
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class ProductsController : ControllerBase
@@ -59,7 +60,7 @@ public class ProductsController : ControllerBase
     [HttpGet("categoryId")]
     public async Task<IActionResult> ProductListByCategoryId(string id)
     {
-        List<ResultProductDto> values = await _manager.ProductService.GetProductsByCategoryId(id);
+        List<ResultProductDto> values = await _manager.ProductService.GetProductsByCategoryIdAsync(id);
 
         return Ok(values);
     }

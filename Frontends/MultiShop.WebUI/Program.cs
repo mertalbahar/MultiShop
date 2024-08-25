@@ -1,7 +1,16 @@
+using MultiShop.WebUI.Infrastructures.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddAccessTokenManagement();
+
 // Add services to the container.
-builder.Services.AddHttpClient();
+builder.Services.AddApplicationServices(builder.Configuration);
+builder.Services.AddHttpClients(builder.Configuration);
+
+builder.Services.AddAutoMapper(typeof(Program));
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
@@ -20,6 +29,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>

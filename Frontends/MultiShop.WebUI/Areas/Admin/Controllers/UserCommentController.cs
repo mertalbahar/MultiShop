@@ -1,106 +1,70 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.DtoLayer.CommentDtos.UserCommentDtos;
-using Newtonsoft.Json;
-using System.Text;
+using MultiShop.WebUI.Services.Abstracts;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class UserCommentController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IServiceManager _manager;
+        private readonly IMapper _mapper;
 
-        public UserCommentController(IHttpClientFactory httpClientFactory)
+        public UserCommentController(IServiceManager manager, IMapper mapper)
         {
-            _httpClientFactory = httpClientFactory;
+            _manager = manager;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7075/api/UserComments");
+            List<ResultUserCommentDto> values = await _manager.UserCommentService.GetAllUserCommentsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultUserCommentDto>>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(values);
         }
 
         private async Task<SelectList> GetProductsSelectList()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/Products");
+            List<ResultProductDto> values = await _manager.ProductService.GetAllProductsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                List<SelectListItem> productValues = (from x in values
-                                                       select new SelectListItem
-                                                       {
-                                                           Text = x.Name,
-                                                           Value = x.Id
-                                                       }).ToList();
+            List<SelectListItem> productValues = (from x in values
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.Name,
+                                                      Value = x.Id
+                                                  }).ToList();
 
-                return new SelectList(productValues, "Value", "Text");
-            }
-
-            return new SelectList(new List<SelectListItem>());
+            return new SelectList(productValues, "Value", "Text");
         }
 
-        public async Task<IActionResult> DeleteUserComment([FromRoute(Name = "id")] string id)
+        public async Task<IActionResult> DeleteUserComment([FromRoute(Name = "id")] int id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.DeleteAsync("https://localhost:7075/api/UserComments/delete/" + id);
+            await _manager.UserCommentService.DeleteUserCommentAsync(id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "UserComment", new { area = "Admin" });
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "UserComment", new { area = "Admin" });
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateUserComment([FromRoute(Name = "id")] string id)
+        public async Task<IActionResult> UpdateUserComment([FromRoute(Name = "id")] int id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7075/api/UserComments/" + id);
+            GetByIdUserCommentDto values = await _manager.UserCommentService.GetUserCommentByIdAsync(id);
+            UpdateUserCommentDto result = _mapper.Map<UpdateUserCommentDto>(values);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateUserCommentDto>(jsonData);
-                ViewBag.Products = await GetProductsSelectList();
+            ViewBag.Products = await GetProductsSelectList();
 
-                return View(values);
-            }
-
-            return View();
+            return View(result);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateUserComment([FromForm] UpdateUserCommentDto updateUserCommentDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateUserCommentDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync("https://localhost:7075/api/UserComments/update", stringContent);
+            await _manager.UserCommentService.UpdateUserCommentAsync(updateUserCommentDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "UserComment", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "UserComment", new { area = "Admin" });
         }
     }
 }

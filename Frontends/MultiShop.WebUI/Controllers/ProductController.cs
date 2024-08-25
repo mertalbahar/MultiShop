@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos.UserCommentDtos;
+using MultiShop.WebUI.Services.Abstracts;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -7,12 +8,13 @@ namespace MultiShop.WebUI.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IServiceManager _manager;
 
-        public ProductController(IHttpClientFactory httpClientFactory)
+        public ProductController(IServiceManager manager)
         {
-            _httpClientFactory = httpClientFactory;
+            _manager = manager;
         }
+
         public IActionResult Index([FromRoute(Name = "id")] string id)
         {
             ViewBag.Id = id;
@@ -35,19 +37,9 @@ namespace MultiShop.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddComment(CreateUserCommentDto createUserCommentDto)
         {
-            createUserCommentDto.CreatedDate = DateTime.Now;
+            await _manager.UserCommentService.CreateUserCommentAsync(createUserCommentDto);
 
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createUserCommentDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7075/api/UserComments/create", stringContent);
-
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -2,57 +2,42 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDetailDtos;
-using Newtonsoft.Json;
-using System.Text;
+using MultiShop.WebUI.Services.Abstracts;
+using AutoMapper;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class ProductDetailController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IServiceManager _manager;
+        private readonly IMapper _mapper;
 
-        public ProductDetailController(IHttpClientFactory httpClientFactory)
+        public ProductDetailController(IServiceManager manager, IMapper mapper)
         {
-            _httpClientFactory = httpClientFactory;
+            _manager = manager;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/ProductDetails");
+            List<ResultProductDetailDto> values = await _manager.ProductDetailService.GetAllProductDetailsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDetailDto>>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(values);
         }
 
         private async Task<SelectList> GetProductsSelectList()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/Products");
+            List<ResultProductDto> values = await _manager.ProductService.GetAllProductsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
-                List<SelectListItem> ProductValues = (from x in values
-                                                      select new SelectListItem
-                                                      {
-                                                          Text = x.Name,
-                                                          Value = x.Id
-                                                      }).ToList();
+            List<SelectListItem> ProductValues = (from x in values
+                                                  select new SelectListItem
+                                                  {
+                                                      Text = x.Name,
+                                                      Value = x.Id
+                                                  }).ToList();
 
-                return new SelectList(ProductValues, "Value", "Text");
-            }
-
-            return new SelectList(new List<SelectListItem>());
+            return new SelectList(ProductValues, "Value", "Text");
         }
 
         [HttpGet]
@@ -67,65 +52,36 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateProductDetail([FromForm] CreateProductDetailDto createProductDetailDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createProductDetailDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7070/api/ProductDetails/create", stringContent);
+            await _manager.ProductDetailService.CreateProductDetailAsync(createProductDetailDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "ProductDetail", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "ProductDetail", new { area = "Admin" });
         }
 
         public async Task<IActionResult> DeleteProductDetail([FromRoute(Name = "id")] string id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.DeleteAsync("https://localhost:7070/api/ProductDetails/delete/" + id);
+            await _manager.ProductDetailService.DeleteProductDetailAsync(id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "ProductDetail", new { area = "Admin" });
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "ProductDetail", new { area = "Admin" });
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateProductDetail(string productId)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/ProductDetails/productId?id=" + productId);
+            GetByIdProductDetailDto values = await _manager.ProductDetailService.GetProductDetailByProductIdAsync(productId);
+            UpdateProductDetailDto result = _mapper.Map<UpdateProductDetailDto>(values);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateProductDetailDto>(jsonData);
-                ViewBag.Products = await GetProductsSelectList();
+            ViewBag.Products = await GetProductsSelectList();
 
-                return View(values);
-            }
-
-            return View();
+            return View(result);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateProductDetail([FromForm] UpdateProductDetailDto updateProductDetailDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateProductDetailDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync("https://localhost:7070/api/ProductDetails/update", stringContent);
+            await _manager.ProductDetailService.UpdateProductDetailAsync(updateProductDetailDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "Product", new { area = "Admin" });
         }
     }
 }

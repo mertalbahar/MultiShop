@@ -1,34 +1,27 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
-using Newtonsoft.Json;
-using System.Text;
+using MultiShop.WebUI.Services.Abstracts;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class AboutController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IServiceManager _manager;
+        private readonly IMapper _mapper;
 
-        public AboutController(IHttpClientFactory httpClientFactory)
+        public AboutController(IServiceManager manager, IMapper mapper)
         {
-            _httpClientFactory = httpClientFactory;
+            _manager = manager;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/Abouts");
+            List<ResultAboutDto> values = await _manager.AboutService.GetAllAboutsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultAboutDto>>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(values);
         }
 
         [HttpGet]
@@ -41,64 +34,34 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateAbout([FromForm] CreateAboutDto createAboutDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createAboutDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PostAsync("https://localhost:7070/api/Abouts/create", stringContent);
+            await _manager.AboutService.CreateAboutAsync(createAboutDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "About", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "About", new { area = "Admin" });
         }
 
         public async Task<IActionResult> DeleteAbout([FromRoute(Name = "id")] string id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.DeleteAsync("https://localhost:7070/api/Abouts/delete/" + id);
+            await _manager.AboutService.DeleteAboutAsync(id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "About", new { area = "Admin" });
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "About", new { area = "Admin" });
         }
 
         [HttpGet]
         public async Task<IActionResult> UpdateAbout([FromRoute(Name = "id")] string id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7070/api/Abouts/" + id);
+            GetByIdAboutDto values = await _manager.AboutService.GetAboutByIdAsync(id);
+            UpdateAboutDto result = _mapper.Map<UpdateAboutDto>(values);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateAboutDto>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(result);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateAbout([FromForm] UpdateAboutDto updateAboutDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateAboutDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync("https://localhost:7070/api/Abouts/update", stringContent);
+            await _manager.AboutService.UpdateAboutAsync(updateAboutDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "About", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "About", new { area = "Admin" });
         }
     }
 }
