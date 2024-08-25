@@ -7,11 +7,13 @@ using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
 {
     public interface IServiceManager
     {
+        // Catalog Microservice
         ICategoryService CategoryService { get; }
         IProductService ProductService { get; }
         IAboutService AboutService { get; }
@@ -21,5 +23,8 @@ namespace MultiShop.WebUI.Services.Abstracts
         ISpecialOfferService SpecialOfferService { get; }
         IProductDetailService ProductDetailService { get; }
         IProductImageService ProductImageService { get; }
+
+        // Comment Microservice
+        IUserCommentService UserCommentService { get; }
     }
 }

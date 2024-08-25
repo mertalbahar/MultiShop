@@ -8,12 +8,15 @@ using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
     public class ServiceManager : IServiceManager
     {
         private readonly Lazy<IClientCredentialsTokenService> _clientCredentialsTokenService;
+
+        // Catalog Microservice
         private readonly Lazy<ICategoryService> _categoryService;
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<IAboutService> _aboutService;
@@ -24,12 +27,18 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IProductDetailService> _productDetailService;
         private readonly Lazy<IProductImageService> _productImageService;
 
+        // Comment Microservice
+        private readonly Lazy<IUserCommentService> _userCommentService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
-            ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService)
+            ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
+            IUserCommentService userCommentService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
+
+            // Catalog Microservice
             _categoryService = new Lazy<ICategoryService>(() => categoryService);
             _productService = new Lazy<IProductService>(() => productService);
             _aboutService = new Lazy<IAboutService>(() => aboutService);
@@ -39,9 +48,14 @@ namespace MultiShop.WebUI.Services.Concretes
             _specialOfferService = new Lazy<ISpecialOfferService>(() => specialOfferService);
             _productDetailService = new Lazy<IProductDetailService>(() => productDetailService);
             _productImageService = new Lazy<IProductImageService>(() => productImageService);
+
+            // Comment Microservice
+            _userCommentService = new Lazy<IUserCommentService>(() => userCommentService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
+
+        // Catalog Microservice
         public ICategoryService CategoryService => _categoryService.Value;
 
         public IProductService ProductService => _productService.Value;
@@ -59,5 +73,8 @@ namespace MultiShop.WebUI.Services.Concretes
         public IProductDetailService ProductDetailService => _productDetailService.Value;
 
         public IProductImageService ProductImageService => _productImageService.Value;
+
+        // Comment Microservice
+        public IUserCommentService UserCommentService => _userCommentService.Value;
     }
 }

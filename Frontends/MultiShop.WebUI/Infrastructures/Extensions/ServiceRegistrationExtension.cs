@@ -1,6 +1,5 @@
 ﻿using MultiShop.WebUI.Handlers;
 using MultiShop.WebUI.Services.Abstracts;
-using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.Concretes;
 using MultiShop.WebUI.Settings;
 

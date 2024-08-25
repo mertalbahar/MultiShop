@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Services\CommentServices\ContactServices\" />
     <Folder Include="wwwroot\img\user\" />
   </ItemGroup>
 

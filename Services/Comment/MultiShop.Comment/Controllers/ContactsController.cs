@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.Comment.Dtos.ContactDtos;
 using MultiShop.Comment.Services.Abstracts;
 
 namespace MultiShop.Comment.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ContactsController : ControllerBase
