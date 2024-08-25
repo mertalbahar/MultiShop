@@ -8,6 +8,7 @@ using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 
 namespace MultiShop.WebUI.Services.Concretes
@@ -29,12 +30,13 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Comment Microservice
         private readonly Lazy<IUserCommentService> _userCommentService;
+        private readonly Lazy<IContactService> _contactService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
-            IUserCommentService userCommentService)
+            IUserCommentService userCommentService, IContactService contactService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -51,6 +53,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Comment Microservice
             _userCommentService = new Lazy<IUserCommentService>(() => userCommentService);
+            _contactService = new Lazy<IContactService>(() => contactService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -76,5 +79,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Comment Microservice
         public IUserCommentService UserCommentService => _userCommentService.Value;
+
+        public IContactService ContactService => _contactService.Value;
     }
 }

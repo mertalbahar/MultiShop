@@ -9,6 +9,7 @@ using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.Concretes;
 using MultiShop.WebUI.Settings;
@@ -72,6 +73,11 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
 
             // Comment Microservice
             services.AddHttpClient<IUserCommentService, UserCommentService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
+            }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
+            
+            services.AddHttpClient<IContactService, ContactService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
             }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();

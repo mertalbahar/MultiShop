@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos.ContactDtos;
+using MultiShop.WebUI.Services.Abstracts;
 using Newtonsoft.Json;
 using System.Text;
 
@@ -8,74 +10,45 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
     [Area("Admin")]
     public class ContactController : Controller
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        private readonly IServiceManager _manager;
+        private readonly IMapper _mapper;
 
-        public ContactController(IHttpClientFactory httpClientFactory)
+        public ContactController(IServiceManager manager, IMapper mapper)
         {
-            _httpClientFactory = httpClientFactory;
+            _manager = manager;
+            _mapper = mapper;
         }
 
         public async Task<IActionResult> Index()
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7075/api/Contacts");
+            List<ResultContactDto> values = await _manager.ContactService.GetAllContactsAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultContactDto>>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(values);
         }
 
-        public async Task<IActionResult> DeleteContact([FromRoute(Name = "id")] string id)
+        public async Task<IActionResult> DeleteContact([FromRoute(Name = "id")] int id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.DeleteAsync("https://localhost:7075/api/Contacts/delete/" + id);
+            await _manager.ContactService.DeleteContactAsync(id);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Contact", new { area = "Admin" });
-            }
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Contact", new { area = "Admin" });
         }
 
         [HttpGet]
-        public async Task<IActionResult> UpdateContact([FromRoute(Name = "id")] string id)
+        public async Task<IActionResult> UpdateContact([FromRoute(Name = "id")] int id)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            HttpResponseMessage response = await client.GetAsync("https://localhost:7075/api/Contacts/" + id);
+            GetByIdContactDto values = await _manager.ContactService.GetContactByIdAsync(id);
+            UpdateContactDto result = _mapper.Map<UpdateContactDto>(values);
 
-            if (response.IsSuccessStatusCode)
-            {
-                var jsonData = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<UpdateContactDto>(jsonData);
-
-                return View(values);
-            }
-
-            return View();
+            return View(result);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateContact([FromForm] UpdateContactDto updateContactDto)
         {
-            HttpClient client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(updateContactDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync("https://localhost:7075/api/Contacts/update", stringContent);
+            await _manager.ContactService.UpdateContactAsync(updateContactDto);
 
-            if (response.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index", "Contact", new { area = "Admin" });
-            }
-
-            return View();
+            return RedirectToAction("Index", "Contact", new { area = "Admin" });
         }
     }
 }

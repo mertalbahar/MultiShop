@@ -8,6 +8,7 @@ using MultiShop.DtoLayer.CatalogDtos.ProductDetailDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductDtos;
 using MultiShop.DtoLayer.CatalogDtos.ProductImageDtos;
 using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDtos;
+using MultiShop.DtoLayer.CommentDtos.ContactDtos;
 using MultiShop.DtoLayer.CommentDtos.UserCommentDtos;
 
 namespace MultiShop.WebUI.Infrastructures.Mappers
@@ -35,6 +36,8 @@ namespace MultiShop.WebUI.Infrastructures.Mappers
 
             // Comment Microservice
             CreateMap<GetByIdUserCommentDto, UpdateUserCommentDto>();
+
+            CreateMap<GetByIdContactDto, UpdateContactDto>();
         }
     }
 }

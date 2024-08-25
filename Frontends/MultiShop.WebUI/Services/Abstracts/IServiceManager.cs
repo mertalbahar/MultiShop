@@ -7,6 +7,7 @@ using MultiShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductImageServices;
 using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
@@ -26,5 +27,6 @@ namespace MultiShop.WebUI.Services.Abstracts
 
         // Comment Microservice
         IUserCommentService UserCommentService { get; }
+        IContactService ContactService { get; }
     }
 }
