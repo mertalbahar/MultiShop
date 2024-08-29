@@ -10,6 +10,7 @@ using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
+using MultiShop.WebUI.Services.IdentityServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
@@ -32,11 +33,14 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IUserCommentService> _userCommentService;
         private readonly Lazy<IContactService> _contactService;
 
+        // Identity Microservice
+        private readonly Lazy<IUserService> _userService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
-            IUserCommentService userCommentService, IContactService contactService)
+            IUserCommentService userCommentService, IContactService contactService, IUserService userService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -54,6 +58,9 @@ namespace MultiShop.WebUI.Services.Concretes
             // Comment Microservice
             _userCommentService = new Lazy<IUserCommentService>(() => userCommentService);
             _contactService = new Lazy<IContactService>(() => contactService);
+
+            // Identity Microservice
+            _userService = new Lazy<IUserService>(() => userService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -81,5 +88,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public IUserCommentService UserCommentService => _userCommentService.Value;
 
         public IContactService ContactService => _contactService.Value;
+
+        public IUserService UserService => _userService.Value;
     }
 }

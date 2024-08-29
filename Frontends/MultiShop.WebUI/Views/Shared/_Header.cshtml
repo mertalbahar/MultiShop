@@ -4,7 +4,7 @@
         <div class="col-lg-6 d-none d-lg-block">
             <div class="d-inline-flex align-items-center h-100">
                 <a class="text-body mr-3" href="">About</a>
-                <a class="text-body mr-3" asp-page="/Contact">Contact</a>
+                <a class="text-body mr-3" asp-controller="Contact" asp-action="Index">İletişim</a>
                 <a class="text-body mr-3" href="">Help</a>
                 <a class="text-body mr-3" href="">FAQs</a>
             </div>
@@ -15,11 +15,22 @@
                     <a class="btn btn-sm btn-light" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Admin</a>
                 </div>
                 <div class="btn-group mx-2">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hesabım</button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">Giriş Yap</button>
-                        <a class="dropdown-item" asp-controller="User" asp-action="CreateUser">Kayıt Ol</a>
-                    </div>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hesabım, @User.Identity.Name</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Profilim</a>
+                            <a class="dropdown-item" href="#">Çıkış Yap</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hoşgeldin, Ziyaretçi</button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" asp-controller="User" asp-action="LoginUser">Giriş Yap</a>
+                            <a class="dropdown-item" asp-controller="User" asp-action="RegisterUser">Kayıt Ol</a>
+                        </div>
+                    }
                 </div>
                 <div class="btn-group mx-2">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
@@ -52,7 +63,7 @@
     </div>
     <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
         <div class="col-lg-4">
-            <a href="" class="text-decoration-none">
+            <a class="text-decoration-none" asp-area="" asp-controller="Home" asp-action="Index">
                 <span class="h1 text-uppercase text-primary bg-dark px-2">Multi</span>
                 <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
             </a>

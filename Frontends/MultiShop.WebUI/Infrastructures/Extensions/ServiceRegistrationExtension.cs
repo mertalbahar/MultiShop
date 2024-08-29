@@ -14,6 +14,7 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<ClientCredentialsTokenHandler>();
+            services.AddScoped<ResourceOwnerPasswordTokenHandler>();
 
             return services;
         }

@@ -63,10 +63,13 @@
                 </div>
                 <div class="form-group">
                     <div class="form-row form-row-1">
-                        <input type="submit" name="register" class="register" value="Kayıt Ol">
+                        <a class="btn-home" asp-controller="Home" asp-action="Index">Anasayfa</a>
                     </div>
                     <div class="form-row form-row-1">
-                        <a href="#" name="account" class="account">Üyeliğiniz var mı?</a>
+                        <a name="account" class="account" asp-controller="User" asp-action="LoginUser">Üyeliğiniz var mı?</a>
+                    </div>
+                    <div class="form-row form-row-1">
+                        <input type="submit" name="register" class="register" value="Kayıt Ol">
                     </div>
                 </div>
             </form>

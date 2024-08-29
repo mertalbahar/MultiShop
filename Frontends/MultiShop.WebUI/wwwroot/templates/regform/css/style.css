@@ -1,5 +1,6 @@
 body {
-	margin:  0;
+    margin: 0;
+    background: #75e2e9;
 }
 .page-content {
 	width: 100%;
@@ -262,6 +263,22 @@ body {
 }
 .form-v4-content .form-detail .account:hover {
 	background: #E6E6FA;
+}
+.form-v4-content .form-detail .btn-home {
+	background: #fff;
+	border-top-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: none;
+	margin: 6px 0 50px 0px;
+	cursor: pointer;
+	color: #fff;
+	font-weight: 700;
+	font-size: 15px;
+    display: inline-block;
+    text-align: center;
+}
+.form-v4-content .form-detail .btn-home:hover {
+	background: #ededed;
 }
 
 /* Responsive */

@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CommentDtos.ContactDtos;
 using MultiShop.WebUI.Services.Abstracts;
-using Newtonsoft.Json;
-using System.Text;
 
 namespace MultiShop.WebUI.Areas.Admin.Controllers
 {
@@ -22,6 +20,7 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> Index()
         {
             List<ResultContactDto> values = await _manager.ContactService.GetAllContactsAsync();
+            values = values.OrderByDescending(x => x.CreatedDate).OrderByDescending(x => x.IsRead.Equals(false)).ToList();
 
             return View(values);
         }
