@@ -1,4 +1,5 @@
 ﻿using MultiShop.WebUI.Services.Abstracts;
+using MultiShop.WebUI.Services.BasketServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -36,11 +37,14 @@ namespace MultiShop.WebUI.Services.Concretes
         // Identity Microservice
         private readonly Lazy<IUserService> _userService;
 
+        // Basket Microservice
+        private readonly Lazy<IBasketService> _basketService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
-            IUserCommentService userCommentService, IContactService contactService, IUserService userService)
+            IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -61,6 +65,9 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Identity Microservice
             _userService = new Lazy<IUserService>(() => userService);
+
+            // Basket Microservice
+            _basketService = new Lazy<IBasketService>(() => basketService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -90,5 +97,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public IContactService ContactService => _contactService.Value;
 
         public IUserService UserService => _userService.Value;
+
+        public IBasketService BasketService => _basketService.Value;
     }
 }

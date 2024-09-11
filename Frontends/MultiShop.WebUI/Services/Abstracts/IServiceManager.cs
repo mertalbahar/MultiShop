@@ -1,4 +1,5 @@
-﻿using MultiShop.WebUI.Services.CatalogServices.AboutServices;
+﻿using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
 using MultiShop.WebUI.Services.CatalogServices.DiscountOfferServices;
@@ -32,5 +33,8 @@ namespace MultiShop.WebUI.Services.Abstracts
 
         // Identity Microservice
         IUserService UserService { get; }
+
+        // Basket Microservice
+        IBasketService BasketService { get; }
     }
 }
