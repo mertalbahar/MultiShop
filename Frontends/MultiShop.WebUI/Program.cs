@@ -1,6 +1,16 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using MultiShop.WebUI.Infrastructures.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, opt =>
+    {
+        opt.LoginPath = "/User/LoginUser/";
+        opt.ExpireTimeSpan = TimeSpan.FromDays(5);
+        opt.Cookie.Name = "MultiShopCookie";
+        opt.SlidingExpiration = true;
+    });
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAccessTokenManagement();

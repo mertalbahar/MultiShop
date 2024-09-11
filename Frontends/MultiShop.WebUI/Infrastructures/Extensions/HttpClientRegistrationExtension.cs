@@ -12,6 +12,7 @@ using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.Concretes;
+using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Settings;
 
 namespace MultiShop.WebUI.Infrastructures.Extensions
@@ -24,6 +25,7 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
 
             services.AddHttpClient();
             services.AddHttpClient<IClientCredentialsTokenService, ClientCredentialsTokenService>();
+            services.AddHttpClient<IIdentityService, IdentityService>();
 
             // Catalog Microservice
             services.AddHttpClient<ICategoryService, CategoryService>(opt =>
@@ -81,6 +83,12 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}");
             }).AddHttpMessageHandler<ClientCredentialsTokenHandler>();
+
+            // Identity Microservice
+            services.AddHttpClient<IUserService, UserService>(opt =>
+            {
+                opt.BaseAddress = new Uri(values.IdentityServerUrl);
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             return services;
         }
