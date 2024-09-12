@@ -19,7 +19,7 @@ namespace MultiShop.WebUI.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddBasketItem(string productId)
+        public async Task<IActionResult> AddBasketItem([FromRoute(Name = "id")] string productId)
         {
             GetByIdProductDto values = await _manager.ProductService.GetProductByIdAsync(productId);
             var items = new BasketItemDto
@@ -27,7 +27,8 @@ namespace MultiShop.WebUI.Controllers
                 ProductId = values.Id,
                 ProductName = values.Name,
                 Price = values.Price,
-                Quantity = 1
+                ProductImageUrl = values.ImageUrl,
+                Quantity = 1,
             };
 
             await _manager.BasketService.AddBasketItem(items);
@@ -35,7 +36,7 @@ namespace MultiShop.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> RemoveBasketItem(string productId)
+        public async Task<IActionResult> RemoveBasketItem([FromRoute(Name = "id")] string productId)
         {
             await _manager.BasketService.RemoveBasketItem(productId);
 

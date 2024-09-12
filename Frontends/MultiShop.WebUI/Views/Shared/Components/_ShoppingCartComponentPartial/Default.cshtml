@@ -8,14 +8,23 @@
                 <th>Fiyat</th>
                 <th>Adet</th>
                 <th>Toplam</th>
-                <th>Sil</th>
+                <th><i class="fa fa-trash"></i></th>
             </tr>
         </thead>
         <tbody class="align-middle">
+            @if (Model.Count.Equals(0))
+            {
+                <tr>
+                    <td colspan="5">
+                        <div class="alert alert-info mb-0">Sepetiniz boş.</div>
+                    </td>
+                </tr>
+            }
+
             @foreach (var item in Model)
             {
                 <tr>
-                    <td class="align-middle"><img src="~/templates/multishop/img/product-1.jpg" alt="" style="width: 50px;"> @item.ProductName</td>
+                    <td class="align-middle"><img src="@item.ProductImageUrl" alt="@item.ProductName" style="width: 50px;"> @item.ProductName</td>
                     <td class="align-middle">@item.Price.ToString("C2")</td>
                     <td class="align-middle">
                         <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -33,7 +42,9 @@
                         </div>
                     </td>
                     <td class="align-middle">$150</td>
-                    <td class="align-middle"><button class="btn btn-sm btn-danger"><i class="fa fa-times"></i></button></td>
+                    <td class="align-middle">
+                        <a class="btn btn-sm btn-danger" asp-controller="ShoppingCart" asp-action="RemoveBasketItem" asp-route-id="@item.ProductId" onclick="return confirm('Ürün silinecektir, onaylıyor musunuz?')"><i class="fa fa-times"></i></a>
+                        </td>
                 </tr>
             }
         </tbody>

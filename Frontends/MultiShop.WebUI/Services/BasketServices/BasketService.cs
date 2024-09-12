@@ -17,16 +17,23 @@ namespace MultiShop.WebUI.Services.BasketServices
 
             if (values != null)
             {
-                if (!values.BasketItems.Any(x => x.ProductId.Equals(basketItemDto.ProductId)))
+                var existProduct = values.BasketItems.FirstOrDefault(x => x.ProductId.Equals(basketItemDto.ProductId));
+
+                if (existProduct == null)
                 {
                     values.BasketItems.Add(basketItemDto);
                 }
                 else
                 {
-                    values = new BasketTotalDto();
-                    values.BasketItems.Add(basketItemDto);
+                    existProduct.Quantity += basketItemDto.Quantity;
                 }
             }
+            else
+            {
+                values = new BasketTotalDto();
+                values.BasketItems = new List<BasketItemDto> { basketItemDto };
+            }
+
             await SaveBasket(values);
         }
 
