@@ -14,8 +14,11 @@ namespace MultiShop.WebUI.Controllers
             _manager = manager;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string code, int discountRate)
         {
+            ViewBag.Code = code;
+            ViewBag.DiscountRate = discountRate;
+
             return View();
         }
 

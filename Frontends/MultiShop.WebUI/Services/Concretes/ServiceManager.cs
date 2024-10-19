@@ -11,6 +11,7 @@ using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
+using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
 
 namespace MultiShop.WebUI.Services.Concretes
@@ -40,11 +41,15 @@ namespace MultiShop.WebUI.Services.Concretes
         // Basket Microservice
         private readonly Lazy<IBasketService> _basketService;
 
+        // Discount Microservice
+        private readonly Lazy<IDiscountService> _discountService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
-            IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService)
+            IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
+            IDiscountService discountService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -68,6 +73,9 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Basket Microservice
             _basketService = new Lazy<IBasketService>(() => basketService);
+
+            // Discount Microservice
+            _discountService = new Lazy<IDiscountService>(() => discountService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -96,8 +104,13 @@ namespace MultiShop.WebUI.Services.Concretes
 
         public IContactService ContactService => _contactService.Value;
 
+        // Identity Microservice
         public IUserService UserService => _userService.Value;
 
+        // Basket Microservice
         public IBasketService BasketService => _basketService.Value;
+
+        // Discount Microservice
+        public IDiscountService DiscountService => _discountService.Value;
     }
 }

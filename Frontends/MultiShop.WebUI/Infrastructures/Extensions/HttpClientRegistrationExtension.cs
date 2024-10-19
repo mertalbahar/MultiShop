@@ -13,6 +13,7 @@ using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.Concretes;
+using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Settings;
 
@@ -96,6 +97,12 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            // Discount Microservice
+            services.AddHttpClient<IDiscountService, DiscountService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler> ();
 
             return services;
         }
