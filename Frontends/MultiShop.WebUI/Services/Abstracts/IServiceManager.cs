@@ -10,6 +10,7 @@ using MultiShop.WebUI.Services.CatalogServices.ProductServices;
 using MultiShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
+using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
@@ -36,5 +37,8 @@ namespace MultiShop.WebUI.Services.Abstracts
 
         // Basket Microservice
         IBasketService BasketService { get; }
+
+        // Discount Microservice
+        IDiscountService DiscountService { get; }
     }
 }

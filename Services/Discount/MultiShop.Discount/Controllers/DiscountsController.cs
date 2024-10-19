@@ -56,4 +56,12 @@ public class DiscountsController : ControllerBase
 
         return Ok("İndirim kuponu başarıyla güncellendi.");
     }
+
+    [HttpGet("discountCode/{code}")]
+    public async Task<IActionResult> GetDiscountCouponByCode(string code)
+    {
+        ResultDiscountCouponDto value = await _discountService.GetByCodeDiscountCouponAsync(code);
+
+        return Ok(value);
+    }
 }
