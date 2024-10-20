@@ -2,6 +2,7 @@ Microservices
 MongoDb
 AutoMapper
 Onion Architecture
+Layered Architecture
 CQRS
 Mediator
 Docker
