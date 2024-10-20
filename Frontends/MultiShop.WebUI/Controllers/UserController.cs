@@ -22,7 +22,7 @@ namespace MultiShop.WebUI.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            UserDetailDto values = await _manager.UserService.GetUserDetail();
+            UserDetailDto values = await _manager.UserService.GetUserDetailAsync();
 
             return View(values);
         }

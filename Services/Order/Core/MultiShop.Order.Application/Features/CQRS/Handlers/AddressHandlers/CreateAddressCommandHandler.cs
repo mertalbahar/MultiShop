@@ -22,10 +22,17 @@ public class CreateAddressCommandHandler
     {
         await _repository.CreateAsync(new Address
         {
-            City = createAddressCommand.City,
-            Detail = createAddressCommand.Detail,
-            District = createAddressCommand.District,
             UserId = createAddressCommand.UserId,
+            Name = createAddressCommand.Name,
+            Surname = createAddressCommand.Surname,
+            Email = createAddressCommand.Email,
+            Phone = createAddressCommand.Phone,
+            Line1 = createAddressCommand.Line1,
+            Line2 = createAddressCommand.Line2,
+            District = createAddressCommand.District,
+            City = createAddressCommand.City,
+            Country = createAddressCommand.Country,
+            ZipCode = createAddressCommand.ZipCode
         });
     }
 }
