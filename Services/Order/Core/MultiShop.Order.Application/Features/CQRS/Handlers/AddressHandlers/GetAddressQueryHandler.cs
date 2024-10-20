@@ -25,10 +25,17 @@ public class GetAddressQueryHandler
         return values.Select(x => new GetAddressQueryResult
         {
             Id = x.Id,
-            City = x.City,
-            Detail = x.Detail,
+            UserId = x.UserId,
+            Name = x.Name,
+            Surname = x.Surname,
+            Email = x.Email,
+            Phone = x.Phone,
+            Line1 = x.Line1,
+            Line2 = x.Line2,
             District = x.District,
-            UserId = x.UserId
+            City = x.City,
+            Country = x.Country,
+            ZipCode = x.ZipCode,
         }).ToList();
     }
 }

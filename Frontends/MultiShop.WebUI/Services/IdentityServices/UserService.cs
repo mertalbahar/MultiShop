@@ -11,7 +11,7 @@ namespace MultiShop.WebUI.Services.IdentityServices
             _httpClient = httpClient;
         }
 
-        public async Task<UserDetailDto> GetUserDetail()
+        public async Task<UserDetailDto> GetUserDetailAsync()
         {
             return await _httpClient.GetFromJsonAsync<UserDetailDto>("/api/Users/getuserdetail");
         }

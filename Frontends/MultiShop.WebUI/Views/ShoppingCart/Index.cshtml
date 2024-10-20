@@ -23,6 +23,8 @@
             <div class="col-lg-4">
                 @await Html.PartialAsync("~/Views/Discount/ApplyCoupon.cshtml")
                 @await Component.InvokeAsync("_ShoppingCartSummaryComponentPartial")
+
+            <a class="btn btn-block btn-primary font-weight-bold my-3 py-3" asp-controller="Order" asp-action="Index">Ödeme İşlemine Geç</a>
             </div>
         </div>
     </div>

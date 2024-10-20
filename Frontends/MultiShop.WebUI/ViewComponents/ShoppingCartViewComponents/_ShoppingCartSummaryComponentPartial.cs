@@ -19,10 +19,14 @@ namespace MultiShop.WebUI.ViewComponents.ShoppingCartViewComponents
             var taxPrice = values.TotalPrice * 18 / 100;
             ViewBag.TaxPrice = taxPrice;
             var cartTotal = values.TotalPrice + taxPrice;
-            var discountRate = ViewBag.DiscountRate;
-            var discountPrice = cartTotal * discountRate / 100;
-            ViewBag.DiscountPrice = discountPrice;
-            cartTotal -= discountPrice;
+
+            if (ViewBag.DiscountRate != null)
+            {
+                var discountRate = ViewBag.DiscountRate;
+                var discountPrice = cartTotal * discountRate / 100;
+                ViewBag.DiscountPrice = discountPrice;
+                cartTotal -= discountPrice;
+            }
             ViewBag.cartTotal = cartTotal;
 
             return View(values);

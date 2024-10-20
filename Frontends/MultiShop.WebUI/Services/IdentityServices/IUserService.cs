@@ -4,6 +4,6 @@ namespace MultiShop.WebUI.Services.IdentityServices
 {
     public interface IUserService
     {
-        Task<UserDetailDto> GetUserDetail();
+        Task<UserDetailDto> GetUserDetailAsync();
     }
 }

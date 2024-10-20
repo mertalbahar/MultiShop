@@ -13,6 +13,7 @@ using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
+using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
@@ -44,12 +45,15 @@ namespace MultiShop.WebUI.Services.Concretes
         // Discount Microservice
         private readonly Lazy<IDiscountService> _discountService;
 
+        // Order Microservice
+        private readonly Lazy<IOrderAddressService> _orderAddressService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
             IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
-            IDiscountService discountService)
+            IDiscountService discountService, IOrderAddressService orderAddressService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -76,6 +80,9 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Discount Microservice
             _discountService = new Lazy<IDiscountService>(() => discountService);
+
+            // Order Microservice
+            _orderAddressService = new Lazy<IOrderAddressService>(() => orderAddressService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -112,5 +119,8 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Discount Microservice
         public IDiscountService DiscountService => _discountService.Value;
+
+        // Order Microservice
+        public IOrderAddressService OrderAddressService => _orderAddressService.Value;
     }
 }
