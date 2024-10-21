@@ -21,7 +21,7 @@ namespace MultiShop.WebUI.Controllers
         [HttpPost]
         public async Task<IActionResult> ApplyCoupon(string code)
         {
-            var values = await _manager.DiscountService.GetDiscountCode(code);
+            var values = await _manager.DiscountService.GetByCodeDiscountCouponAsync(code);
             var discountRate = values.Rate;
 
             return RedirectToAction("Index", "ShoppingCart", new { code = code, discountRate = discountRate });

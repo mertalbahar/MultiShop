@@ -11,10 +11,18 @@ namespace MultiShop.WebUI.Services.DiscountServices
             _httpClient = httpClient;
         }
 
-        public async Task<GetDiscountDetailByCode> GetDiscountCode(string code)
+        public async Task<List<ResultDiscountCouponDto>> GetAllDiscountCouponAsync()
+        {
+            HttpResponseMessage responseMessage = await _httpClient.GetAsync("discounts");
+            List<ResultDiscountCouponDto> result = await responseMessage.Content.ReadFromJsonAsync<List<ResultDiscountCouponDto>>();
+
+            return result;
+        }
+
+        public async Task<ResultDiscountCouponDto> GetByCodeDiscountCouponAsync(string code)
         {
             HttpResponseMessage responseMessage = await _httpClient.GetAsync("discounts/discountCode/" + code);
-            GetDiscountDetailByCode result = await responseMessage.Content.ReadFromJsonAsync<GetDiscountDetailByCode>();
+            ResultDiscountCouponDto result = await responseMessage.Content.ReadFromJsonAsync<ResultDiscountCouponDto>();
 
             return result;
         }

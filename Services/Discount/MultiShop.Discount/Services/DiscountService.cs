@@ -16,11 +16,11 @@ public class DiscountService : IDiscountService
 
     public async Task CreateDiscountCouponAsync(CreateDiscountCouponDto createDiscountCouponDto)
     {
-        string query = "insert into Coupons (Code, Rate, IsActive, ValidDate) values (@code, @rate, @isActive, @validDate)";
+        string query = "insert into Coupons (Code, Rate, Status, ValidDate) values (@code, @rate, @status, @validDate)";
         DynamicParameters parameters = new DynamicParameters();
         parameters.Add("@code", createDiscountCouponDto.Code);
         parameters.Add("@rate", createDiscountCouponDto.Rate);
-        parameters.Add("@isActive", createDiscountCouponDto.IsActive);
+        parameters.Add("@status", createDiscountCouponDto.Status);
         parameters.Add("@validDate", createDiscountCouponDto.ValidDate);
 
         using (IDbConnection connection = _context.CreateConnection())
@@ -84,12 +84,12 @@ public class DiscountService : IDiscountService
 
     public async Task UpdateDiscountCouponAsync(UpdateDiscountCouponDto updateCouponDto)
     {
-        string query = "Update Coupons Set Code=@code, Rate=@rate, IsActive=@isActive, ValidDate=@validDate where Id=@id";
+        string query = "Update Coupons Set Code=@code, Rate=@rate, Status=@status, ValidDate=@validDate where Id=@id";
         DynamicParameters parameters = new DynamicParameters();
         parameters.Add("@id", updateCouponDto.Id);
         parameters.Add("@code", updateCouponDto.Code);
         parameters.Add("@rate", updateCouponDto.Rate);
-        parameters.Add("@isActive", updateCouponDto.IsActive);
+        parameters.Add("@status", updateCouponDto.Status);
         parameters.Add("@validDate", updateCouponDto.ValidDate);
 
         using (IDbConnection connection = _context.CreateConnection())

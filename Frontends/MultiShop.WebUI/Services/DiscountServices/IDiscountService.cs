@@ -4,6 +4,7 @@ namespace MultiShop.WebUI.Services.DiscountServices
 {
     public interface IDiscountService
     {
-        Task<GetDiscountDetailByCode> GetDiscountCode(string code);
+        Task<List<ResultDiscountCouponDto>> GetAllDiscountCouponAsync();
+        Task<ResultDiscountCouponDto> GetByCodeDiscountCouponAsync(string code);
     }
 }
