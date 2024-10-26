@@ -20,5 +20,20 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
             return View(values);
         }
+
+        [HttpGet]
+        public IActionResult CreateDiscountCoupon()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateDiscountCoupon([FromForm] CreateDiscountCouponDto createDiscountCouponDto)
+        {
+            await _manager.DiscountService.CreateDiscountCouponAsync(createDiscountCouponDto);
+
+            return RedirectToAction("Index", "DiscountCoupon", new { area = "Admin" });
+        }
     }
 }

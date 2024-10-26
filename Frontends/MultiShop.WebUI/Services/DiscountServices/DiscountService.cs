@@ -11,6 +11,11 @@ namespace MultiShop.WebUI.Services.DiscountServices
             _httpClient = httpClient;
         }
 
+        public async Task CreateDiscountCouponAsync(CreateDiscountCouponDto createCouponDto)
+        {
+            await _httpClient.PostAsJsonAsync<CreateDiscountCouponDto>("discounts/create", createCouponDto);
+        }
+
         public async Task<List<ResultDiscountCouponDto>> GetAllDiscountCouponAsync()
         {
             HttpResponseMessage responseMessage = await _httpClient.GetAsync("discounts");
