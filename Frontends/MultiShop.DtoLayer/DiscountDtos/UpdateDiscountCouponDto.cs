@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Discount.Dtos;
+﻿namespace MultiShop.DtoLayer.DiscountDtos;
 
 public class UpdateDiscountCouponDto
 {

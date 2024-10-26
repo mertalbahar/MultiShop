@@ -1,0 +1,27 @@
+﻿@model CreateDiscountCouponDto
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>İndirim Kupon Ekleme</h4>
+        <p>Yeni indirim kupon eklemek için aşağıdaki formu kullanabilirsiniz.</p>
+        <br />
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label" asp-for="Code">Kupon Kodu</label>
+                <input type="text" class="form-control" placeholder="Kupon kodunu giriniz" asp-for="Code">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="Rate">İndirim Oranı</label>
+                <input type="text" class="form-control" placeholder="İndirim oranını giriniz" asp-for="Rate">
+            </div>
+            <div class="form-group">
+                <label class="control-label" asp-for="ValidDate">Geçerlilik Tarihi</label>
+                <input type="datetime-local" class="form-control" placeholder="Geçerlilik tarihi giriniz" asp-for="ValidDate">
+            </div>
+            <div>
+                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+            </div>
+        </form>
+    </div>
+</div>

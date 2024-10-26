@@ -1,8 +1,7 @@
-﻿namespace MultiShop.Discount.Dtos;
+﻿namespace MultiShop.DtoLayer.DiscountDtos;
 
-public class UpdateDiscountCouponDto
+public class CreateDiscountCouponDto
 {
-    public int Id { get; set; }
     public string Code { get; set; }
     public int Rate { get; set; }
     public bool Status { get; set; }

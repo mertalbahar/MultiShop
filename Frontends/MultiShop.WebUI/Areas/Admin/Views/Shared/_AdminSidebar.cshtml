@@ -1,7 +1,9 @@
 ﻿<aside class="main-sidebar dark-bg">
     <section class="sidebar">
         <div class="user-panel black-bg">
-            <div class="pull-left image"> <img src="~/templates/ovioadmin/html/dist/img/img1.jpg" class="img-circle" alt="User Image"> </div>
+            <div class="pull-left image">
+                <img src="~/templates/ovioadmin/html/dist/img/img1.jpg" class="img-circle" alt="User Image">
+            </div>
             <div class="pull-left info">
                 <p>Florence Douglas</p>
                 <a href="#"><i class="fa fa-circle"></i> Online</a>
@@ -9,50 +11,79 @@
         </div>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
-            <li> <a asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i> <span>Anasayfa</span></a> </li>
+            <li>
+                <a asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-home"></i> <span>Anasayfa</span></a>
+            </li>
             <li class="header dark-bg">Menü</li>
-            <li> <a asp-area="Admin" asp-controller="Category" asp-action="Index"> <i class="fa fa-th"></i> <span>Kategoriler</span></a> </li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-th"></i> <span>Ürün Menüsü</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                <ul class="treeview-menu">
-                    <li> <a asp-area="Admin" asp-controller="Product" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Ürünler</span></a> </li>
-                    <li> <a asp-area="Admin" asp-controller="ProductImage" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Ürün Görselleri</span></a> </li>
-                    <li> <a asp-area="Admin" asp-controller="ProductDetail" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Ürün Detayları</span></a> </li>
-                    <li> <a asp-area="Admin" asp-controller="FeatureSlider" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Öne Çıkan Ürünler</span></a> </li>
-                    <li> <a asp-area="Admin" asp-controller="SpecialOffer" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>Özel Teklifler</span></a> </li>
-                    <li> <a asp-area="Admin" asp-controller="DiscountOffer" asp-action="Index"> <i class="fa fa-angle-right"></i> <span>İndirim Teklifler</span></a> </li>
-                </ul>
-            </li>
-            <li> <a asp-area="Admin" asp-controller="UserComment" asp-action="Index"> <i class="fa fa-comment"></i> <span>Yorumlar</span></a> </li>
-            <li> <a asp-area="Admin" asp-controller="Contact" asp-action="Index"> <i class="fa fa-comment"></i> <span>İletişim Mesajları</span></a> </li>
-            <li> <a asp-area="Admin" asp-controller="Brand" asp-action="Index"> <i class="fa fa-th"></i> <span>Markalar</span></a> </li>
-            <li> <a asp-area="Admin" asp-controller="About" asp-action="Index"> <i class="fa fa-th"></i> <span>Hakkımızda</span></a> </li>
-            <li class="header dark-bg">Components</li>
-            <li class="treeview">
-                <a href="#"><i class="fa fa-briefcase"></i> <span>UI Components</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
-                <ul class="treeview-menu">
-                    <li><a href="component/alerts.html"><i class="fa fa-angle-right"></i> Alerts</a></li>
-                    <li><a href="component/buttons.html"><i class="fa fa-angle-right"></i> Buttons</a></li>
-                    <li><a href="component/carousel.html"><i class="fa fa-angle-right"></i> Carousel</a></li>
-                    <li><a href="component/collapse.html"><i class="fa fa-angle-right"></i> Collapse</a></li>
-                    <li><a href="component/listgroup.html"><i class="fa fa-angle-right"></i> List Group</a></li>
-                    <li><a href="component/pagination.html"><i class="fa fa-angle-right"></i> Pagination</a></li>
-                    <li><a href="component/tabs.html"><i class="fa fa-angle-right"></i> Tabs</a></li>
-                    <li><a href="component/tooltips.html"><i class="fa fa-angle-right"></i> Tooltips</a></li>
-                    <li><a href="component/popovers.html"><i class="fa fa-angle-right"></i> Popovers</a></li>
-                    <li><a href="component/progress.html"><i class="fa fa-angle-right"></i> Progress</a></li>
-                    <li><a href="component/mediaobjects.html"><i class="fa fa-angle-right"></i> Media Objects</a></li>
-                </ul>
+            <li>
+                <a asp-area="Admin" asp-controller="Category" asp-action="Index">
+                    <i class="fa fa-th"></i>
+                    <span>Kategoriler</span>
+                </a>
             </li>
             <li class="treeview">
-                <a href="#"><i class="fa fa-pencil-square-o"></i> <span>Forms</span> <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span> </a>
+                <a href="#">
+                    <i class="fa fa-th"></i>
+                    <span>Ürün Menüsü</span>
+                    <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+                </a>
                 <ul class="treeview-menu">
-                    <li><a href="forms/general-elements.html"><i class="fa fa-angle-right"></i> General Elements</a></li>
-                    <li><a href="forms/layouts.html"><i class="fa fa-angle-right"></i> Form Layouts</a></li>
-                    <li><a href="forms/validation.html"><i class="fa fa-angle-right"></i> Form Validation</a></li>
-                    <li><a href="forms/wizard.html"><i class="fa fa-angle-right"></i> Form Wizard</a></li>
-
+                    <li>
+                        <a asp-area="Admin" asp-controller="Product" asp-action="Index">
+                            <i class="fa fa-angle-right"></i> <span>Ürünler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="ProductImage" asp-action="Index">
+                            <i class="fa fa-angle-right"></i> <span>Ürün Görselleri</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="ProductDetail" asp-action="Index">
+                            <i class="fa fa-angle-right"></i> <span>Ürün Detayları</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="FeatureSlider" asp-action="Index">
+                            <i class="fa fa-angle-right"></i> <span>Öne Çıkan Ürünler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="SpecialOffer" asp-action="Index">
+                            <i class="fa fa-angle-right"></i> <span>Özel Teklifler</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="DiscountOffer" asp-action="Index">
+                            <i class="fa fa-angle-right"></i> <span>İndirim Teklifler</span>
+                        </a>
+                    </li>
                 </ul>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Brand" asp-action="Index">
+                    <i class="fa fa-th"></i> <span>Markalar</span>
+                </a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="About" asp-action="Index">
+                    <i class="fa fa-th"></i> <span>Hakkımızda</span>
+                </a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="UserComment" asp-action="Index">
+                    <i class="fa fa-comment"></i> <span>Yorumlar</span>
+                </a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="Contact" asp-action="Index">
+                    <i class="fa fa-comment"></i> <span>İletişim Mesajları</span>
+                </a>
+            </li>
+            <li>
+                <a asp-area="Admin" asp-controller="DiscountCoupon" asp-action="Index">
+                    <i class="fa fa-angle-double-down"></i> <span>İndirim Kuponları</span>
+                </a>
             </li>
         </ul>
         <!-- sidebar-menu -->
