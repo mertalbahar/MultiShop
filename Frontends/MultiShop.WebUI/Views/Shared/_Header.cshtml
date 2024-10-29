@@ -19,7 +19,7 @@
                     {
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Hesabım, @User.Identity.Name</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Profilim</a>
+                            <a class="dropdown-item" asp-area="User" asp-controller="Profile" asp-action="Index">Profilim</a>
                             <a class="dropdown-item" href="#">Çıkış Yap</a>
                         </div>
                     }

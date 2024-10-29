@@ -50,6 +50,12 @@ app.UseEndpoints(endpoints =>
         pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}"
         );
 
+    endpoints.MapAreaControllerRoute(
+        name: "User",
+        areaName: "User",
+        pattern: "User/{controller=Profile}/{action=Index}/{id?}"
+        );
+
     endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
     endpoints.MapRazorPages();
