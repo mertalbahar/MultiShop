@@ -20,14 +20,6 @@ namespace MultiShop.WebUI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
-        {
-            UserDetailDto values = await _manager.UserService.GetUserDetailAsync();
-
-            return View(values);
-        }
-
-        [HttpGet]
         public IActionResult RegisterUser()
         {
             return View();

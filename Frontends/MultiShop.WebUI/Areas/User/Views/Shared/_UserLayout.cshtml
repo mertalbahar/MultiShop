@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - MultiShop E-Ticaret</title>
+    <!-- base:css -->
+    <link rel="stylesheet" href="~/templates/spica/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/templates/spica/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/templates/spica/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="~/templates/spica/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller d-flex">
+        <!-- Sidebar Start -->
+        <partial name="_UserSidebar" />
+        <!-- Sidebar End -->
+        <div class="container-fluid page-body-wrapper">
+            <!-- Navbar Start -->
+            <partial name="_UserNavbar" />
+            <!-- Navbar End -->
+            <div class="main-panel">
+                <!-- Content Start -->
+                <div class="content-wrapper">
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                </div>
+                <!-- Content End -->
+                <!-- Footer Start -->
+                <partial name="_UserFooter" />
+                <!-- Footer End -->
+            </div>
+            <!-- main-panel ends -->
+        </div>
+    </div>
+    <!-- container-scroller -->
+    <!-- base:js -->
+    <script src="~/templates/spica/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page-->
+    <script src="~/templates/spica/vendors/chart.js/Chart.min.js"></script>
+    <!-- End plugin js for this page-->
+    <!-- inject:js -->
+    <script src="~/templates/spica/js/off-canvas.js"></script>
+    <script src="~/templates/spica/js/hoverable-collapse.js"></script>
+    <script src="~/templates/spica/js/template.js"></script>
+    <!-- endinject -->
+    <!-- plugin js for this page -->
+    <!-- End plugin js for this page -->
+    <!-- Custom js for this page-->
+    <script src="~/templates/spica/js/dashboard.js"></script>
+    <!-- End custom js for this page-->
+</body>
+
+</html>

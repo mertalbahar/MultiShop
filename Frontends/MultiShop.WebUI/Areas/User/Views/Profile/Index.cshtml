@@ -1,0 +1,32 @@
+﻿@model UserDetailDto
+
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>Kullanıcı Adı</th>
+                        <td>@Model.UserName</td>
+                    </tr>
+                    <tr>
+                        <th>Adı</th>
+                        <td>@Model.Name</td>
+                    </tr>
+                    <tr>
+                        <th>Soyadı</th>
+                        <td>@Model.Surname</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>@Model.Email</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
