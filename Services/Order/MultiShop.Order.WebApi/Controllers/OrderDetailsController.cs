@@ -1,73 +1,64 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MultiShop.Order.Application.Features.CQRS.Commands.OrderDetailCommands;
-using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
-using MultiShop.Order.Application.Features.CQRS.Queries.OrderDetailQueries;
-using MultiShop.Order.Application.Features.CQRS.Results.OrderDetailResults;
+using MultiShop.Order.Application.Features.Mediator.OrderDetails.Commands.CreateOrderDetail;
+using MultiShop.Order.Application.Features.Mediator.OrderDetails.Commands.RemoveOrderDetail;
+using MultiShop.Order.Application.Features.Mediator.OrderDetails.Commands.UpdateOrderDetail;
+using MultiShop.Order.Application.Features.Mediator.OrderDetails.Dtos;
+using MultiShop.Order.Application.Features.Mediator.OrderDetails.Queries.GetByIdOrderDetail;
+using MultiShop.Order.Application.Features.Mediator.OrderDetails.Queries.GetListOrderDetail;
 
 namespace MultiShop.Order.WebApi.Controllers;
 
-//[Authorize]
-//[Route("api/[controller]")]
-//[ApiController]
-//public class OrderDetailsController : ControllerBase
-//{
-//    private readonly GetOrderDetailQueryHandler _getOrderDetailQueryHandler;
-//    private readonly GetOrderDetailByIdQueryHandler _getOrderDetailByIdQueryHandler;
-//    private readonly CreateOrderDetailCommandHandler _createOrderDetailCommandHandler;
-//    private readonly UpdateOrderDetailCommandHandler _updateOrderDetailCommandHandler;
-//    private readonly RemoveOrderDetailCommandHandler _removeOrderDetailCommandHandler;
+[Authorize]
+[Route("api/[controller]")]
+[ApiController]
+public class OrderDetailsController : ControllerBase
+{
+    private readonly IMediator _mediator;
 
-//    public OrderDetailsController(GetOrderDetailQueryHandler getOrderDetailQueryHandler,
-//        GetOrderDetailByIdQueryHandler getOrderDetailByIdQueryHandler,
-//        CreateOrderDetailCommandHandler createOrderDetailCommandHandler,
-//        UpdateOrderDetailCommandHandler updateOrderDetailCommandHandler,
-//        RemoveOrderDetailCommandHandler removeOrderDetailCommandHandler)
-//    {
-//        _getOrderDetailQueryHandler = getOrderDetailQueryHandler;
-//        _getOrderDetailByIdQueryHandler = getOrderDetailByIdQueryHandler;
-//        _createOrderDetailCommandHandler = createOrderDetailCommandHandler;
-//        _updateOrderDetailCommandHandler = updateOrderDetailCommandHandler;
-//        _removeOrderDetailCommandHandler = removeOrderDetailCommandHandler;
-//    }
+    public OrderDetailsController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
 
-//    [HttpGet]
-//    public async Task<IActionResult> OrderDetailList()
-//    {
-//        List<GetOrderDetailQueryResult> values = await _getOrderDetailQueryHandler.Handle();
+    [HttpGet]
+    public async Task<IActionResult> OrderDetailList([FromQuery] GetListOrderDetailQuery getListOrderDetailQuery)
+    {
+        List<GetListOrderDetailDto> result = await _mediator.Send(getListOrderDetailQuery);
 
-//        return Ok(values);
-//    }
+        return Ok(result);
+    }
 
-//    [HttpGet("{id}")]
-//    public async Task<IActionResult> GetOrderDetailById(int id)
-//    {
-//        GetOrderDetailByIdQueryResult value = await _getOrderDetailByIdQueryHandler.Handle(new GetOrderDetailByIdQuery(id));
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetOrderDetailById([FromRoute] int id)
+    {
+        var result = await _mediator.Send(new GetByIdOrderDetailQuery(id));
 
-//        return Ok(value);
-//    }
+        return Ok(result);
+    }
 
-//    [HttpPost("create")]
-//    public async Task<IActionResult> CreateOrderDetail(CreateOrderDetailCommand command)
-//    {
-//        await _createOrderDetailCommandHandler.Handle(command);
+    [HttpPost("create")]
+    public async Task<IActionResult> CreateOrderDetail([FromBody] CreateOrderDetailCommand createOrderDetailCommand)
+    {
+        CreatedOrderDetailDto result = await _mediator.Send(createOrderDetailCommand);
 
-//        return Ok("Sipari detayı başarıyla eklendi.");
-//    }
+        return Created("", result);
+    }
 
-//    [HttpPut("update")]
-//    public async Task<IActionResult> UpdateOrderDetail(UpdateOrderDetailCommand command)
-//    {
-//        await _updateOrderDetailCommandHandler.Handle(command);
+    [HttpPut("update")]
+    public async Task<IActionResult> UpdateOrderDetail(UpdateOrderDetailCommand updateOrderDetailCommand)
+    {
+        UpdatedOrderDetailDto result = await _mediator.Send(updateOrderDetailCommand);
 
-//        return Ok("Sipari detayı başarıyla güncellendi.");
-//    }
+        return Ok(result);
+    }
 
-//    [HttpDelete("delete/{id}")]
-//    public async Task<IActionResult> DeleteOrderDetail(int id)
-//    {
-//        await _removeOrderDetailCommandHandler.Handle(new RemoveOrderDetailCommand(id));
+    [HttpDelete("delete/{id}")]
+    public async Task<IActionResult> DeleteOrderDetail(int id)
+    {
+        await _mediator.Send(new RemoveOrderDetailCommand(id));
 
-//        return Ok("Sipari detayı başarıyla silindi.");
-//    }
-//}
+        return Ok("Sipariş detayı başarıyla silindi.");
+    }
+}

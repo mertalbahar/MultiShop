@@ -76,7 +76,7 @@ namespace MultiShop.Order.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("MultiShop.Order.Domain.Entities.OrderDetail", b =>
@@ -111,7 +111,7 @@ namespace MultiShop.Order.Persistance.Migrations
 
                     b.HasIndex("OrderingId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("MultiShop.Order.Domain.Entities.Ordering", b =>
@@ -134,7 +134,7 @@ namespace MultiShop.Order.Persistance.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Orderings");
+                    b.ToTable("Orderings", (string)null);
                 });
 
             modelBuilder.Entity("MultiShop.Order.Domain.Entities.OrderDetail", b =>

@@ -20,8 +20,8 @@ namespace MultiShop.Order.Persistance
 
             services.AddScoped<IRepositoryManager, RepositoryManager>();
             services.AddScoped<IOrderingRepository, OrderingRepository>();
-
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(RepositoryBase<>));
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IOrderDetailRepository, OrderDetailRepository>();
 
             return services;
         }

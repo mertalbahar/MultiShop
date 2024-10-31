@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Order.Application.Features.Mediator.Orderings.Handlers.GetListOrdering;
 
-public class GetListOrderingQueryHandler : IRequestHandler<GetListOrderingQuery, List<OrderingListDto>>
+public class GetListOrderingQueryHandler : IRequestHandler<GetListOrderingQuery, List<GetListOrderingDto>>
 {
     private readonly IRepositoryManager _manager;
     private readonly IMapper _mapper;
@@ -23,11 +23,11 @@ public class GetListOrderingQueryHandler : IRequestHandler<GetListOrderingQuery,
         _mapper = mapper;
     }
 
-    public async Task<List<OrderingListDto>> Handle(GetListOrderingQuery request, CancellationToken cancellationToken)
+    public async Task<List<GetListOrderingDto>> Handle(GetListOrderingQuery request, CancellationToken cancellationToken)
     {
         List<Ordering> listedOrdering = await _manager.OrderingRepository.GetAllAsync();
-        List<OrderingListDto> orderingListDto = _mapper.Map<List<OrderingListDto>>(listedOrdering);
+        List<GetListOrderingDto> getListOrderingDto = _mapper.Map<List<GetListOrderingDto>>(listedOrdering);
 
-        return orderingListDto;
+        return getListOrderingDto;
     }
 }

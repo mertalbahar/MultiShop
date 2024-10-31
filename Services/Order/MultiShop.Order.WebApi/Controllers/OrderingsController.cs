@@ -26,7 +26,7 @@ public class OrderingsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> OrderingList(GetListOrderingQuery getListOrderingQuery)
     {
-        List<OrderingListDto> result = await _mediator.Send(getListOrderingQuery);
+        List<GetListOrderingDto> result = await _mediator.Send(getListOrderingQuery);
 
         return Ok(result);
     }
@@ -34,7 +34,7 @@ public class OrderingsController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetOrderingById(int id)
     {
-        var result = await _mediator.Send(new GetOrderingByIdQuery(id));
+        var result = await _mediator.Send(new GetByIdOrderingQuery(id));
 
         return Ok(result);
     }

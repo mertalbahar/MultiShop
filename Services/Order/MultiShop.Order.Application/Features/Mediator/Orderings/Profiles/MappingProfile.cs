@@ -18,9 +18,9 @@ namespace MultiShop.Order.Application.Features.Mediator.Orderings.Profiles
             CreateMap<Ordering, CreatedOrderingDto>().ReverseMap();
             CreateMap<Ordering, CreateOrderingCommand>().ReverseMap();
 
-            CreateMap<Ordering, OrderingListDto>().ReverseMap();
+            CreateMap<Ordering, GetListOrderingDto>().ReverseMap();
 
-            CreateMap<Ordering, GetOrderingByIdDto>().ReverseMap();
+            CreateMap<Ordering, GetByIdOrderingDto>().ReverseMap();
 
             CreateMap<Ordering, UpdatedOrderingDto>().ReverseMap();
             CreateMap<Ordering, UpdateOrderingCommand>().ReverseMap();

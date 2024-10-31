@@ -9,5 +9,7 @@ namespace MultiShop.Order.Application.Services.Repositories
     public interface IRepositoryManager
     {
         IOrderingRepository OrderingRepository { get; }
+        IAddressRepository AddressRepository { get; }
+        IOrderDetailRepository OrderDetailRepository { get; }
     }
 }

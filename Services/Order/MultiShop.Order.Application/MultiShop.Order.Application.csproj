@@ -17,6 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\Mediator\Addresses\Models\" />
+    <Folder Include="Features\Mediator\OrderDetails\Models\" />
     <Folder Include="Features\Mediator\Orderings\Models\" />
   </ItemGroup>
 

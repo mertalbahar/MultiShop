@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using MultiShop.Order.Application;
-using MultiShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
-using MultiShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using MultiShop.Order.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
