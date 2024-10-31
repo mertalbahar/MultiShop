@@ -31,9 +31,11 @@ public class RepositoryBase<T> : IAsyncRepository<T>
         return entity;
     }
 
-    public async Task<List<T>> GetAllAsync()
+    public async Task<List<T>> GetAllAsync(Expression<Func<T, bool>> filter = null)
     {
-        return await _context.Set<T>().ToListAsync();
+        return filter == null
+            ? await _context.Set<T>().ToListAsync()
+            : await _context.Set<T>().Where(filter).ToListAsync();
     }
 
     public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter)
