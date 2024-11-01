@@ -16,6 +16,7 @@ using MultiShop.WebUI.Services.Concretes;
 using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
+using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 using MultiShop.WebUI.Settings;
 
 namespace MultiShop.WebUI.Infrastructures.Extensions
@@ -107,6 +108,11 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
 
             // Order Microservice
             services.AddHttpClient<IOrderAddressService, OrderAddressService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IOrderingService, OrderingService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Order.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();

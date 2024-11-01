@@ -14,6 +14,7 @@ using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
+using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
@@ -47,13 +48,14 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Order Microservice
         private readonly Lazy<IOrderAddressService> _orderAddressService;
+        private readonly Lazy<IOrderingService> _orderingService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
             IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
-            IDiscountService discountService, IOrderAddressService orderAddressService)
+            IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -83,6 +85,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Order Microservice
             _orderAddressService = new Lazy<IOrderAddressService>(() => orderAddressService);
+            _orderingService = new Lazy<IOrderingService>(() => orderingService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -122,5 +125,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Order Microservice
         public IOrderAddressService OrderAddressService => _orderAddressService.Value;
+
+        public IOrderingService OrderingService => _orderingService.Value;
     }
 }

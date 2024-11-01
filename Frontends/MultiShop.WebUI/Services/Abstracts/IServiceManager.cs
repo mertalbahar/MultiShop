@@ -13,6 +13,7 @@ using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
+using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
 {
@@ -44,5 +45,6 @@ namespace MultiShop.WebUI.Services.Abstracts
 
         // Order Microservice
         IOrderAddressService OrderAddressService { get; }
+        IOrderingService OrderingService { get; }
     }
 }
