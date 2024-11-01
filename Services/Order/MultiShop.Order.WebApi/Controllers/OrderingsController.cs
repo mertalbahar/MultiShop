@@ -1,12 +1,12 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.Mediator.Orderings.Commands.CreateOrdering;
 using MultiShop.Order.Application.Features.Mediator.Orderings.Commands.RemoveOrdering;
 using MultiShop.Order.Application.Features.Mediator.Orderings.Commands.UpdateOrdering;
 using MultiShop.Order.Application.Features.Mediator.Orderings.Dtos;
 using MultiShop.Order.Application.Features.Mediator.Orderings.Queries.GetByIdOrdering;
+using MultiShop.Order.Application.Features.Mediator.Orderings.Queries.GetByUserIdOrdering;
 using MultiShop.Order.Application.Features.Mediator.Orderings.Queries.GetListOrdering;
 
 namespace MultiShop.Order.WebApi.Controllers;
@@ -61,5 +61,13 @@ public class OrderingsController : ControllerBase
         await _mediator.Send(new RemoveOrderingCommand(id));
 
         return Ok("Sipariş başarıyla silindi.");
+    }
+
+    [HttpGet("userId")]
+    public async Task<IActionResult> GetOrderingByUserId(string id)
+    {
+        var result = await _mediator.Send(new GetByUserIdOrderingQuery(id));
+
+        return Ok(result);
     }
 }
