@@ -14,6 +14,11 @@ namespace MultiShop.IdentityServer
         {
             new ApiResource(IdentityServerConstants.LocalApi.ScopeName),
 
+            new ApiResource("ResourceOcelot")
+            {
+                Scopes = {"OcelotFullPermission"}
+            },
+
             new ApiResource("ResourceCatalog")
             {
                 Scopes = {"CatalogFullPermission", "CatalogReadPermission"}
@@ -44,9 +49,9 @@ namespace MultiShop.IdentityServer
                 Scopes = {"CommentFullPermission"}
             },
 
-            new ApiResource("ResourceOcelot")
+            new ApiResource("ResourceMessage")
             {
-                Scopes = {"OcelotFullPermission"}
+                Scopes = { "MessageFullPermission" }
             }
         };
 
@@ -61,6 +66,8 @@ namespace MultiShop.IdentityServer
         {
             new ApiScope(IdentityServerConstants.LocalApi.ScopeName),
 
+            new ApiScope("OcelotFullPermission", "Full authority for ocelot operations"),
+
             new ApiScope("CatalogFullPermission", "Full authority for catalog operations"),
             new ApiScope("CatalogReadPermission", "Reading authority for catalog operations"),
 
@@ -74,7 +81,7 @@ namespace MultiShop.IdentityServer
 
             new ApiScope("CommentFullPermission", "Full authority for comment operations"),
 
-            new ApiScope("OcelotFullPermission", "Full authority for ocelot operations")
+            new ApiScope("MessageFullPermission", "Full authority for message operations")
         };
 
         public static IEnumerable<Client> Clients => new Client[]
@@ -109,13 +116,14 @@ namespace MultiShop.IdentityServer
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Email,
                     IdentityServerConstants.StandardScopes.Profile,
+                    "OcelotFullPermission",
                     "CatalogFullPermission",
                     "DiscountFullPermission",
                     "OrderFullPermission",
                     "CargoFullPermission",
                     "BasketFullPermission",
                     "CommentFullPermission",
-                    "OcelotFullPermission"
+                    "MessageFullPermission"
                 },
                 AccessTokenLifetime = 600
             }

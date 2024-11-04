@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.Order.Application.Features.Mediator.Addresses.Commands.CreateAddress;
 using MultiShop.Order.Application.Features.Mediator.Addresses.Commands.RemoveAddress;
@@ -10,7 +9,6 @@ using MultiShop.Order.Application.Features.Mediator.Addresses.Queries.GetListAdd
 
 namespace MultiShop.Order.WebApi.Controllers;
 
-[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class AddressesController : ControllerBase

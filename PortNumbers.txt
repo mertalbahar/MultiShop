@@ -5,3 +5,4 @@ Order		= 7072
 Cargo		= 7073
 Basket		= 7074
 Comment		= 7075
+Message		= 7076
