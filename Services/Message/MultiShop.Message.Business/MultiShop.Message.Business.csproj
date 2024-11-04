@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.22" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiShop.Cargo.EntityLayer\MultiShop.Cargo.EntityLayer.csproj" />
+    <ProjectReference Include="..\MultiShop.Message.DataAccess\MultiShop.Message.DataAccess.csproj" />
+    <ProjectReference Include="..\MultiShop.Message.Dto\MultiShop.Message.Dto.csproj" />
   </ItemGroup>
 
 </Project>

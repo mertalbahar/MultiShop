@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{62D4D709-D285-4B12-B989-F3525177C603}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Catalog", "Services\Catalog\MultiShop.Catalog\MultiShop.Catalog.csproj", "{3EEC4200-4DFF-4F56-82EB-9E49714C8A0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Catalog.WebApi", "Services\Catalog\MultiShop.Catalog\MultiShop.Catalog.WebApi.csproj", "{3EEC4200-4DFF-4F56-82EB-9E49714C8A0E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Discount", "Discount", "{EE45E858-8180-4ED9-AC1C-34CB42E9FF05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Discount", "Services\Discount\MultiShop.Discount\MultiShop.Discount.csproj", "{FF69E680-4244-4D38-8A89-DB514E915623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Discount.WebApi", "Services\Discount\MultiShop.Discount\MultiShop.Discount.WebApi.csproj", "{FF69E680-4244-4D38-8A89-DB514E915623}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Order", "Order", "{6DC8650D-9E9C-41A7-A2BD-3E985042DAF2}"
 EndProject
@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Cargo.WebApi", "S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{3C580502-56A4-450F-A992-43171D7BCC9B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Basket", "Services\Basket\MultiShop.Basket\MultiShop.Basket.csproj", "{F050DC96-DF41-4FB3-8E96-CB42D86BDCE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Basket.WebApi", "Services\Basket\MultiShop.Basket\MultiShop.Basket.WebApi.csproj", "{F050DC96-DF41-4FB3-8E96-CB42D86BDCE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontends", "Frontends", "{77B792D2-1826-4138-B75C-1E5872E39B2D}"
 EndProject
@@ -52,7 +52,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Core", "Core\Mult
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Comment", "Comment", "{CB2D1E12-78FB-4D4B-9E38-C596015C4448}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Comment", "Services\Comment\MultiShop.Comment\MultiShop.Comment.csproj", "{37F8E980-7E55-4C12-A664-1033E46D936E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Comment.WebApi", "Services\Comment\MultiShop.Comment\MultiShop.Comment.WebApi.csproj", "{37F8E980-7E55-4C12-A664-1033E46D936E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{5CCB2971-691B-4984-9E6C-10872034B887}"
 EndProject
@@ -65,6 +65,18 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.Persistance", "Services\Order\MultiShop.Order.Persistance\MultiShop.Order.Persistance.csproj", "{5481917C-2426-48E2-8D65-9F49D1BB0FB3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiShop.Order.WebApi", "Services\Order\MultiShop.Order.WebApi\MultiShop.Order.WebApi.csproj", "{751969FB-2C64-4F6A-915F-8AD009CA9EDE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Message", "Message", "{CDC3E186-D663-4144-8A0E-DB98CA0586D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message.WebApi", "Services\Message\MultiShop.Message\MultiShop.Message.WebApi.csproj", "{56107780-F512-4AF8-BF91-5DCAD6F0CFAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message.Business", "Services\Message\MultiShop.Message.Business\MultiShop.Message.Business.csproj", "{76BD9F6E-25F2-40F0-A212-2B0353FDD0A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message.DataAccess", "Services\Message\MultiShop.Message.DataAccess\MultiShop.Message.DataAccess.csproj", "{AD53D274-60E5-4345-A685-A1D6A008905B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message.Entity", "Services\Message\MultiShop.Message.Entity\MultiShop.Message.Entity.csproj", "{34517892-5524-4B8E-BBCC-A81D3F1A5BAA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiShop.Message.Dto", "Services\Message\MultiShop.Message.Dto\MultiShop.Message.Dto.csproj", "{9D6726E7-2120-4502-8BD4-AAC91F38FD6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,6 +156,26 @@ Global
 		{751969FB-2C64-4F6A-915F-8AD009CA9EDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{751969FB-2C64-4F6A-915F-8AD009CA9EDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{751969FB-2C64-4F6A-915F-8AD009CA9EDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56107780-F512-4AF8-BF91-5DCAD6F0CFAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56107780-F512-4AF8-BF91-5DCAD6F0CFAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56107780-F512-4AF8-BF91-5DCAD6F0CFAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56107780-F512-4AF8-BF91-5DCAD6F0CFAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76BD9F6E-25F2-40F0-A212-2B0353FDD0A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76BD9F6E-25F2-40F0-A212-2B0353FDD0A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76BD9F6E-25F2-40F0-A212-2B0353FDD0A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76BD9F6E-25F2-40F0-A212-2B0353FDD0A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD53D274-60E5-4345-A685-A1D6A008905B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD53D274-60E5-4345-A685-A1D6A008905B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD53D274-60E5-4345-A685-A1D6A008905B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD53D274-60E5-4345-A685-A1D6A008905B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34517892-5524-4B8E-BBCC-A81D3F1A5BAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34517892-5524-4B8E-BBCC-A81D3F1A5BAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34517892-5524-4B8E-BBCC-A81D3F1A5BAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34517892-5524-4B8E-BBCC-A81D3F1A5BAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D6726E7-2120-4502-8BD4-AAC91F38FD6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D6726E7-2120-4502-8BD4-AAC91F38FD6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D6726E7-2120-4502-8BD4-AAC91F38FD6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D6726E7-2120-4502-8BD4-AAC91F38FD6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -173,6 +205,12 @@ Global
 		{6D72429B-DCC7-4F56-BE0F-4A5AED72808F} = {6DC8650D-9E9C-41A7-A2BD-3E985042DAF2}
 		{5481917C-2426-48E2-8D65-9F49D1BB0FB3} = {6DC8650D-9E9C-41A7-A2BD-3E985042DAF2}
 		{751969FB-2C64-4F6A-915F-8AD009CA9EDE} = {6DC8650D-9E9C-41A7-A2BD-3E985042DAF2}
+		{CDC3E186-D663-4144-8A0E-DB98CA0586D0} = {C2881782-2D87-44FE-9F23-A4F04DD8A2A5}
+		{56107780-F512-4AF8-BF91-5DCAD6F0CFAE} = {CDC3E186-D663-4144-8A0E-DB98CA0586D0}
+		{76BD9F6E-25F2-40F0-A212-2B0353FDD0A9} = {CDC3E186-D663-4144-8A0E-DB98CA0586D0}
+		{AD53D274-60E5-4345-A685-A1D6A008905B} = {CDC3E186-D663-4144-8A0E-DB98CA0586D0}
+		{34517892-5524-4B8E-BBCC-A81D3F1A5BAA} = {CDC3E186-D663-4144-8A0E-DB98CA0586D0}
+		{9D6726E7-2120-4502-8BD4-AAC91F38FD6F} = {CDC3E186-D663-4144-8A0E-DB98CA0586D0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {64911ED4-D91D-4F81-B9AB-7678EA6CF39B}
