@@ -22,5 +22,13 @@ namespace MultiShop.WebUI.Areas.User.Controllers
 
             return View(values);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> InboxMessageDetail([FromRoute(Name = "id")] int id)
+        {
+            GetByIdUserMessageDto values = await _manager.MessageService.GetByIdUserMessageAsync(id);
+
+            return View(values);
+        }
     }
 }

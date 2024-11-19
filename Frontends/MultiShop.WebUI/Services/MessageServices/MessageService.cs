@@ -18,5 +18,13 @@ namespace MultiShop.WebUI.Services.MessageServices
 
             return result;
         }
+
+        public async Task<GetByIdUserMessageDto> GetByIdUserMessageAsync(int id)
+        {
+            HttpResponseMessage responseMessage = await _httpClient.GetAsync("usermessages/" + id);
+            GetByIdUserMessageDto result = await responseMessage.Content.ReadFromJsonAsync<GetByIdUserMessageDto>();
+
+            return result;
+        }
     }
 }

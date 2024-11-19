@@ -13,7 +13,7 @@
                 Gelen mesajlarınız burada görüntülenir.
             </p>
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -31,11 +31,11 @@
                                 <td>@counter</td>
                                 <td>@item.SenderId</td>
                                 <td>@item.Subject</td>
-                                <td><button class="btn btn-light">Detaylar</button></td>
+                                <td><a class="btn btn-light" asp-controller="Message" asp-action="InboxMessageDetail" asp-route-id="@item.Id">Detaylar</a></td>
                                 <td>
                                     <label asp-for="@item.IsRead">
                                         <input type="checkbox" asp-for="@item.IsRead">
-                                        @(@item.IsRead ? "Aktif" : "Pasif")
+                                        @(@item.IsRead ? "Okundu" : "Okunmadı")
                                     </label>
                                 </td>
                                 <td>@item.CreatedDate</td>
