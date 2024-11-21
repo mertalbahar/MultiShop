@@ -1,4 +1,5 @@
 ﻿using MultiShop.DtoLayer.MessageDtos;
+using NuGet.Protocol.Plugins;
 
 namespace MultiShop.WebUI.Services.MessageServices
 {
@@ -15,6 +16,14 @@ namespace MultiShop.WebUI.Services.MessageServices
         {
             HttpResponseMessage responseMessage = await _httpClient.GetAsync("usermessages/inboxMessage?id=" + receiverId);
             List<ResultInboxUserMessageDto> result = await responseMessage.Content.ReadFromJsonAsync<List<ResultInboxUserMessageDto>>();
+
+            return result;
+        }
+
+        public async Task<List<ResultSendboxUserMessageDto>> GetAllSendboxMessagesAsync(string senderId)
+        {
+            HttpResponseMessage responseMessage = await _httpClient.GetAsync("usermessages/sendboxMessage?id=" + senderId);
+            List<ResultSendboxUserMessageDto> result = await responseMessage.Content.ReadFromJsonAsync<List<ResultSendboxUserMessageDto>>();
 
             return result;
         }
