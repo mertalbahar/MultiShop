@@ -43,5 +43,21 @@ namespace MultiShop.WebUI.Areas.User.Controllers
 
             return RedirectToAction("Inbox", "Message", new { area = "User" });
         }
+
+        public async Task<IActionResult> Sendbox()
+        {
+            UserDetailDto user = await _manager.UserService.GetUserDetailAsync();
+            List<ResultSendboxUserMessageDto> values = await _manager.MessageService.GetAllSendboxMessagesAsync(user.Id);
+
+            return View(values);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> SendboxMessageDetail([FromRoute(Name = "id")] int id)
+        {
+            GetByIdUserMessageDto values = await _manager.MessageService.GetByIdUserMessageAsync(id);
+
+            return View(values);
+        }
     }
 }
