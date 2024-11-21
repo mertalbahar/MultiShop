@@ -1,0 +1,51 @@
+﻿@model List<ResultInboxUserMessageDto>
+
+@{
+    ViewData["Title"] = "Inbox Messages";
+    int counter = 1;
+}
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Gelen Mesajlar</h4>
+            <p class="card-description">
+                Gelen mesajlarınız burada görüntülenir.
+            </p>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Gönderen</th>
+                            <th>Konu</th>
+                            <th>Detaylar</th>
+                            <th>Durumu</th>
+                            <th>Gönderim Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@counter</td>
+                                <td>@item.SenderId</td>
+                                <td>@item.Subject</td>
+                                <td><a class="btn btn-light" asp-controller="Message" asp-action="InboxMessageDetail" asp-route-id="@item.Id">Detaylar</a></td>
+                                <td>
+                                    <label asp-for="@item.IsRead">
+                                        <input type="checkbox" asp-for="@item.IsRead">
+                                        @(@item.IsRead ? "Okundu" : "Okunmadı")
+                                    </label>
+                                </td>
+                                <td>@item.CreatedDate</td>
+                            </tr>
+
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

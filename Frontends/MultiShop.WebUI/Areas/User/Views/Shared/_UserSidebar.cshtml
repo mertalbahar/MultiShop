@@ -28,6 +28,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" asp-controller="Message" asp-action="Inbox">
+                <i class="mdi mdi-message menu-icon"></i>
+                <span class="menu-title">Gelen Mesajlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-controller="Message" asp-action="Sendbox">
+                <i class="mdi mdi-message-reply menu-icon"></i>
+                <span class="menu-title">Giden Mesajlar</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="~/templates/spica/pages/tables/basic-table.html">
                 <i class="mdi mdi-comment-text menu-icon"></i>
                 <span class="menu-title">Yorumlarım</span>

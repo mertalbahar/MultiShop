@@ -13,6 +13,7 @@ using MultiShop.WebUI.Services.CommentServices.ContactServices;
 using MultiShop.WebUI.Services.CommentServices.UserCommentServices;
 using MultiShop.WebUI.Services.DiscountServices;
 using MultiShop.WebUI.Services.IdentityServices;
+using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 
@@ -50,12 +51,16 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<IOrderAddressService> _orderAddressService;
         private readonly Lazy<IOrderingService> _orderingService;
 
+        // Message Microservice
+        private readonly Lazy<IMessageService> _messageService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
             IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
-            IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService)
+            IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService,
+            IMessageService messageService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -86,6 +91,9 @@ namespace MultiShop.WebUI.Services.Concretes
             // Order Microservice
             _orderAddressService = new Lazy<IOrderAddressService>(() => orderAddressService);
             _orderingService = new Lazy<IOrderingService>(() => orderingService);
+
+            // Message Microservice
+            _messageService = new Lazy<IMessageService>(() => messageService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -127,5 +135,8 @@ namespace MultiShop.WebUI.Services.Concretes
         public IOrderAddressService OrderAddressService => _orderAddressService.Value;
 
         public IOrderingService OrderingService => _orderingService.Value;
+
+        // Message Microservice
+        public IMessageService MessageService => _messageService.Value;
     }
 }
