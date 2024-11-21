@@ -33,7 +33,7 @@ namespace MultiShop.Message.DataAccess.Concrete
 
         public async Task<T> GetByFilterAsync(Expression<Func<T, bool>> filter)
         {
-            return await _context.Set<T>().SingleOrDefaultAsync(filter);
+            return await _context.Set<T>().Where(filter).SingleOrDefaultAsync();
         }
 
         public async Task<List<T>> GetListAsync(Expression<Func<T, bool>> filter = null)

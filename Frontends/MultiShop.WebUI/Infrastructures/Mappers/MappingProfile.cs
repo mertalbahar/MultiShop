@@ -11,6 +11,7 @@ using MultiShop.DtoLayer.CatalogDtos.SpecialOfferDtos;
 using MultiShop.DtoLayer.CommentDtos.ContactDtos;
 using MultiShop.DtoLayer.CommentDtos.UserCommentDtos;
 using MultiShop.DtoLayer.DiscountDtos;
+using MultiShop.DtoLayer.MessageDtos;
 
 namespace MultiShop.WebUI.Infrastructures.Mappers
 {
@@ -42,6 +43,9 @@ namespace MultiShop.WebUI.Infrastructures.Mappers
 
             // Discount Microservice
             CreateMap<GetByIdDiscountCouponDto, UpdateDiscountCouponDto>();
+
+            // Message Microservice
+            CreateMap<GetByIdUserMessageDto, UpdateUserMessageDto>();
         }
     }
 }

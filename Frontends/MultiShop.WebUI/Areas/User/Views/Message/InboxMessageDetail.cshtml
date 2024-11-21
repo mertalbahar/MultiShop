@@ -1,4 +1,4 @@
-﻿@model GetByIdUserMessageDto
+﻿@model UpdateUserMessageDto
 
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -6,7 +6,10 @@
             <div class="mb-3 d-flex justify-content-end">
                 <a class="btn btn-lg btn-secondary" asp-controller="Message" asp-action="Inbox">Geri</a>
             </div>
-            <form class="forms-sample">
+            <form method="post">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="ReceiverId" />
+
                 <div class="d-flex justify-content-end">
                     <label asp-for="CreatedDate" readonly>@Model.CreatedDate</label>
                 </div>
@@ -28,6 +31,7 @@
                         @(Model.IsRead ? "Okundu" : "Okunmadı")
                     </label>
                 </div>
+                <button type="submit" class="btn btn-primary mr-2">Kaydet</button>
             </form>
         </div>
     </div>

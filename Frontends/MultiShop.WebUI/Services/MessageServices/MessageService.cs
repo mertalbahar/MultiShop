@@ -26,5 +26,10 @@ namespace MultiShop.WebUI.Services.MessageServices
 
             return result;
         }
+
+        public async Task UpdateUserMessageAsync(UpdateUserMessageDto updateUserMessageDto)
+        {
+            await _httpClient.PutAsJsonAsync<UpdateUserMessageDto>("usermessages/update", updateUserMessageDto);
+        }
     }
 }

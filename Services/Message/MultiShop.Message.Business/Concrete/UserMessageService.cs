@@ -70,9 +70,11 @@ namespace MultiShop.Message.Business.Concrete
         public async Task UpdateUserMessageAsync(UpdateUserMessageDto updateUserMessageDto)
         {
             UserMessage getUserMessage = await _manager.UserMessageRepository.GetByFilterAsync(x => x.Id.Equals(updateUserMessageDto.Id));
+            updateUserMessageDto.CreatedDate = getUserMessage.CreatedDate;
             UserMessage mappedUserMessage = _mapper.Map(updateUserMessageDto, getUserMessage);
-            UserMessage updatedUserMessage = await _manager.UserMessageRepository.UpdateAsync(mappedUserMessage);
+            await _manager.UserMessageRepository.UpdateAsync(mappedUserMessage);
             await _manager.SaveAsync();
+
         }
     }
 }
