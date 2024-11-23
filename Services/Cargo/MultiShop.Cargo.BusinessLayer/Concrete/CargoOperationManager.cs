@@ -1,4 +1,5 @@
 ﻿using MultiShop.Cargo.BusinessLayer.Abstract;
+using MultiShop.Cargo.DataAccess.Abstract;
 using MultiShop.Cargo.DataAccessLayer.Abstract;
 using MultiShop.Cargo.EntityLayer.Concrete;
 
@@ -6,35 +7,36 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete;
 
 public class CargoOperationManager : ICargoOperationService
 {
-    private readonly ICargoOperationDal _cargoOperationDal;
+    private readonly IRepositoryManager _manager;
 
-    public CargoOperationManager(ICargoOperationDal cargoOperationDal)
+    public CargoOperationManager(IRepositoryManager manager)
     {
-        _cargoOperationDal = cargoOperationDal;
+        _manager = manager;
     }
 
     public void TDelete(int id)
     {
-        _cargoOperationDal.Delete(id);
+        CargoOperation cargoOperation = TGetById(id);
+        _manager.CargoOperationRepository.Delete(cargoOperation);
     }
 
-    public List<CargoOperation> TGetAll()
+    public IList<CargoOperation> TGetAll()
     {
-        return _cargoOperationDal.GetAll();
+        return _manager.CargoOperationRepository.GetList();
     }
 
     public CargoOperation TGetById(int id)
     {
-        return _cargoOperationDal.GetById(id);
+        return _manager.CargoOperationRepository.Get(x => x.Id.Equals(id));
     }
 
     public void TInsert(CargoOperation entity)
     {
-        _cargoOperationDal.Insert(entity);
+        _manager.CargoOperationRepository.Add(entity);
     }
 
     public void TUpdate(CargoOperation entity)
     {
-        _cargoOperationDal.Update(entity);
+        _manager.CargoOperationRepository.Update(entity);
     }
 }

@@ -19,7 +19,7 @@ public class CargoCustomersController : ControllerBase
     [HttpGet]
     public IActionResult CargoCustomerList()
     {
-        List<CargoCustomer> values = _cargoCustomerService.TGetAll();
+        IList<CargoCustomer> values = _cargoCustomerService.TGetAll();
 
         return Ok(values);
     }

@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.EntityFrameworkCore;
+using MultiShop.Cargo.Business.Infrastructure.Extensions.ServiceRegistration;
 using MultiShop.Cargo.BusinessLayer.Abstract;
 using MultiShop.Cargo.BusinessLayer.Concrete;
+using MultiShop.Cargo.DataAccess.Abstract;
+using MultiShop.Cargo.DataAccess.Concrete;
 using MultiShop.Cargo.DataAccessLayer.Abstract;
 using MultiShop.Cargo.DataAccessLayer.Concrete;
-using MultiShop.Cargo.DataAccessLayer.EntityFramework;
+using MultiShop.Cargo.DataAccessLayer.Concrete.EntityFramework;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,18 +24,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
     opt.Audience = "ResourceCargo";
 });
 
-builder.Services.AddDbContext<CargoContext>();
-
 // Add services to the container.
-builder.Services.AddScoped<ICargoCompanyDal, EfCargoCompanyDal>();
-builder.Services.AddScoped<ICargoCustomerDal, EfCargoCustomerDal>();
-builder.Services.AddScoped<ICargoDetailDal, EfCargoDetailDal>();
-builder.Services.AddScoped<ICargoOperationDal, EfCargoOperationDal>();
-
-builder.Services.AddScoped<ICargoCompanyService, CargoCompanyManager>();
-builder.Services.AddScoped<ICargoCustomerService, CargoCustomerManager>();
-builder.Services.AddScoped<ICargoDetailService, CargoDetailManager>();
-builder.Services.AddScoped<ICargoOperationService, CargoOperationManager>();
+builder.Services.AddDbRegistrationService(builder.Configuration);
+builder.Services.AddRepositoryRegistrationService();
+builder.Services.AddServiceRegistrationService();
 
 builder.Services.AddControllers(opt =>
 {
