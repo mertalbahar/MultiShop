@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MultiShop.IdentityServer.Dtos;
 using MultiShop.IdentityServer.Models;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
@@ -50,7 +52,7 @@ namespace MultiShop.IdentityServer.Controllers
                 Name = userRegisterDto.Name,
                 Surname = userRegisterDto.Surname,
             };
-            var result = await _userManager.CreateAsync(user, userRegisterDto.Password);
+            IdentityResult result = await _userManager.CreateAsync(user, userRegisterDto.Password);
 
             if (result.Succeeded)
             {
@@ -75,6 +77,14 @@ namespace MultiShop.IdentityServer.Controllers
             {
                 return BadRequest("Kullanıcı adı veya Şifre hatalı.");
             }
+        }
+
+        [HttpGet("getuserlist")]
+        public async Task<IActionResult> GetAllUsers()
+        {
+            List<ApplicationUser> users = await _userManager.Users.ToListAsync();
+
+            return Ok(users);
         }
     }
 }
