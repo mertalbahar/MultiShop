@@ -21,7 +21,7 @@ public class RemoveOrderingCommandHandler : IRequestHandler<RemoveOrderingComman
 
     public async Task Handle(RemoveOrderingCommand request, CancellationToken cancellationToken)
     {
-        Ordering ordering = await _manager.OrderingRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        Ordering ordering = await _manager.OrderingRepository.GetAsync(x => x.Id.Equals(request.Id));
         await _manager.OrderingRepository.DeleteAsync(ordering);
     }
 }

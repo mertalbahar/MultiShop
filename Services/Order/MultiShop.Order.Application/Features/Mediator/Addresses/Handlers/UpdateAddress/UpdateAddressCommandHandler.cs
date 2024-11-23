@@ -25,7 +25,7 @@ public class UpdateAddressCommandHandler : IRequestHandler<UpdateAddressCommand,
 
     public async Task<UpdatedAddressDto> Handle(UpdateAddressCommand request, CancellationToken cancellationToken)
     {
-        Address getAddress = await _manager.AddressRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        Address getAddress = await _manager.AddressRepository.GetAsync(x => x.Id.Equals(request.Id));
         Address mappedAddress = _mapper.Map(request, getAddress);
         Address updatedAddress = await _manager.AddressRepository.UpdateAsync(mappedAddress);
         UpdatedAddressDto updatedAddressDto = _mapper.Map<UpdatedAddressDto>(updatedAddress);

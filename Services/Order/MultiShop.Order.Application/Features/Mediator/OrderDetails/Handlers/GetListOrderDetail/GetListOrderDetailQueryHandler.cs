@@ -25,7 +25,7 @@ public class GetListOrderDetailQueryHandler : IRequestHandler<GetListOrderDetail
 
     public async Task<List<GetListOrderDetailDto>> Handle(GetListOrderDetailQuery request, CancellationToken cancellationToken)
     {
-        List<OrderDetail> listedOrderDetail = await _manager.OrderDetailRepository.GetAllAsync();
+        IList<OrderDetail> listedOrderDetail = await _manager.OrderDetailRepository.GetListAsync();
         List<GetListOrderDetailDto> getListOrderDetailDto = _mapper.Map<List<GetListOrderDetailDto>>(listedOrderDetail);
 
         return getListOrderDetailDto;

@@ -25,7 +25,7 @@ public class UpdateOrderingCommandHandler : IRequestHandler<UpdateOrderingComman
 
     public async Task<UpdatedOrderingDto> Handle(UpdateOrderingCommand request, CancellationToken cancellationToken)
     {
-        Ordering getOrdering = await _manager.OrderingRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        Ordering getOrdering = await _manager.OrderingRepository.GetAsync(x => x.Id.Equals(request.Id));
         Ordering mappedOrdering = _mapper.Map(request, getOrdering);
         Ordering updatedOrdering = await _manager.OrderingRepository.UpdateAsync(mappedOrdering);
         UpdatedOrderingDto updatedOrderingDto = _mapper.Map<UpdatedOrderingDto>(updatedOrdering);

@@ -25,7 +25,7 @@ public class UpdateOrderDetailCommandHandler : IRequestHandler<UpdateOrderDetail
 
     public async Task<UpdatedOrderDetailDto> Handle(UpdateOrderDetailCommand request, CancellationToken cancellationToken)
     {
-        OrderDetail getOrderDetail = await _manager.OrderDetailRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        OrderDetail getOrderDetail = await _manager.OrderDetailRepository.GetAsync(x => x.Id.Equals(request.Id));
         OrderDetail mappedOrderDetail = _mapper.Map(request, getOrderDetail);
         OrderDetail updatedOrderDetail = await _manager.OrderDetailRepository.UpdateAsync(mappedOrderDetail);
         UpdatedOrderDetailDto updatedOrderDetailDto = _mapper.Map<UpdatedOrderDetailDto>(updatedOrderDetail);

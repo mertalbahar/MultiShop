@@ -21,7 +21,7 @@ public class RemoveAddressCommandHandler : IRequestHandler<RemoveAddressCommand>
 
     public async Task Handle(RemoveAddressCommand request, CancellationToken cancellationToken)
     {
-        Address address = await _manager.AddressRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        Address address = await _manager.AddressRepository.GetAsync(x => x.Id.Equals(request.Id));
         await _manager.AddressRepository.DeleteAsync(address);
     }
 }
