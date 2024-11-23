@@ -20,8 +20,7 @@ namespace MultiShop.Comment.Services.Concretes
         public void CreateUserComment(CreateUserCommentDto createUserCommentDto)
         {
             UserComment userComment = _mapper.Map<UserComment>(createUserCommentDto);
-            _manager.UserComment.Create(userComment);
-            _manager.Save();
+            _manager.UserComment.Add(userComment);
         }
 
         public void DeleteUserComment(int id)
@@ -32,21 +31,20 @@ namespace MultiShop.Comment.Services.Concretes
             if (result is not null)
             {
                 _manager.UserComment.Delete(result);
-                _manager.Save();
             }
         }
 
         public IEnumerable<ResultUserCommentDto> GetAllUserComments()
         {
-            IQueryable<UserComment> userComment = _manager.UserComment.FindAll();
-            IEnumerable<ResultUserCommentDto> result = _mapper.Map<IEnumerable<ResultUserCommentDto>>(userComment);
+            IList<UserComment> userComments = _manager.UserComment.GetList();
+            IEnumerable<ResultUserCommentDto> result = _mapper.Map<IEnumerable<ResultUserCommentDto>>(userComments);
 
             return result;
         }
 
         public GetByIdUserCommentDto GetUserCommentById(int id)
         {
-            UserComment? userComment = _manager.UserComment.FindByCondition(x => x.Id.Equals(id));
+            UserComment? userComment = _manager.UserComment.Get(x => x.Id.Equals(id));
             GetByIdUserCommentDto result = _mapper.Map<GetByIdUserCommentDto>(userComment);
 
             return result;
@@ -54,7 +52,7 @@ namespace MultiShop.Comment.Services.Concretes
 
         public IEnumerable<ResultUserCommentDto> GetyUserCommentByProductId(string id)
         {
-            IQueryable<UserComment> userComment = _manager.UserComment.FindAll(x => x.ProductId.Equals(id));
+            IList<UserComment> userComment = _manager.UserComment.GetList(predicate: x => x.ProductId.Equals(id));
             IEnumerable<ResultUserCommentDto> result = _mapper.Map<IEnumerable<ResultUserCommentDto>>(userComment);
 
             return result;
@@ -64,7 +62,6 @@ namespace MultiShop.Comment.Services.Concretes
         {
             UserComment userComment = _mapper.Map<UserComment>(updateUserCommentDto);
             _manager.UserComment.Update(userComment);
-            _manager.Save();
         }
     }
 }

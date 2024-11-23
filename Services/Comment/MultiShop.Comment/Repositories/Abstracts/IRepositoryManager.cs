@@ -4,7 +4,5 @@
     {
         IUserCommentRepository UserComment {  get; }
         IContactRepository Contact { get; }
-
-        void Save();
     }
 }
