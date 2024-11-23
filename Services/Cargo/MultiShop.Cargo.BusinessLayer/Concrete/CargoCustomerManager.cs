@@ -1,4 +1,5 @@
 ﻿using MultiShop.Cargo.BusinessLayer.Abstract;
+using MultiShop.Cargo.DataAccess.Abstract;
 using MultiShop.Cargo.DataAccessLayer.Abstract;
 using MultiShop.Cargo.EntityLayer.Concrete;
 
@@ -6,35 +7,36 @@ namespace MultiShop.Cargo.BusinessLayer.Concrete;
 
 public class CargoCustomerManager : ICargoCustomerService
 {
-    private readonly ICargoCustomerDal _cargoCustomerDal;
+    private readonly IRepositoryManager _manager;
 
-    public CargoCustomerManager(ICargoCustomerDal cargoCustomerDal)
+    public CargoCustomerManager(IRepositoryManager manager)
     {
-        _cargoCustomerDal = cargoCustomerDal;
+        _manager = manager;
     }
 
     public void TDelete(int id)
     {
-        _cargoCustomerDal.Delete(id);
+        CargoCustomer cargoCustomer = TGetById(id);
+        _manager.CargoCustomerRepository.Delete(cargoCustomer);
     }
 
-    public List<CargoCustomer> TGetAll()
+    public IList<CargoCustomer> TGetAll()
     {
-        return _cargoCustomerDal.GetAll();
+        return _manager.CargoCustomerRepository.GetList();
     }
 
     public CargoCustomer TGetById(int id)
     {
-        return _cargoCustomerDal.GetById(id);
+        return _manager.CargoCustomerRepository.Get(x => x.Id.Equals(id));
     }
 
     public void TInsert(CargoCustomer entity)
     {
-        _cargoCustomerDal.Insert(entity);
+        _manager.CargoCustomerRepository.Add(entity);
     }
 
     public void TUpdate(CargoCustomer entity)
     {
-        _cargoCustomerDal.Update(entity);
+        _manager.CargoCustomerRepository.Update(entity);
     }
 }

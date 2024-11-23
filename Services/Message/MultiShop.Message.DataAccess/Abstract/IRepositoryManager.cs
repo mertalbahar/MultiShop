@@ -9,6 +9,5 @@ namespace MultiShop.Message.DataAccess.Abstract
     public interface IRepositoryManager
     {
         IUserMessageRepository UserMessageRepository { get; }
-        Task SaveAsync();
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MultiShop.Cargo.EntityLayer.Concrete;
+using MultiShop.Core.Repositories.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,6 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Cargo.DataAccessLayer.Abstract;
 
-public interface ICargoCompanyDal : IGenericDal<CargoCompany>
+public interface ICargoCompanyRepository : IRepository<CargoCompany>
 {
 }

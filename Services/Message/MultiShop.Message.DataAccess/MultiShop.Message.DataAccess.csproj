@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\MultiShop.Core\MultiShop.Core.csproj" />
     <ProjectReference Include="..\MultiShop.Message.Entity\MultiShop.Message.Entity.csproj" />
   </ItemGroup>
 

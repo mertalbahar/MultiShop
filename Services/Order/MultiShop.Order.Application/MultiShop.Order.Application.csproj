@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Features\Mediator\Addresses\Models\**" />
+    <Compile Remove="Features\Mediator\OrderDetails\Models\**" />
+    <Compile Remove="Features\Mediator\Orderings\Models\**" />
+    <EmbeddedResource Remove="Features\Mediator\Addresses\Models\**" />
+    <EmbeddedResource Remove="Features\Mediator\OrderDetails\Models\**" />
+    <EmbeddedResource Remove="Features\Mediator\Orderings\Models\**" />
+    <None Remove="Features\Mediator\Addresses\Models\**" />
+    <None Remove="Features\Mediator\OrderDetails\Models\**" />
+    <None Remove="Features\Mediator\Orderings\Models\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
@@ -14,12 +26,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MultiShop.Order.Domain\MultiShop.Order.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Features\Mediator\Addresses\Models\" />
-    <Folder Include="Features\Mediator\OrderDetails\Models\" />
-    <Folder Include="Features\Mediator\Orderings\Models\" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using MultiShop.Order.Domain.Entities;
+﻿using MultiShop.Core.Repositories.Abstracts;
+using MultiShop.Order.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

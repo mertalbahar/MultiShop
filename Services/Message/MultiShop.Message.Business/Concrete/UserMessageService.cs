@@ -24,20 +24,18 @@ namespace MultiShop.Message.Business.Concrete
         public async Task CreateUserMessageAsync(CreateUserMessageDto createUserMessageDto)
         {
             UserMessage mappedUserMessage = _mapper.Map<UserMessage>(createUserMessageDto);
-            await _manager.UserMessageRepository.CreateAsync(mappedUserMessage);
-            await _manager.SaveAsync();
+            await _manager.UserMessageRepository.AddAsync(mappedUserMessage);
         }
 
         public async Task DeleteUserMessageAsync(int id)
         {
-            UserMessage userMessage = await _manager.UserMessageRepository.GetByFilterAsync(x => x.Id.Equals(id));
+            UserMessage userMessage = await _manager.UserMessageRepository.GetAsync(x => x.Id.Equals(id));
             await _manager.UserMessageRepository.DeleteAsync(userMessage);
-            await _manager.SaveAsync();
         }
 
         public async Task<List<ResultUserMessageDto>> GetAllUserMessageAsync()
         {
-            List<UserMessage> listedUserMessage = await _manager.UserMessageRepository.GetListAsync();
+            IList<UserMessage> listedUserMessage = await _manager.UserMessageRepository.GetListAsync();
             List<ResultUserMessageDto> result = _mapper.Map<List<ResultUserMessageDto>>(listedUserMessage);
 
             return result;
@@ -45,7 +43,7 @@ namespace MultiShop.Message.Business.Concrete
 
         public async Task<GetByIdUserMessageDto> GetByIdUserMessageAsync(int id)
         {
-            UserMessage userMessage = await _manager.UserMessageRepository.GetByFilterAsync(x => x.Id.Equals(id));
+            UserMessage userMessage = await _manager.UserMessageRepository.GetAsync(x => x.Id.Equals(id));
             GetByIdUserMessageDto result = _mapper.Map<GetByIdUserMessageDto>(userMessage);
 
             return result;
@@ -53,7 +51,7 @@ namespace MultiShop.Message.Business.Concrete
 
         public async Task<List<ResultInboxUserMessageDto>> GetInboxUserMessageAsync(string receiverId)
         {
-            List<UserMessage> listedUserMessage = await _manager.UserMessageRepository.GetListAsync(x => x.ReceiverId.Equals(receiverId));
+            IList<UserMessage> listedUserMessage = await _manager.UserMessageRepository.GetListAsync(x => x.ReceiverId.Equals(receiverId));
             List<ResultInboxUserMessageDto> result = _mapper.Map<List<ResultInboxUserMessageDto>>(listedUserMessage);
 
             return result;
@@ -61,7 +59,7 @@ namespace MultiShop.Message.Business.Concrete
 
         public async Task<List<ResultSendboxUserMessageDto>> GetSendboxUserMessageAsync(string senderId)
         {
-            List<UserMessage> listedUserMessage = await _manager.UserMessageRepository.GetListAsync(x => x.SenderId.Equals(senderId));
+            IList<UserMessage> listedUserMessage = await _manager.UserMessageRepository.GetListAsync(x => x.SenderId.Equals(senderId));
             List<ResultSendboxUserMessageDto> result = _mapper.Map<List<ResultSendboxUserMessageDto>>(listedUserMessage);
 
             return result;
@@ -69,11 +67,10 @@ namespace MultiShop.Message.Business.Concrete
 
         public async Task UpdateUserMessageAsync(UpdateUserMessageDto updateUserMessageDto)
         {
-            UserMessage getUserMessage = await _manager.UserMessageRepository.GetByFilterAsync(x => x.Id.Equals(updateUserMessageDto.Id));
+            UserMessage getUserMessage = await _manager.UserMessageRepository.GetAsync(x => x.Id.Equals(updateUserMessageDto.Id));
             updateUserMessageDto.CreatedDate = getUserMessage.CreatedDate;
             UserMessage mappedUserMessage = _mapper.Map(updateUserMessageDto, getUserMessage);
             await _manager.UserMessageRepository.UpdateAsync(mappedUserMessage);
-            await _manager.SaveAsync();
 
         }
     }

@@ -1,4 +1,5 @@
-﻿using MultiShop.Message.Entity.Concrete;
+﻿using MultiShop.Core.Repositories.Abstracts;
+using MultiShop.Message.Entity.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

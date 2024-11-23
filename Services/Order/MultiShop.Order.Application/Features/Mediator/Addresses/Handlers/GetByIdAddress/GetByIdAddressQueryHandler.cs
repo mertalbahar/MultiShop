@@ -25,7 +25,7 @@ public class GetByIdAddressQueryHandler : IRequestHandler<GetByIdAddressQuery, G
 
     public async Task<GetByIdAddressDto> Handle(GetByIdAddressQuery request, CancellationToken cancellationToken)
     {
-        Address address = await _manager.AddressRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        Address address = await _manager.AddressRepository.GetAsync(x => x.Id.Equals(request.Id));
         GetByIdAddressDto getByIdAddressDto = _mapper.Map<GetByIdAddressDto>(address);
 
         return getByIdAddressDto;

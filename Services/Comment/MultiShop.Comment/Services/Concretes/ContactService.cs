@@ -20,8 +20,7 @@ namespace MultiShop.Comment.Services.Concretes
         public void CreateContact(CreateContactDto createContactDto)
         {
             Contact contact = _mapper.Map<Contact>(createContactDto);
-            _manager.Contact.Create(contact);
-            _manager.Save();
+            _manager.Contact.Add(contact);
         }
 
         public void DeleteContact(int id)
@@ -32,13 +31,12 @@ namespace MultiShop.Comment.Services.Concretes
             if (result is not null)
             {
                 _manager.Contact.Delete(result);
-                _manager.Save();
             }
         }
 
         public IEnumerable<ResultContactDto> GetAllContacts()
         {
-            IQueryable<Contact> contact = _manager.Contact.FindAll();
+            IList<Contact> contact = _manager.Contact.GetList();
             IEnumerable<ResultContactDto> result = _mapper.Map<IEnumerable<ResultContactDto>>(contact);
 
             return result;
@@ -46,7 +44,7 @@ namespace MultiShop.Comment.Services.Concretes
 
         public GetByIdContactDto GetContactById(int id)
         {
-            Contact? contact = _manager.Contact.FindByCondition(x => x.Id.Equals(id));
+            Contact? contact = _manager.Contact.Get(x => x.Id.Equals(id));
             GetByIdContactDto result = _mapper.Map<GetByIdContactDto>(contact);
 
             return result;
@@ -56,7 +54,6 @@ namespace MultiShop.Comment.Services.Concretes
         {
             Contact contact = _mapper.Map<Contact>(updateContactDto);
             _manager.Contact.Update(contact);
-            _manager.Save();
         }
     }
 }

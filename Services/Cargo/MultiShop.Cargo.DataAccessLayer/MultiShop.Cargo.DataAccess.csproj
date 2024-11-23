@@ -11,7 +11,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MultiShop.Cargo.EntityLayer\MultiShop.Cargo.EntityLayer.csproj" />
+    <ProjectReference Include="..\..\..\Core\MultiShop.Core\MultiShop.Core.csproj" />
+    <ProjectReference Include="..\MultiShop.Cargo.EntityLayer\MultiShop.Cargo.Entity.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>

@@ -26,7 +26,7 @@ public class CreateAddressCommandHandler : IRequestHandler<CreateAddressCommand,
     public async Task<CreatedAddressDto> Handle(CreateAddressCommand request, CancellationToken cancellationToken)
     {
         Address mappedAddress = _mapper.Map<Address>(request);
-        Address createdAddress = await _manager.AddressRepository.CreateAsync(mappedAddress);
+        Address createdAddress = await _manager.AddressRepository.AddAsync(mappedAddress);
         CreatedAddressDto createdAddressDto = _mapper.Map<CreatedAddressDto>(createdAddress);
 
         return createdAddressDto;

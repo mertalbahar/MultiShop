@@ -26,7 +26,7 @@ public class CreateOrderDetailCommandHandler : IRequestHandler<CreateOrderDetail
     public async Task<CreatedOrderDetailDto> Handle(CreateOrderDetailCommand request, CancellationToken cancellationToken)
     {
         OrderDetail mappedOrderDetail = _mapper.Map<OrderDetail>(request);
-        OrderDetail createdOrderDetail = await _manager.OrderDetailRepository.CreateAsync(mappedOrderDetail);
+        OrderDetail createdOrderDetail = await _manager.OrderDetailRepository.AddAsync(mappedOrderDetail);
         CreatedOrderDetailDto createdOrderDetailDto = _mapper.Map<CreatedOrderDetailDto>(createdOrderDetail);
 
         return createdOrderDetailDto;

@@ -21,7 +21,7 @@ public class RemoveOrderDetailCommandHandler : IRequestHandler<RemoveOrderDetail
 
     public async Task Handle(RemoveOrderDetailCommand request, CancellationToken cancellationToken)
     {
-        OrderDetail OrderDetail = await _manager.OrderDetailRepository.GetByFilterAsync(x => x.Id.Equals(request.Id));
+        OrderDetail OrderDetail = await _manager.OrderDetailRepository.GetAsync(x => x.Id.Equals(request.Id));
         await _manager.OrderDetailRepository.DeleteAsync(OrderDetail);
     }
 }

@@ -25,7 +25,7 @@ public class GetListOrderingQueryHandler : IRequestHandler<GetListOrderingQuery,
 
     public async Task<List<GetListOrderingDto>> Handle(GetListOrderingQuery request, CancellationToken cancellationToken)
     {
-        List<Ordering> listedOrdering = await _manager.OrderingRepository.GetAllAsync();
+        IList<Ordering> listedOrdering = await _manager.OrderingRepository.GetListAsync();
         List<GetListOrderingDto> getListOrderingDto = _mapper.Map<List<GetListOrderingDto>>(listedOrdering);
 
         return getListOrderingDto;

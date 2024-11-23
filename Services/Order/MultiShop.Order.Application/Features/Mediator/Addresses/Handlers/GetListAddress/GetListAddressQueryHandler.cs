@@ -25,7 +25,7 @@ public class GetListAddressQueryHandler : IRequestHandler<GetListAddressQuery, L
 
     public async Task<List<GetListAddressDto>> Handle(GetListAddressQuery request, CancellationToken cancellationToken)
     {
-        List<Address> listedAddress = await _manager.AddressRepository.GetAllAsync();
+        IList<Address> listedAddress = await _manager.AddressRepository.GetListAsync();
         List<GetListAddressDto> getListAddressDto = _mapper.Map<List<GetListAddressDto>>(listedAddress);
 
         return getListAddressDto;

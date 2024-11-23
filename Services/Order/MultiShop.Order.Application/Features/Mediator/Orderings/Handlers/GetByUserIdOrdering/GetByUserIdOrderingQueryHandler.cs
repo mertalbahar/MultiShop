@@ -25,7 +25,7 @@ namespace MultiShop.Order.Application.Features.Mediator.Orderings.Handlers.GetBy
 
         public async Task<List<GetListOrderingDto>> Handle(GetByUserIdOrderingQuery request, CancellationToken cancellationToken)
         {
-            List<Ordering> ordering = await _manager.OrderingRepository.GetAllAsync(x => x.UserId.Equals(request.UserId));
+            IList<Ordering> ordering = await _manager.OrderingRepository.GetListAsync(x => x.UserId.Equals(request.UserId));
             List<GetListOrderingDto> getListOrderingDto = _mapper.Map<List<GetListOrderingDto>>(ordering);
 
             return getListOrderingDto;
