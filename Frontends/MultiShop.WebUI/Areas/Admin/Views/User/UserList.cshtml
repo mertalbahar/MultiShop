@@ -1,0 +1,46 @@
+﻿@model List<ResultUserDto>
+
+@{
+    ViewData["Title"] = "User";
+    int counter = 1;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Kullanıcı Listesi</h4>
+        <p>Kullanıcı ile ilgili işlemlerinizi gerçekleştirebilirsiniz.</p>
+        <br />
+        <div class="bs-example" data-example-id="simple-table">
+            <table class="table table-bordered">
+                <caption>
+                    Kullanıcılar
+                </caption>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kullanıcı Id</th>
+                        <th>Kullanıcı Adı</th>
+                        <th>Adı</th>
+                        <th>Soyadı</th>
+                        <th>Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.Id</td>
+                            <td>@item.UserName</td>
+                            <td>@item.Name</td>
+                            <td>@item.Surname</td>
+                            <td>@item.Email</td>
+                        </tr>
+
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
