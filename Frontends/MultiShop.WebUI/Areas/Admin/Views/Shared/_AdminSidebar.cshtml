@@ -21,6 +21,40 @@
                     <span>Kullanıcılar</span>
                 </a>
             </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-comments"></i>
+                    <span>Mesajlar Menüsü</span>
+                    <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a asp-area="Admin" asp-controller="Message" asp-action="Inbox">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Gelen Mesajlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Message" asp-action="Sendbox">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Giden Mesajlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="UserComment" asp-action="Index">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Yorumlar</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Contact" asp-action="Index">
+                            <i class="fa fa-angle-right"></i>
+                            <span>İletişim Mesajları</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             <li>
                 <a asp-area="Admin" asp-controller="Category" asp-action="Index">
                     <i class="fa fa-th"></i>
@@ -76,16 +110,7 @@
                     <i class="fa fa-th"></i> <span>Hakkımızda</span>
                 </a>
             </li>
-            <li>
-                <a asp-area="Admin" asp-controller="UserComment" asp-action="Index">
-                    <i class="fa fa-comment"></i> <span>Yorumlar</span>
-                </a>
-            </li>
-            <li>
-                <a asp-area="Admin" asp-controller="Contact" asp-action="Index">
-                    <i class="fa fa-comment"></i> <span>İletişim Mesajları</span>
-                </a>
-            </li>
+
             <li>
                 <a asp-area="Admin" asp-controller="DiscountCoupon" asp-action="Index">
                     <i class="fa fa-angle-double-down"></i> <span>İndirim Kuponları</span>
