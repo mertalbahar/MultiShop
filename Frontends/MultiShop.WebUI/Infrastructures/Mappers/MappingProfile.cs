@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MultiShop.DtoLayer.CargoDtos.CargoCompanyDtos;
 using MultiShop.DtoLayer.CatalogDtos.AboutDtos;
 using MultiShop.DtoLayer.CatalogDtos.BrandDtos;
 using MultiShop.DtoLayer.CatalogDtos.CategoryDtos;
@@ -46,6 +47,9 @@ namespace MultiShop.WebUI.Infrastructures.Mappers
 
             // Message Microservice
             CreateMap<GetByIdUserMessageDto, UpdateUserMessageDto>();
+
+            // Cargo Microservice
+            CreateMap<GetByIdCargoCompanyDto, UpdateCargoCompanyDto>();
         }
     }
 }

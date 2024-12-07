@@ -1,6 +1,7 @@
 ﻿using MultiShop.WebUI.Handlers;
 using MultiShop.WebUI.Services.Abstracts;
 using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -122,6 +123,12 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             services.AddHttpClient<IMessageService, MessageService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            // Cargo Microservice
+            services.AddHttpClient<ICargoCompanyService, CargoCompanyService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             return services;
