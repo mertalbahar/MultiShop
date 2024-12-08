@@ -1,0 +1,50 @@
+﻿@model List<ResultCargoCustomerDto>
+
+@{
+    ViewData["Title"] = "Cargo Customers";
+    int counter = 1;
+}
+
+<div class="col-md-12">
+    <div class="chart-box">
+        <h4>Kargo Müşteri Listesi</h4>
+        <p>Kargo müşteri ile ilgili işlemlerinizi gerçekleştirebilirsiniz.</p>
+        <br />
+        <div class="bs-example" data-example-id="simple-table">
+            <table class="table table-bordered">
+                <caption>
+                    Kargo Müşteriler
+                </caption>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Müşteri Adı</th>
+                        <th>Müşteri Soyadı</th>
+                        <th>Müşteri Email</th>
+                        <th>Müşteri Telefon</th>
+                        <th>Müşteri Adres</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th scope="row">@counter</th>
+                            <td>@item.Name</td>
+                            <td>@item.Surname</td>
+                            <td>@item.Email</td>
+                            <td>@item.Phone</td>
+                            <td>
+                                <div class="list-group">
+                                    <a class="list-group-item" asp-area="Admin" asp-controller="Cargo" asp-action="CargoCustomerDetail" asp-route-id="@item.UserId">Adres Detayı</a>
+                                </div>
+                            </td>
+                        </tr>
+
+                        counter++;
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MultiShop.DtoLayer.CargoDtos.CargoCompanyDtos;
+using MultiShop.DtoLayer.CargoDtos.CargoCustomerDtos;
 using MultiShop.DtoLayer.MessageDtos;
 using MultiShop.WebUI.Services.Abstracts;
 
@@ -63,6 +64,20 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
             await _manager.CargoCompanyService.DeleteCargoCompanyAsync(id);
 
             return RedirectToAction("CargoCompanyList", "Cargo", new { area = "Admin" });
+        }
+
+        public async Task<IActionResult> CargoCustomerList()
+        {
+            List<ResultCargoCustomerDto> values = await _manager.CargoCustomerService.GetAllCargoCustomerAsync();
+
+            return View(values);
+        }
+
+        public async Task<IActionResult> CargoCustomerDetail([FromRoute(Name = "id")] string id)
+        {
+            GetByIdCargoCustomerDto values = await _manager.CargoCustomerService.GetByUserIdCargoCustomerAsync(id);
+
+            return View(values);
         }
     }
 }

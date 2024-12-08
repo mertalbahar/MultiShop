@@ -8,6 +8,7 @@ namespace MultiShop.Cargo.Dto.Dtos.CargoCustomerDtos;
 
 public class CreateCargoCustomerDto
 {
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Email { get; set; }

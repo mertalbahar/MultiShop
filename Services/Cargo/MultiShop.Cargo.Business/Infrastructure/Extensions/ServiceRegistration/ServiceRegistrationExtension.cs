@@ -44,7 +44,7 @@ namespace MultiShop.Cargo.Business.Infrastructure.Extensions.ServiceRegistration
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<ICargoCompanyService, CargoCompanyService>();
-            services.AddScoped<ICargoCustomerService, CargoCustomerManager>();
+            services.AddScoped<ICargoCustomerService, CargoCustomerService>();
             services.AddScoped<ICargoDetailService, CargoDetailManager>();
             services.AddScoped<ICargoOperationService, CargoOperationManager>();
 

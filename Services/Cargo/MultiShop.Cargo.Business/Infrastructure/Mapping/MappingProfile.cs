@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MultiShop.Cargo.Dto.Dtos.CargoCompanyDtos;
+using MultiShop.Cargo.Dto.Dtos.CargoCustomerDtos;
 using MultiShop.Cargo.Entity.Concrete;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,11 @@ namespace MultiShop.Cargo.Business.Infrastructure.Mapping
             CreateMap<CargoCompany, GetByIdCargoCompanyDto>().ReverseMap();
             CreateMap<CargoCompany, ResultCargoCompanyDto>().ReverseMap();
             CreateMap<CargoCompany, UpdateCargoCompanyDto>().ReverseMap();
+
+            CreateMap<CargoCustomer, CreateCargoCustomerDto>().ReverseMap();
+            CreateMap<CargoCustomer, GetByIdCargoCustomerDto>().ReverseMap();
+            CreateMap<CargoCustomer, ResultCargoCustomerDto>().ReverseMap();
+            CreateMap<CargoCustomer, UpdateCargoCustomerDto>().ReverseMap();
         }
     }
 }

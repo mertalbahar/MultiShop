@@ -9,5 +9,6 @@ namespace MultiShop.Cargo.Business.Abstract
     public interface IServiceManager
     {
         ICargoCompanyService CargoCompanyService { get; }
+        ICargoCustomerService CargoCustomerService { get; }
     }
 }

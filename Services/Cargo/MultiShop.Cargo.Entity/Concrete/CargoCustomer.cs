@@ -9,6 +9,7 @@ namespace MultiShop.Cargo.Entity.Concrete;
 
 public class CargoCustomer : EfEntityBase
 {
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Email { get; set; }

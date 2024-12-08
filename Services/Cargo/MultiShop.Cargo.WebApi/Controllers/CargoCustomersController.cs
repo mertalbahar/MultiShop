@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MultiShop.Cargo.Business.Abstract;
 using MultiShop.Cargo.Dto.Dtos.CargoCustomerDtos;
-using MultiShop.Cargo.Entity.Concrete;
 
 namespace MultiShop.Cargo.WebApi.Controllers;
 
@@ -9,17 +8,17 @@ namespace MultiShop.Cargo.WebApi.Controllers;
 [ApiController]
 public class CargoCustomersController : ControllerBase
 {
-    private readonly ICargoCustomerService _cargoCustomerService;
+    private readonly IServiceManager _manager;
 
-    public CargoCustomersController(ICargoCustomerService cargoCustomerService)
+    public CargoCustomersController(IServiceManager manager)
     {
-        _cargoCustomerService = cargoCustomerService;
+        _manager = manager;
     }
 
     [HttpGet]
     public IActionResult CargoCustomerList()
     {
-        IList<CargoCustomer> values = _cargoCustomerService.TGetAll();
+        List<ResultCargoCustomerDto> values = _manager.CargoCustomerService.GetAllCargoCustomer();
 
         return Ok(values);
     }
@@ -27,7 +26,7 @@ public class CargoCustomersController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetCargoCustomerById(int id)
     {
-        CargoCustomer value = _cargoCustomerService.TGetById(id);
+        GetByIdCargoCustomerDto value = _manager.CargoCustomerService.GetByIdCargoCustomer(id);
 
         return Ok(value);
     }
@@ -35,17 +34,7 @@ public class CargoCustomersController : ControllerBase
     [HttpPost("create")]
     public IActionResult CreateCargoCustomer(CreateCargoCustomerDto createCargoCustomerDto)
     {
-        CargoCustomer cargoCustomer = new CargoCustomer()
-        {
-            Name = createCargoCustomerDto.Name,
-            Surname = createCargoCustomerDto.Surname,
-            Email = createCargoCustomerDto.Email,
-            Phone = createCargoCustomerDto.Phone,
-            City = createCargoCustomerDto.City,
-            District = createCargoCustomerDto.District,
-            Address = createCargoCustomerDto.Address,
-        };
-        _cargoCustomerService.TInsert(cargoCustomer);
+        _manager.CargoCustomerService.CreateCargoCustomer(createCargoCustomerDto);
 
         return Ok("Kargo müşterisi başarıyla oluşturuldu.");
     }
@@ -53,18 +42,7 @@ public class CargoCustomersController : ControllerBase
     [HttpPut("update")]
     public IActionResult UpdateCargoCustomer(UpdateCargoCustomerDto updateCargoCustomerDto)
     {
-        CargoCustomer cargoCustomer = new CargoCustomer()
-        {
-            Id = updateCargoCustomerDto.Id,
-            Name = updateCargoCustomerDto.Name,
-            Surname = updateCargoCustomerDto.Surname,
-            Email = updateCargoCustomerDto.Email,
-            Phone = updateCargoCustomerDto.Phone,
-            City = updateCargoCustomerDto.City,
-            District= updateCargoCustomerDto.District,
-            Address = updateCargoCustomerDto.Address,
-        };
-        _cargoCustomerService.TUpdate(cargoCustomer);
+        _manager.CargoCustomerService.UpdateCargoCustomer(updateCargoCustomerDto);
 
         return Ok("Kargo müşterisi başarıyla güncellendi.");
     }
@@ -72,8 +50,16 @@ public class CargoCustomersController : ControllerBase
     [HttpDelete("delete/{id}")]
     public IActionResult RemoveCargoCustomer(int id)
     {
-        _cargoCustomerService.TDelete(id);
+        _manager.CargoCustomerService.DeleteCargoCustomer(id);
 
         return Ok("Kargo müşterisi başarıyla silindi.");
+    }
+
+    [HttpGet("userId")]
+    public IActionResult GetCargoCustomerByUserId(string id)
+    {
+        GetByIdCargoCustomerDto values = _manager.CargoCustomerService.GetByUserIdCargoCustomer(id);
+
+        return Ok(values);
     }
 }

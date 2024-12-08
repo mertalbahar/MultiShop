@@ -9,6 +9,7 @@ namespace MultiShop.Cargo.Dto.Dtos.CargoCustomerDtos;
 public class UpdateCargoCustomerDto
 {
     public int Id { get; set; }
+    public string UserId { get; set; }
     public string Name { get; set; }
     public string Surname { get; set; }
     public string Email { get; set; }
