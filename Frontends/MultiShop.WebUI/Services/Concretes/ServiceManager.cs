@@ -1,5 +1,7 @@
 ﻿using MultiShop.WebUI.Services.Abstracts;
 using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -54,13 +56,17 @@ namespace MultiShop.WebUI.Services.Concretes
         // Message Microservice
         private readonly Lazy<IMessageService> _messageService;
 
+        // Cargo Microservice
+        private readonly Lazy<ICargoCompanyService> _cargoCompanyService;
+        private readonly Lazy<ICargoCustomerService> _cargoCustomerService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
             IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
             IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService,
-            IMessageService messageService)
+            IMessageService messageService, ICargoCompanyService cargoCompanyService, ICargoCustomerService cargoCustomerService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -94,6 +100,10 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Message Microservice
             _messageService = new Lazy<IMessageService>(() => messageService);
+
+            // Cargo Microservice
+            _cargoCompanyService = new Lazy<ICargoCompanyService>(() => cargoCompanyService);
+            _cargoCustomerService = new Lazy<ICargoCustomerService>(() => cargoCustomerService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -138,5 +148,10 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Message Microservice
         public IMessageService MessageService => _messageService.Value;
+
+        // Cargo Microservice
+        public ICargoCompanyService CargoCompanyService => _cargoCompanyService.Value;
+
+        public ICargoCustomerService CargoCustomerService => _cargoCustomerService.Value;
     }
 }

@@ -71,7 +71,6 @@ namespace MultiShop.Message.Business.Concrete
             updateUserMessageDto.CreatedDate = getUserMessage.CreatedDate;
             UserMessage mappedUserMessage = _mapper.Map(updateUserMessageDto, getUserMessage);
             await _manager.UserMessageRepository.UpdateAsync(mappedUserMessage);
-
         }
     }
 }

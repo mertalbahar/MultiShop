@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MultiShop.Cargo.BusinessLayer.Abstract;
-using MultiShop.Cargo.DtoLayer.Dtos.CargoCompanyDtos;
-using MultiShop.Cargo.EntityLayer.Concrete;
+using MultiShop.Cargo.Business.Abstract;
+using MultiShop.Cargo.Dto.Dtos.CargoCompanyDtos;
 
 namespace MultiShop.Cargo.WebApi.Controllers;
 
@@ -10,17 +9,17 @@ namespace MultiShop.Cargo.WebApi.Controllers;
 [ApiController]
 public class CargoCompaniesController : ControllerBase
 {
-    private readonly ICargoCompanyService _cargoCompanyService;
+    private readonly IServiceManager _manager;
 
-    public CargoCompaniesController(ICargoCompanyService cargoCompanyService)
+    public CargoCompaniesController(IServiceManager manager)
     {
-        _cargoCompanyService = cargoCompanyService;
+        _manager = manager;
     }
 
     [HttpGet]
     public IActionResult CargoCompanyList()
     {
-        IList<CargoCompany> values = _cargoCompanyService.TGetAll();
+        List<ResultCargoCompanyDto> values = _manager.CargoCompanyService.GetAllCargoCompany();
 
         return Ok(values);
     }
@@ -28,7 +27,7 @@ public class CargoCompaniesController : ControllerBase
     [HttpGet("{id}")]
     public IActionResult GetCargoCompanyById(int id)
     {
-        CargoCompany value = _cargoCompanyService.TGetById(id);
+        GetByIdCargoCompanyDto value = _manager.CargoCompanyService.GetByIdCargoCompany(id);
 
         return Ok(value);
     }
@@ -36,11 +35,7 @@ public class CargoCompaniesController : ControllerBase
     [HttpPost("create")]
     public IActionResult CreateCargoCompany(CreateCargoCompanyDto createCargoCompanyDto)
     {
-        CargoCompany cargoCompany = new CargoCompany()
-        {
-            Name = createCargoCompanyDto.Name,
-        };
-        _cargoCompanyService.TInsert(cargoCompany);
+        _manager.CargoCompanyService.CreateCargoCompany(createCargoCompanyDto);
 
         return Ok("Kargo şirketi başarıyla oluşturuldu.");
     }
@@ -48,12 +43,7 @@ public class CargoCompaniesController : ControllerBase
     [HttpPut("update")]
     public IActionResult UpdateCargoCompany(UpdateCargoCompanyDto updateCargoCompanyDto)
     {
-        CargoCompany cargoCompany = new CargoCompany()
-        {
-            Id = updateCargoCompanyDto.Id,
-            Name = updateCargoCompanyDto.Name,
-        };
-        _cargoCompanyService.TUpdate(cargoCompany);
+        _manager.CargoCompanyService.UpdateCargoCompany(updateCargoCompanyDto);
 
         return Ok("Kargo şirketi başarıyla güncellendi.");
     }
@@ -61,7 +51,7 @@ public class CargoCompaniesController : ControllerBase
     [HttpDelete("delete/{id}")]
     public IActionResult RemoveCargoCompany(int id)
     {
-        _cargoCompanyService.TDelete(id);
+        _manager.CargoCompanyService.DeleteCargoCompany(id);
 
         return Ok("Kargo şirketi başarıyla silindi.");
     }

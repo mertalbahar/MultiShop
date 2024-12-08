@@ -21,6 +21,7 @@
                     <span>Kullanıcılar</span>
                 </a>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-comments"></i>
@@ -61,6 +62,7 @@
                     <span>Kategoriler</span>
                 </a>
             </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-th"></i>
@@ -100,6 +102,7 @@
                     </li>
                 </ul>
             </li>
+
             <li>
                 <a asp-area="Admin" asp-controller="Brand" asp-action="Index">
                     <i class="fa fa-th"></i> <span>Markalar</span>
@@ -115,6 +118,28 @@
                 <a asp-area="Admin" asp-controller="DiscountCoupon" asp-action="Index">
                     <i class="fa fa-angle-double-down"></i> <span>İndirim Kuponları</span>
                 </a>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-truck"></i>
+                    <span>Kargo Menüsü</span>
+                    <span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i> </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a asp-area="Admin" asp-controller="Cargo" asp-action="CargoCompanyList">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Kargo Firmaları</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-area="Admin" asp-controller="Cargo" asp-action="CargoCustomerList">
+                            <i class="fa fa-angle-right"></i>
+                            <span>Müşteriler</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <!-- sidebar-menu -->

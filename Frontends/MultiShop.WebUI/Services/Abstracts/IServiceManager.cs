@@ -1,4 +1,6 @@
 ﻿using MultiShop.WebUI.Services.BasketServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCompanyServices;
+using MultiShop.WebUI.Services.CargoServices.CargoCustomerServices;
 using MultiShop.WebUI.Services.CatalogServices.AboutServices;
 using MultiShop.WebUI.Services.CatalogServices.BrandServices;
 using MultiShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -50,5 +52,9 @@ namespace MultiShop.WebUI.Services.Abstracts
 
         // Message Microservice
         IMessageService MessageService { get; }
+
+        // Cargo Microservice
+        ICargoCompanyService CargoCompanyService { get; }
+        ICargoCustomerService CargoCustomerService { get; }
     }
 }

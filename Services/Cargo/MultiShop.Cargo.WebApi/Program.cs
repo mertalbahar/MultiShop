@@ -1,15 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.EntityFrameworkCore;
 using MultiShop.Cargo.Business.Infrastructure.Extensions.ServiceRegistration;
-using MultiShop.Cargo.BusinessLayer.Abstract;
-using MultiShop.Cargo.BusinessLayer.Concrete;
-using MultiShop.Cargo.DataAccess.Abstract;
-using MultiShop.Cargo.DataAccess.Concrete;
-using MultiShop.Cargo.DataAccessLayer.Abstract;
-using MultiShop.Cargo.DataAccessLayer.Concrete;
-using MultiShop.Cargo.DataAccessLayer.Concrete.EntityFramework;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);
