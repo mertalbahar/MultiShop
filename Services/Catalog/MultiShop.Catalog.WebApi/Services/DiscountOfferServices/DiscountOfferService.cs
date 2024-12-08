@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
-using MultiShop.Catalog.Dtos.DiscountOfferDtos;
-using MultiShop.Catalog.Entities;
-using MultiShop.Catalog.Settings;
+using MultiShop.Catalog.WebApi.Dtos.DiscountOfferDtos;
+using MultiShop.Catalog.WebApi.Entities;
+using MultiShop.Catalog.WebApi.Settings;
 
-namespace MultiShop.Catalog.Services.DiscountOfferServices
+namespace MultiShop.Catalog.WebApi.Services.DiscountOfferServices
 {
     public class DiscountOfferService : IDiscountOfferService
     {

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MultiShop.Discount.Context;
+using MultiShop.Discount.WebApi.Context;
 
 #nullable disable
 
-namespace MultiShop.Discount.Migrations
+namespace MultiShop.Discount.WebApi.Migrations
 {
     [DbContext(typeof(DapperContext))]
     partial class DapperContextModelSnapshot : ModelSnapshot
@@ -22,7 +22,7 @@ namespace MultiShop.Discount.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MultiShop.Discount.Entities.Coupon", b =>
+            modelBuilder.Entity("MultiShop.Discount.WebApi.Entities.Coupon", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

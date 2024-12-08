@@ -1,9 +1,9 @@
 ﻿using Dapper;
-using MultiShop.Discount.Context;
-using MultiShop.Discount.Dtos;
+using MultiShop.Discount.WebApi.Context;
+using MultiShop.Discount.WebApi.Dtos;
 using System.Data;
 
-namespace MultiShop.Discount.Services;
+namespace MultiShop.Discount.WebApi.Services;
 
 public class DiscountService : IDiscountService
 {

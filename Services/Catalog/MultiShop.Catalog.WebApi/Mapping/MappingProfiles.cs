@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using MultiShop.Catalog.Dtos.AboutDtos;
-using MultiShop.Catalog.Dtos.BrandDtos;
-using MultiShop.Catalog.Dtos.CategoryDtos;
-using MultiShop.Catalog.Dtos.DiscountOfferDtos;
-using MultiShop.Catalog.Dtos.FeatureSliderDtos;
-using MultiShop.Catalog.Dtos.ProductDetailDtos;
-using MultiShop.Catalog.Dtos.ProductDtos;
-using MultiShop.Catalog.Dtos.ProductImageDtos;
-using MultiShop.Catalog.Dtos.SpecialOfferDtos;
-using MultiShop.Catalog.Entities;
+using MultiShop.Catalog.WebApi.Dtos.AboutDtos;
+using MultiShop.Catalog.WebApi.Dtos.BrandDtos;
+using MultiShop.Catalog.WebApi.Dtos.CategoryDtos;
+using MultiShop.Catalog.WebApi.Dtos.DiscountOfferDtos;
+using MultiShop.Catalog.WebApi.Dtos.FeatureSliderDtos;
+using MultiShop.Catalog.WebApi.Dtos.ProductDetailDtos;
+using MultiShop.Catalog.WebApi.Dtos.ProductDtos;
+using MultiShop.Catalog.WebApi.Dtos.ProductImageDtos;
+using MultiShop.Catalog.WebApi.Dtos.SpecialOfferDtos;
+using MultiShop.Catalog.WebApi.Entities;
 
-namespace MultiShop.Catalog.Mapping;
+namespace MultiShop.Catalog.WebApi.Mapping;
 
 public class MappingProfiles : Profile
 {

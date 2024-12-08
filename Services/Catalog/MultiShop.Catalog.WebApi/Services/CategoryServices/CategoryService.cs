@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
-using MultiShop.Catalog.Dtos.CategoryDtos;
-using MultiShop.Catalog.Entities;
-using MultiShop.Catalog.Settings;
+using MultiShop.Catalog.WebApi.Dtos.CategoryDtos;
+using MultiShop.Catalog.WebApi.Entities;
+using MultiShop.Catalog.WebApi.Settings;
 
-namespace MultiShop.Catalog.Services.CategoryServices;
+namespace MultiShop.Catalog.WebApi.Services.CategoryServices;
 
 public class CategoryService : ICategoryService
 {

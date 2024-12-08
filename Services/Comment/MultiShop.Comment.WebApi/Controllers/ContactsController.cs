@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.Comment.Dtos.ContactDtos;
-using MultiShop.Comment.Services.Abstracts;
+using MultiShop.Comment.WebApi.Dtos.ContactDtos;
+using MultiShop.Comment.WebApi.Services.Abstracts;
 
-namespace MultiShop.Comment.Controllers
+namespace MultiShop.Comment.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

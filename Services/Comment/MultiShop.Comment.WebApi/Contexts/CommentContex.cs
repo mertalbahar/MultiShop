@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MultiShop.Comment.Entities;
+using MultiShop.Comment.WebApi.Entities;
 
-namespace MultiShop.Comment.Contexts
+namespace MultiShop.Comment.WebApi.Contexts
 {
     public class CommentContex : DbContext
     {

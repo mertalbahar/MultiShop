@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Comment.Dtos.ContactDtos
+﻿namespace MultiShop.Comment.WebApi.Dtos.ContactDtos
 {
     public class CreateContactDto
     {

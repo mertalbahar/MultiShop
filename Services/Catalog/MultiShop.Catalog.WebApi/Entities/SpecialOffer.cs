@@ -1,8 +1,6 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using MultiShop.Core.Entities;
+﻿using MultiShop.Core.Entities;
 
-namespace MultiShop.Catalog.Entities
+namespace MultiShop.Catalog.WebApi.Entities
 {
     public class SpecialOffer : MongoEntityBase
     {

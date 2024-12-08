@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using MultiShop.Basket.Dtos;
-using MultiShop.Basket.LoginServices;
-using MultiShop.Basket.Services;
+using MultiShop.Basket.WebApi.Dtos;
+using MultiShop.Basket.WebApi.LoginServices;
+using MultiShop.Basket.WebApi.Services;
 
-namespace MultiShop.Basket.Controllers;
+namespace MultiShop.Basket.WebApi.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

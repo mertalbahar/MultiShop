@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.AboutDtos
+﻿namespace MultiShop.Catalog.WebApi.Dtos.AboutDtos
 {
     public class ResultAboutDto
     {

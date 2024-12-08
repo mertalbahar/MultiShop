@@ -1,6 +1,6 @@
 ﻿using MultiShop.Core.Entities;
 
-namespace MultiShop.Comment.Entities
+namespace MultiShop.Comment.WebApi.Entities
 {
     public class Contact : EfEntityBase
     {

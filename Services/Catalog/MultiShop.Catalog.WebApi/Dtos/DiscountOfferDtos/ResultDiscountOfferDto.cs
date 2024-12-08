@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.DiscountOfferDtos
+﻿namespace MultiShop.Catalog.WebApi.Dtos.DiscountOfferDtos
 {
     public class ResultDiscountOfferDto
     {

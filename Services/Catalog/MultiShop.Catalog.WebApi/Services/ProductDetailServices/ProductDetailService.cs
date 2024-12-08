@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
-using MultiShop.Catalog.Dtos.ProductDetailDtos;
-using MultiShop.Catalog.Entities;
-using MultiShop.Catalog.Settings;
+using MultiShop.Catalog.WebApi.Dtos.ProductDetailDtos;
+using MultiShop.Catalog.WebApi.Entities;
+using MultiShop.Catalog.WebApi.Settings;
 
-namespace MultiShop.Catalog.Services.ProductDetailServices;
+namespace MultiShop.Catalog.WebApi.Services.ProductDetailServices;
 
 public class ProductDetailService : IProductDetailService
 {

@@ -2,8 +2,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
-using MultiShop.Catalog.Infrastructure.Extensions;
-using MultiShop.Catalog.Settings;
+using MultiShop.Catalog.WebApi.Infrastructure.Extensions;
+using MultiShop.Catalog.WebApi.Settings;
 using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
 

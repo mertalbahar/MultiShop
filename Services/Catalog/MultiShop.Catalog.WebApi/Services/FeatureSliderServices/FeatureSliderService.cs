@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using MongoDB.Driver;
-using MultiShop.Catalog.Dtos.FeatureSliderDtos;
-using MultiShop.Catalog.Entities;
-using MultiShop.Catalog.Settings;
+using MultiShop.Catalog.WebApi.Dtos.FeatureSliderDtos;
+using MultiShop.Catalog.WebApi.Entities;
+using MultiShop.Catalog.WebApi.Settings;
 
-namespace MultiShop.Catalog.Services.FeatureSliderServices
+namespace MultiShop.Catalog.WebApi.Services.FeatureSliderServices
 {
     public class FeatureSliderService : IFeatureSliderService
     {

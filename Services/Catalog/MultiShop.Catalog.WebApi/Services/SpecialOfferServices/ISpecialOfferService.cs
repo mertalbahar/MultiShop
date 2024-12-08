@@ -1,6 +1,6 @@
-﻿using MultiShop.Catalog.Dtos.SpecialOfferDtos;
+﻿using MultiShop.Catalog.WebApi.Dtos.SpecialOfferDtos;
 
-namespace MultiShop.Catalog.Services.SpecialOfferServices
+namespace MultiShop.Catalog.WebApi.Services.SpecialOfferServices
 {
     public interface ISpecialOfferService
     {

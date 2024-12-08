@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using MultiShop.Comment.Dtos.ContactDtos;
-using MultiShop.Comment.Entities;
-using MultiShop.Comment.Repositories.Abstracts;
-using MultiShop.Comment.Services.Abstracts;
+using MultiShop.Comment.WebApi.Dtos.ContactDtos;
+using MultiShop.Comment.WebApi.Entities;
+using MultiShop.Comment.WebApi.Repositories.Abstracts;
+using MultiShop.Comment.WebApi.Services.Abstracts;
 
-namespace MultiShop.Comment.Services.Concretes
+namespace MultiShop.Comment.WebApi.Services.Concretes
 {
     public class ContactService : IContactService
     {

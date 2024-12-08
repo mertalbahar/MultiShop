@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Options;
-using MultiShop.Basket.LoginServices;
-using MultiShop.Basket.Services;
-using MultiShop.Basket.Settings;
+using MultiShop.Basket.WebApi.LoginServices;
+using MultiShop.Basket.WebApi.Services;
+using MultiShop.Basket.WebApi.Settings;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);

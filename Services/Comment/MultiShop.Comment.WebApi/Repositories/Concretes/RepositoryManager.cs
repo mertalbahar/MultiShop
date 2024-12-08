@@ -1,6 +1,6 @@
-﻿using MultiShop.Comment.Repositories.Abstracts;
+﻿using MultiShop.Comment.WebApi.Repositories.Abstracts;
 
-namespace MultiShop.Comment.Repositories.Concretes
+namespace MultiShop.Comment.WebApi.Repositories.Concretes
 {
     public class RepositoryManager : IRepositoryManager
     {

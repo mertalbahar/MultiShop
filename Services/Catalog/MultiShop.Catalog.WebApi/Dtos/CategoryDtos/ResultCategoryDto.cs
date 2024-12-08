@@ -1,6 +1,6 @@
-﻿using MultiShop.Catalog.Dtos.ProductDtos;
+﻿using MultiShop.Catalog.WebApi.Dtos.ProductDtos;
 
-namespace MultiShop.Catalog.Dtos.CategoryDtos;
+namespace MultiShop.Catalog.WebApi.Dtos.CategoryDtos;
 
 public class ResultCategoryDto
 {

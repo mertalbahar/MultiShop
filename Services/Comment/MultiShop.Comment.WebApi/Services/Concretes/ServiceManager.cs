@@ -1,6 +1,6 @@
-﻿using MultiShop.Comment.Services.Abstracts;
+﻿using MultiShop.Comment.WebApi.Services.Abstracts;
 
-namespace MultiShop.Comment.Services.Concretes
+namespace MultiShop.Comment.WebApi.Services.Concretes
 {
     public class ServiceManager : IServiceManager
     {

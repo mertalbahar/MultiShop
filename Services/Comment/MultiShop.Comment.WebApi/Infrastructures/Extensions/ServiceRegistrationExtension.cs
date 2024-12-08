@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MultiShop.Comment.Contexts;
-using MultiShop.Comment.Repositories.Abstracts;
-using MultiShop.Comment.Repositories.Concretes;
-using MultiShop.Comment.Services.Abstracts;
-using MultiShop.Comment.Services.Concretes;
+using MultiShop.Comment.WebApi.Contexts;
+using MultiShop.Comment.WebApi.Repositories.Abstracts;
+using MultiShop.Comment.WebApi.Repositories.Concretes;
+using MultiShop.Comment.WebApi.Services.Abstracts;
+using MultiShop.Comment.WebApi.Services.Concretes;
 
-namespace MultiShop.Comment.Infrastructures.Extensions
+namespace MultiShop.Comment.WebApi.Infrastructures.Extensions
 {
     public static class ServiceRegistrationExtension
     {

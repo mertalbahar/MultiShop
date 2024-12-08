@@ -1,14 +1,14 @@
-﻿using MultiShop.Catalog.Services.AboutServices;
-using MultiShop.Catalog.Services.BrandServices;
-using MultiShop.Catalog.Services.CategoryServices;
-using MultiShop.Catalog.Services.DiscountOfferServices;
-using MultiShop.Catalog.Services.FeatureSliderServices;
-using MultiShop.Catalog.Services.ProductDetailServices;
-using MultiShop.Catalog.Services.ProductImageServices;
-using MultiShop.Catalog.Services.ProductServices;
-using MultiShop.Catalog.Services.SpecialOfferServices;
+﻿using MultiShop.Catalog.WebApi.Services.AboutServices;
+using MultiShop.Catalog.WebApi.Services.BrandServices;
+using MultiShop.Catalog.WebApi.Services.CategoryServices;
+using MultiShop.Catalog.WebApi.Services.DiscountOfferServices;
+using MultiShop.Catalog.WebApi.Services.FeatureSliderServices;
+using MultiShop.Catalog.WebApi.Services.ProductDetailServices;
+using MultiShop.Catalog.WebApi.Services.ProductImageServices;
+using MultiShop.Catalog.WebApi.Services.ProductServices;
+using MultiShop.Catalog.WebApi.Services.SpecialOfferServices;
 
-namespace MultiShop.Catalog.Services
+namespace MultiShop.Catalog.WebApi.Services
 {
     public interface IServiceManager
     {
@@ -19,7 +19,7 @@ namespace MultiShop.Catalog.Services
         IDiscountOfferService DiscountOfferService { get; }
         IFeatureSliderService FeatureSliderService { get; }
         IProductDetailService ProductDetailService { get; }
-        ProductImageServices.IProductImageService ProductImageService { get; }
+        IProductImageService ProductImageService { get; }
         ISpecialOfferService SpecialOfferService { get; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.CategoryDtos;
+﻿namespace MultiShop.Catalog.WebApi.Dtos.CategoryDtos;
 
 public class CreateCategoryDto
 {

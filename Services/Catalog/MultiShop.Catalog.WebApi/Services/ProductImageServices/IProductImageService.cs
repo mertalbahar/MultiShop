@@ -1,6 +1,6 @@
-﻿using MultiShop.Catalog.Dtos.ProductImageDtos;
+﻿using MultiShop.Catalog.WebApi.Dtos.ProductImageDtos;
 
-namespace MultiShop.Catalog.Services.ProductImageServices;
+namespace MultiShop.Catalog.WebApi.Services.ProductImageServices;
 
 public interface IProductImageService
 {

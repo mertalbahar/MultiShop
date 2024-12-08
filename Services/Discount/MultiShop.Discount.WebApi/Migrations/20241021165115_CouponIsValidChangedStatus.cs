@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace MultiShop.Discount.Migrations
+namespace MultiShop.Discount.WebApi.Migrations
 {
     public partial class CouponIsValidChangedStatus : Migration
     {

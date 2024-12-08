@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.ProductDetailDtos;
+﻿namespace MultiShop.Catalog.WebApi.Dtos.ProductDetailDtos;
 
 public class GetByIdProductDetailDto
 {

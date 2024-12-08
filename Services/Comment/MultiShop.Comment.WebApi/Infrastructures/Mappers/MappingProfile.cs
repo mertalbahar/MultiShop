@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using MultiShop.Comment.Dtos.ContactDtos;
-using MultiShop.Comment.Dtos.UserCommentDtos;
-using MultiShop.Comment.Entities;
+using MultiShop.Comment.WebApi.Dtos.ContactDtos;
+using MultiShop.Comment.WebApi.Dtos.UserCommentDtos;
+using MultiShop.Comment.WebApi.Entities;
 
-namespace MultiShop.Comment.Infrastructures.Mappers
+namespace MultiShop.Comment.WebApi.Infrastructures.Mappers
 {
     public class MappingProfile : Profile
     {

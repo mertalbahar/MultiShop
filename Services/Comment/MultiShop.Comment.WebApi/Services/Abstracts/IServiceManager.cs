@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Comment.Services.Abstracts
+﻿namespace MultiShop.Comment.WebApi.Services.Abstracts
 {
     public interface IServiceManager
     {

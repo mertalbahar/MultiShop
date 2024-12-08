@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.ProductImageDtos;
+﻿namespace MultiShop.Catalog.WebApi.Dtos.ProductImageDtos;
 
 public class UpdateProductImageDto
 {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MultiShop.Catalog.Dtos.DiscountOfferDtos;
-using MultiShop.Catalog.Services;
+using MultiShop.Catalog.WebApi.Dtos.DiscountOfferDtos;
+using MultiShop.Catalog.WebApi.Services;
 
-namespace MultiShop.Catalog.Controllers
+namespace MultiShop.Catalog.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

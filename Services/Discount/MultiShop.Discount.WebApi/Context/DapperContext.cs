@@ -1,9 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using MultiShop.Discount.Entities;
+using MultiShop.Discount.WebApi.Entities;
 using System.Data;
 
-namespace MultiShop.Discount.Context;
+namespace MultiShop.Discount.WebApi.Context;
 
 public class DapperContext : DbContext
 {

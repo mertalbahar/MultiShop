@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
-using MultiShop.Discount.Context;
-using MultiShop.Discount.Services;
+using MultiShop.Discount.WebApi.Context;
+using MultiShop.Discount.WebApi.Services;
 using System.IdentityModel.Tokens.Jwt;
 
 var builder = WebApplication.CreateBuilder(args);

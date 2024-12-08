@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.ProductDtos;
+﻿namespace MultiShop.Catalog.WebApi.Dtos.ProductDtos;
 
 public class CreateProductDto
 {

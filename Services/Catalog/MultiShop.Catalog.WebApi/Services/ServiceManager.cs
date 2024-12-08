@@ -1,14 +1,14 @@
-﻿using MultiShop.Catalog.Services.AboutServices;
-using MultiShop.Catalog.Services.BrandServices;
-using MultiShop.Catalog.Services.CategoryServices;
-using MultiShop.Catalog.Services.DiscountOfferServices;
-using MultiShop.Catalog.Services.FeatureSliderServices;
-using MultiShop.Catalog.Services.ProductDetailServices;
-using MultiShop.Catalog.Services.ProductImageServices;
-using MultiShop.Catalog.Services.ProductServices;
-using MultiShop.Catalog.Services.SpecialOfferServices;
+﻿using MultiShop.Catalog.WebApi.Services.AboutServices;
+using MultiShop.Catalog.WebApi.Services.BrandServices;
+using MultiShop.Catalog.WebApi.Services.CategoryServices;
+using MultiShop.Catalog.WebApi.Services.DiscountOfferServices;
+using MultiShop.Catalog.WebApi.Services.FeatureSliderServices;
+using MultiShop.Catalog.WebApi.Services.ProductDetailServices;
+using MultiShop.Catalog.WebApi.Services.ProductImageServices;
+using MultiShop.Catalog.WebApi.Services.ProductServices;
+using MultiShop.Catalog.WebApi.Services.SpecialOfferServices;
 
-namespace MultiShop.Catalog.Services
+namespace MultiShop.Catalog.WebApi.Services
 {
     public class ServiceManager : IServiceManager
     {
@@ -19,12 +19,12 @@ namespace MultiShop.Catalog.Services
         private readonly IDiscountOfferService _discountOfferService;
         private readonly IFeatureSliderService _featureSliderService;
         private readonly IProductDetailService _productDetailService;
-        private readonly ProductImageServices.IProductImageService _productImageService;
+        private readonly IProductImageService _productImageService;
         private readonly ISpecialOfferService _specialOfferService;
 
         public ServiceManager(ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IDiscountOfferService discountOfferService, IFeatureSliderService featureSliderService,
-            IProductDetailService productDetailService, ProductImageServices.IProductImageService productImageService, ISpecialOfferService specialOfferService)
+            IProductDetailService productDetailService, IProductImageService productImageService, ISpecialOfferService specialOfferService)
         {
             _categoryService = categoryService;
             _productService = productService;
@@ -51,7 +51,7 @@ namespace MultiShop.Catalog.Services
 
         public IProductDetailService ProductDetailService => _productDetailService;
 
-        public ProductImageServices.IProductImageService ProductImageService => _productImageService;
+        public IProductImageService ProductImageService => _productImageService;
 
         public ISpecialOfferService SpecialOfferService => _specialOfferService;
     }

@@ -1,6 +1,6 @@
-﻿using MultiShop.Discount.Dtos;
+﻿using MultiShop.Discount.WebApi.Dtos;
 
-namespace MultiShop.Discount.Services;
+namespace MultiShop.Discount.WebApi.Services;
 
 public interface IDiscountService
 {

@@ -1,9 +1,9 @@
-﻿using MultiShop.Basket.Dtos;
-using MultiShop.Basket.Settings;
+﻿using MultiShop.Basket.WebApi.Dtos;
+using MultiShop.Basket.WebApi.Settings;
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace MultiShop.Basket.Services;
+namespace MultiShop.Basket.WebApi.Services;
 
 public class BasketService : IBasketService
 {

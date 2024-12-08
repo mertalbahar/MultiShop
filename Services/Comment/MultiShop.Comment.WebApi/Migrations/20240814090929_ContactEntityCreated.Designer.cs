@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MultiShop.Comment.Contexts;
+using MultiShop.Comment.WebApi.Contexts;
 
 #nullable disable
 
-namespace MultiShop.Comment.Migrations
+namespace MultiShop.Comment.WebApi.Migrations
 {
     [DbContext(typeof(CommentContex))]
     [Migration("20240814090929_ContactEntityCreated")]
@@ -24,7 +24,7 @@ namespace MultiShop.Comment.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("MultiShop.Comment.Entities.Contact", b =>
+            modelBuilder.Entity("MultiShop.Comment.WebApi.Entities.Contact", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +63,7 @@ namespace MultiShop.Comment.Migrations
                     b.ToTable("Contacts");
                 });
 
-            modelBuilder.Entity("MultiShop.Comment.Entities.UserComment", b =>
+            modelBuilder.Entity("MultiShop.Comment.WebApi.Entities.UserComment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

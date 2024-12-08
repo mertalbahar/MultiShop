@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Basket.Settings;
+﻿namespace MultiShop.Basket.WebApi.Settings;
 
 public class RedisSettings
 {

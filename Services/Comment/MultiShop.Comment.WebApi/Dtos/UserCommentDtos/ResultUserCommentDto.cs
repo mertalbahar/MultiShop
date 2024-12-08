@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Comment.Dtos.UserCommentDtos
+﻿namespace MultiShop.Comment.WebApi.Dtos.UserCommentDtos
 {
     public class ResultUserCommentDto
     {

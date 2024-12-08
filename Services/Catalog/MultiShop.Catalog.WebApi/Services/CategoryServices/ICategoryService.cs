@@ -1,6 +1,6 @@
-﻿using MultiShop.Catalog.Dtos.CategoryDtos;
+﻿using MultiShop.Catalog.WebApi.Dtos.CategoryDtos;
 
-namespace MultiShop.Catalog.Services.CategoryServices;
+namespace MultiShop.Catalog.WebApi.Services.CategoryServices;
 
 public interface ICategoryService
 {

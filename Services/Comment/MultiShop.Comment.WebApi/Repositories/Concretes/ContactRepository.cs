@@ -1,9 +1,9 @@
-﻿using MultiShop.Comment.Contexts;
-using MultiShop.Comment.Entities;
-using MultiShop.Comment.Repositories.Abstracts;
+﻿using MultiShop.Comment.WebApi.Contexts;
+using MultiShop.Comment.WebApi.Entities;
+using MultiShop.Comment.WebApi.Repositories.Abstracts;
 using MultiShop.Core.Repositories.Concretes;
 
-namespace MultiShop.Comment.Repositories.Concretes
+namespace MultiShop.Comment.WebApi.Repositories.Concretes
 {
     public class ContactRepository : EfRepositoryBase<Contact, CommentContex>, IContactRepository
     {

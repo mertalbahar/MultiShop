@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.BrandDtos
+﻿namespace MultiShop.Catalog.WebApi.Dtos.BrandDtos
 {
     public class UpdateBrandDto
     {

@@ -1,6 +1,6 @@
-﻿using MultiShop.Comment.Dtos.ContactDtos;
+﻿using MultiShop.Comment.WebApi.Dtos.ContactDtos;
 
-namespace MultiShop.Comment.Services.Abstracts
+namespace MultiShop.Comment.WebApi.Services.Abstracts
 {
     public interface IContactService
     {

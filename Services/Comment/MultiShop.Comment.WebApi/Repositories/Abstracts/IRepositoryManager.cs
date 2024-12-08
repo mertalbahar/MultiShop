@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Comment.Repositories.Abstracts
+﻿namespace MultiShop.Comment.WebApi.Repositories.Abstracts
 {
     public interface IRepositoryManager
     {

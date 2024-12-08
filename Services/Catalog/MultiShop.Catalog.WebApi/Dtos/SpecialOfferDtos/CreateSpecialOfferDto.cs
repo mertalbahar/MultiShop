@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Dtos.SpecialOfferDtos
+﻿namespace MultiShop.Catalog.WebApi.Dtos.SpecialOfferDtos
 {
     public class CreateSpecialOfferDto
     {

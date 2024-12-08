@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Catalog.Settings;
+﻿namespace MultiShop.Catalog.WebApi.Settings;
 
 public interface IDatabaseSettings
 {

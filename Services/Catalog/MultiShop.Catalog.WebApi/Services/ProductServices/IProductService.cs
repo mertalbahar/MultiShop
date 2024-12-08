@@ -1,6 +1,6 @@
-﻿using MultiShop.Catalog.Dtos.ProductDtos;
+﻿using MultiShop.Catalog.WebApi.Dtos.ProductDtos;
 
-namespace MultiShop.Catalog.Services.ProductServices;
+namespace MultiShop.Catalog.WebApi.Services.ProductServices;
 
 public interface IProductService
 {

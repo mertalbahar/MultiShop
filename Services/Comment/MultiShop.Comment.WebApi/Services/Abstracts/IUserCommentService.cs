@@ -1,6 +1,6 @@
-﻿using MultiShop.Comment.Dtos.UserCommentDtos;
+﻿using MultiShop.Comment.WebApi.Dtos.UserCommentDtos;
 
-namespace MultiShop.Comment.Services.Abstracts
+namespace MultiShop.Comment.WebApi.Services.Abstracts
 {
     public interface IUserCommentService
     {

@@ -1,6 +1,6 @@
-﻿using MultiShop.Basket.Dtos;
+﻿using MultiShop.Basket.WebApi.Dtos;
 
-namespace MultiShop.Basket.Services;
+namespace MultiShop.Basket.WebApi.Services;
 
 public interface IBasketService
 {

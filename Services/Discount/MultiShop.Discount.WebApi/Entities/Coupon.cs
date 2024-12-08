@@ -1,4 +1,4 @@
-﻿namespace MultiShop.Discount.Entities;
+﻿namespace MultiShop.Discount.WebApi.Entities;
 
 public class Coupon
 {

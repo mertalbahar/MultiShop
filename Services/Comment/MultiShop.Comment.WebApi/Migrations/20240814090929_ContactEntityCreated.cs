@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MultiShop.Comment.Migrations
+namespace MultiShop.Comment.WebApi.Migrations
 {
     public partial class ContactEntityCreated : Migration
     {
