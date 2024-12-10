@@ -7,6 +7,7 @@ using MultiShop.Catalog.WebApi.Services.ProductDetailServices;
 using MultiShop.Catalog.WebApi.Services.ProductImageServices;
 using MultiShop.Catalog.WebApi.Services.ProductServices;
 using MultiShop.Catalog.WebApi.Services.SpecialOfferServices;
+using MultiShop.Catalog.WebApi.Services.StatisticServices;
 
 namespace MultiShop.Catalog.WebApi.Services
 {
@@ -21,5 +22,6 @@ namespace MultiShop.Catalog.WebApi.Services
         IProductDetailService ProductDetailService { get; }
         IProductImageService ProductImageService { get; }
         ISpecialOfferService SpecialOfferService { get; }
+        IStatisticService StatisticService { get; }
     }
 }

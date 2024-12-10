@@ -8,6 +8,7 @@ using MultiShop.Catalog.WebApi.Services.ProductImageServices;
 using MultiShop.Catalog.WebApi.Services.ProductServices;
 using MultiShop.Catalog.WebApi.Services.SpecialOfferServices;
 using MultiShop.Catalog.WebApi.Services;
+using MultiShop.Catalog.WebApi.Services.StatisticServices;
 
 namespace MultiShop.Catalog.WebApi.Infrastructure.Extensions
 {
@@ -25,6 +26,7 @@ namespace MultiShop.Catalog.WebApi.Infrastructure.Extensions
             services.AddScoped<IDiscountOfferService, DiscountOfferService>();
             services.AddScoped<IBrandService, BrandService>();
             services.AddScoped<IAboutService, AboutService>();
+            services.AddScoped<IStatisticService, StatisticService>();
         }
     }
 }
