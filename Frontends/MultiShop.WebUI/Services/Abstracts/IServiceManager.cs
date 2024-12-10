@@ -18,6 +18,7 @@ using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
 {
@@ -60,5 +61,6 @@ namespace MultiShop.WebUI.Services.Abstracts
 
         // Statistics from microservices
         ICatalogStatisticService CatalogStatisticServices { get; }
+        IUserStatisticService UserStatisticService { get; }
     }
 }

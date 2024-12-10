@@ -19,6 +19,7 @@ using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
@@ -63,6 +64,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Statistics from microservices
         private readonly Lazy<ICatalogStatisticService> _catalogStatisticServices;
+        private readonly Lazy<IUserStatisticService> _userStatisticService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
@@ -71,7 +73,7 @@ namespace MultiShop.WebUI.Services.Concretes
             IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
             IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService,
             IMessageService messageService, ICargoCompanyService cargoCompanyService, ICargoCustomerService cargoCustomerService,
-            ICatalogStatisticService catalogStatisticServices)
+            ICatalogStatisticService catalogStatisticServices, IUserStatisticService userStatisticService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -112,6 +114,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
             // Statistics from microservices
             _catalogStatisticServices = new Lazy<ICatalogStatisticService>(() => catalogStatisticServices);
+            _userStatisticService = new Lazy<IUserStatisticService>(() => userStatisticService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -164,5 +167,7 @@ namespace MultiShop.WebUI.Services.Concretes
 
         // Statistics from microservices
         public ICatalogStatisticService CatalogStatisticServices => _catalogStatisticServices.Value;
+
+        public IUserStatisticService UserStatisticService => _userStatisticService.Value;
     }
 }

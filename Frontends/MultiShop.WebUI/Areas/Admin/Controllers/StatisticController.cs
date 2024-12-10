@@ -33,9 +33,17 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 MinPriceProductName = minPriceProductName
             };
 
+            var userCount = await _manager.UserStatisticService.GetUserCountAsync();
+
+            var userStatistics = new UserStatisticViewModel
+            {
+                UserCount = userCount
+            };
+
             var statisticViewModel = new StatisticViewModel
             {
-                CatalogStatistics = catalogStatistics
+                CatalogStatistics = catalogStatistics,
+                UserStatistics = userStatistics
             };
 
             return View(statisticViewModel);
