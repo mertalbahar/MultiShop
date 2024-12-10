@@ -7,6 +7,7 @@ using MultiShop.Catalog.WebApi.Services.ProductDetailServices;
 using MultiShop.Catalog.WebApi.Services.ProductImageServices;
 using MultiShop.Catalog.WebApi.Services.ProductServices;
 using MultiShop.Catalog.WebApi.Services.SpecialOfferServices;
+using MultiShop.Catalog.WebApi.Services.StatisticServices;
 
 namespace MultiShop.Catalog.WebApi.Services
 {
@@ -21,10 +22,12 @@ namespace MultiShop.Catalog.WebApi.Services
         private readonly IProductDetailService _productDetailService;
         private readonly IProductImageService _productImageService;
         private readonly ISpecialOfferService _specialOfferService;
+        private readonly IStatisticService _statisticService;
 
         public ServiceManager(ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IDiscountOfferService discountOfferService, IFeatureSliderService featureSliderService,
-            IProductDetailService productDetailService, IProductImageService productImageService, ISpecialOfferService specialOfferService)
+            IProductDetailService productDetailService, IProductImageService productImageService, ISpecialOfferService specialOfferService,
+            IStatisticService statisticService)
         {
             _categoryService = categoryService;
             _productService = productService;
@@ -35,6 +38,7 @@ namespace MultiShop.Catalog.WebApi.Services
             _productDetailService = productDetailService;
             _productImageService = productImageService;
             _specialOfferService = specialOfferService;
+            _statisticService = statisticService;
         }
 
         public ICategoryService CategoryService => _categoryService;
@@ -54,5 +58,7 @@ namespace MultiShop.Catalog.WebApi.Services
         public IProductImageService ProductImageService => _productImageService;
 
         public ISpecialOfferService SpecialOfferService => _specialOfferService;
+
+        public IStatisticService StatisticService => _statisticService;
     }
 }

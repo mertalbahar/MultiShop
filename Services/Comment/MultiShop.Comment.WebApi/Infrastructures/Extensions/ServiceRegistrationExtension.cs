@@ -29,6 +29,7 @@ namespace MultiShop.Comment.WebApi.Infrastructures.Extensions
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IUserCommentService, UserCommentService>();
             services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<IStatisticService, StatisticService>();
         }
     }
 }

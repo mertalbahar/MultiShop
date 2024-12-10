@@ -17,6 +17,10 @@ using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
+using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.DiscountStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
 {
@@ -56,5 +60,11 @@ namespace MultiShop.WebUI.Services.Abstracts
         // Cargo Microservice
         ICargoCompanyService CargoCompanyService { get; }
         ICargoCustomerService CargoCustomerService { get; }
+
+        // Statistics from microservices
+        ICatalogStatisticService CatalogStatisticServices { get; }
+        IUserStatisticService UserStatisticService { get; }
+        ICommentStatisticService CommentStatisticService { get; }
+        IDiscountStatisticService DiscountStatisticService { get; }
     }
 }
