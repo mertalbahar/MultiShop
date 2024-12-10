@@ -4,5 +4,6 @@
     {
         public CatalogStatisticViewModel CatalogStatistics { get; set; }
         public UserStatisticViewModel UserStatistics { get; set; }
+        public CommentStatisticViewModel CommentStatistics { get; set; }
     }
 }

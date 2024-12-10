@@ -16,14 +16,14 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var brandCount = await _manager.CatalogStatisticServices.GetBrandCount();
-            var categoryCount = await _manager.CatalogStatisticServices.GetCategoryCount();
-            var productCount = await _manager.CatalogStatisticServices.GetProductCount();
-            var productAvgPrice = await _manager.CatalogStatisticServices.GetProductAvgPrice();
-            var maxPriceProductName = await _manager.CatalogStatisticServices.GetMaxPriceProductName();
-            var minPriceProductName = await _manager.CatalogStatisticServices.GetMinPriceProductName();
+            long brandCount = await _manager.CatalogStatisticServices.GetBrandCount();
+            long categoryCount = await _manager.CatalogStatisticServices.GetCategoryCount();
+            long productCount = await _manager.CatalogStatisticServices.GetProductCount();
+            decimal productAvgPrice = await _manager.CatalogStatisticServices.GetProductAvgPrice();
+            string maxPriceProductName = await _manager.CatalogStatisticServices.GetMaxPriceProductName();
+            string minPriceProductName = await _manager.CatalogStatisticServices.GetMinPriceProductName();
 
-            var catalogStatistics = new CatalogStatisticViewModel
+            CatalogStatisticViewModel catalogStatistics = new CatalogStatisticViewModel
             {
                 BrandCount = brandCount,
                 CategoryCount = categoryCount,
@@ -33,17 +33,29 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 MinPriceProductName = minPriceProductName
             };
 
-            var userCount = await _manager.UserStatisticService.GetUserCountAsync();
+            int userCount = await _manager.UserStatisticService.GetUserCountAsync();
 
-            var userStatistics = new UserStatisticViewModel
+            UserStatisticViewModel userStatistics = new UserStatisticViewModel
             {
                 UserCount = userCount
             };
 
-            var statisticViewModel = new StatisticViewModel
+            int activeCommentCount = await _manager.CommentStatisticService.GetActiveCommentCountAsync();
+            int passiveCommentCount = await _manager.CommentStatisticService.GetPassiveCommentCountAsync();
+            int totalCommentCount = await _manager.CommentStatisticService.GetTotalCommentCountAsync();
+
+            CommentStatisticViewModel commentStatistics = new CommentStatisticViewModel
+            {
+                GetActiveCommentCount = activeCommentCount,
+                GetPassiveCommentCount = passiveCommentCount,
+                GetTotalCommentCount = totalCommentCount
+            };
+
+            StatisticViewModel statisticViewModel = new StatisticViewModel
             {
                 CatalogStatistics = catalogStatistics,
-                UserStatistics = userStatistics
+                UserStatistics = userStatistics,
+                CommentStatistics = commentStatistics
             };
 
             return View(statisticViewModel);

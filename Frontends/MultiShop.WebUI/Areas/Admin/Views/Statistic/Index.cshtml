@@ -74,8 +74,8 @@
         <div class="media-box bg-green">
             <div class="media-icon pull-left"><i class="icon-layers"></i> </div>
             <div class="media-info">
-                <h5>New Orders</h5>
-                <h3>5324</h3>
+                <h5>Toplam Mesaj Sayısı</h5>
+                <h3>@Model.CommentStatistics.GetTotalCommentCount</h3>
             </div>
         </div>
     </div>
@@ -85,8 +85,8 @@
         <div class="media-box">
             <div class="media-icon pull-left"><i class="icon-bargraph"></i> </div>
             <div class="media-info">
-                <h5>Total Leads</h5>
-                <h3>1530</h3>
+                <h5>Aktif Mesaj Sayısı</h5>
+                <h3>@Model.CommentStatistics.GetActiveCommentCount</h3>
             </div>
         </div>
     </div>
@@ -94,8 +94,8 @@
         <div class="media-box bg-sea">
             <div class="media-icon pull-left"><i class="icon-wallet"></i> </div>
             <div class="media-info">
-                <h5>Total Payment</h5>
-                <h3>$8,530</h3>
+                <h5>Pasif Mesaj Sayısı</h5>
+                <h3>@Model.CommentStatistics.GetPassiveCommentCount</h3>
             </div>
         </div>
     </div>
