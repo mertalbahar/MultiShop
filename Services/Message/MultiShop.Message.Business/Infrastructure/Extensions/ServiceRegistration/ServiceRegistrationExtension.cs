@@ -40,6 +40,7 @@ namespace MultiShop.Message.Business.Infrastructure.Extensions.ServiceRegistrati
 
             services.AddScoped<IServiceManager, ServiceManager>();
             services.AddScoped<IUserMessageService, UserMessageService>();
+            services.AddScoped<IStatisticService, StatisticService>();
 
             return services;
         }

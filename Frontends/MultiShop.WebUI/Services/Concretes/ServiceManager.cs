@@ -18,6 +18,11 @@ using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
+using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.DiscountStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.MessageStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 
 namespace MultiShop.WebUI.Services.Concretes
 {
@@ -60,13 +65,23 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<ICargoCompanyService> _cargoCompanyService;
         private readonly Lazy<ICargoCustomerService> _cargoCustomerService;
 
+        // Statistics from microservices
+        private readonly Lazy<ICatalogStatisticService> _catalogStatisticServices;
+        private readonly Lazy<IUserStatisticService> _userStatisticService;
+        private readonly Lazy<ICommentStatisticService> _commentStatisticService;
+        private readonly Lazy<IDiscountStatisticService> _discountStatisticService;
+        private readonly Lazy<IMessageStatisticService> _messageStatisticService;
+
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
             IBrandService brandService, IFeatureSliderService featureSliderService, IDiscountOfferService discountOfferService,
             ISpecialOfferService specialOfferService, IProductDetailService productDetailService, IProductImageService productImageService,
             IUserCommentService userCommentService, IContactService contactService, IUserService userService, IBasketService basketService,
             IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService,
-            IMessageService messageService, ICargoCompanyService cargoCompanyService, ICargoCustomerService cargoCustomerService)
+            IMessageService messageService, ICargoCompanyService cargoCompanyService, ICargoCustomerService cargoCustomerService,
+            ICatalogStatisticService catalogStatisticServices, IUserStatisticService userStatisticService,
+            ICommentStatisticService commentStatisticService, IDiscountStatisticService discountStatisticService,
+            IMessageStatisticService messageStatisticService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -104,6 +119,13 @@ namespace MultiShop.WebUI.Services.Concretes
             // Cargo Microservice
             _cargoCompanyService = new Lazy<ICargoCompanyService>(() => cargoCompanyService);
             _cargoCustomerService = new Lazy<ICargoCustomerService>(() => cargoCustomerService);
+
+            // Statistics from microservices
+            _catalogStatisticServices = new Lazy<ICatalogStatisticService>(() => catalogStatisticServices);
+            _userStatisticService = new Lazy<IUserStatisticService>(() => userStatisticService);
+            _commentStatisticService = new Lazy<ICommentStatisticService>(() => commentStatisticService);
+            _discountStatisticService = new Lazy<IDiscountStatisticService>(() => discountStatisticService);
+            _messageStatisticService = new Lazy<IMessageStatisticService>(() => messageStatisticService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -153,5 +175,16 @@ namespace MultiShop.WebUI.Services.Concretes
         public ICargoCompanyService CargoCompanyService => _cargoCompanyService.Value;
 
         public ICargoCustomerService CargoCustomerService => _cargoCustomerService.Value;
+
+        // Statistics from microservices
+        public ICatalogStatisticService CatalogStatisticServices => _catalogStatisticServices.Value;
+
+        public IUserStatisticService UserStatisticService => _userStatisticService.Value;
+
+        public ICommentStatisticService CommentStatisticService => _commentStatisticService.Value;
+
+        public IDiscountStatisticService DiscountStatisticService => _discountStatisticService.Value;
+
+        public IMessageStatisticService MessageStatisticService => _messageStatisticService.Value;
     }
 }

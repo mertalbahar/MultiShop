@@ -4,5 +4,6 @@
     {
         IUserCommentService UserCommentService { get; }
         IContactService ContactService { get; }
+        IStatisticService StatisticService { get; }
     }
 }
