@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace MultiShop.Message.Business.Abstract
 {
-    public interface IServiceManager
+    public interface IStatisticService
     {
-        IUserMessageService UserMessageService { get; }
-        IStatisticService StatisticService { get; }
+        Task<int> GetTotalMessageCountAsync();
     }
 }

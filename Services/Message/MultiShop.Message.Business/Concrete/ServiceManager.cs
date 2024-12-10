@@ -10,12 +10,16 @@ namespace MultiShop.Message.Business.Concrete
     public class ServiceManager : IServiceManager
     {
         private readonly IUserMessageService _userMessageService;
+        private readonly IStatisticService _statisticService;
 
-        public ServiceManager(IUserMessageService userMessageService)
+        public ServiceManager(IUserMessageService userMessageService, IStatisticService statisticService)
         {
             _userMessageService = userMessageService;
+            _statisticService = statisticService;
         }
 
         public IUserMessageService UserMessageService => _userMessageService;
+
+        public IStatisticService StatisticService => _statisticService;
     }
 }
