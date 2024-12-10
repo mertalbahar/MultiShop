@@ -1,36 +1,38 @@
 ﻿@model GetByIdCargoCustomerDto
 
-<div class="col-md-12">
-    <div class="chart-box">
-        <h4>Müşteri Adres Bilgisi</h4>
-        <p>Mevcut müşteri adres bilgileri aşağıdadır.</p>
-        <br />
-        <form>
-            <div class="form-group">
-                <label asp-for="Name">Adı</label>
-                <input type="text" class="form-control" asp-for="Name" readonly>
-            </div>
-            <div class="form-group">
-                <label asp-for="Surname">Soyadı</label>
-                <input type="text" class="form-control" asp-for="Surname" readonly>
-            </div>
-            <div class="form-group">
-                <label asp-for="District">İlçe</label>
-                <input type="text" class="form-control" asp-for="District" readonly>
-            </div>
-            <div class="form-group">
-                <label asp-for="City">İl</label>
-                <input type="text" class="form-control" asp-for="City" readonly>
-            </div>
-            <div class="form-group">
-                <fieldset class="form-group">
-                    <label class="control-label" asp-for="Address">Adres</label>
-                    <textarea class="form-control" rows="5" asp-for="Address" readonly></textarea>
-                </fieldset>
-            </div>
-            <div>
-                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Cargo" asp-action="CargoCustomerList"><i class="fa fa-lg fa-long-arrow-left"></i></a>
-            </div>
-        </form>
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Müşteri Adres Bilgisi</h4>
+            <p>Mevcut müşteri adres bilgileri aşağıdadır.</p>
+            <br />
+            <form>
+                <div class="form-group">
+                    <label asp-for="Name">Adı</label>
+                    <input type="text" class="form-control" asp-for="Name" readonly>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Surname">Soyadı</label>
+                    <input type="text" class="form-control" asp-for="Surname" readonly>
+                </div>
+                <div class="form-group">
+                    <label asp-for="District">İlçe</label>
+                    <input type="text" class="form-control" asp-for="District" readonly>
+                </div>
+                <div class="form-group">
+                    <label asp-for="City">İl</label>
+                    <input type="text" class="form-control" asp-for="City" readonly>
+                </div>
+                <div class="form-group">
+                    <fieldset class="form-group">
+                        <label class="control-label" asp-for="Address">Adres</label>
+                        <textarea class="form-control" rows="5" asp-for="Address" readonly></textarea>
+                    </fieldset>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Cargo" asp-action="CargoCustomerList"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
