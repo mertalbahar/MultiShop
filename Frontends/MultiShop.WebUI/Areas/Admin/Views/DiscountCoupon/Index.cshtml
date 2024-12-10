@@ -5,55 +5,57 @@
     int counter = 1;
 }
 
-<div class="col-md-12">
-    <div class="chart-box">
-        <h4>İndirim Kupon Listesi</h4>
-        <p>İndirim Kupon ile ilgili işlemlerinizi gerçekleştirebilirsiniz.</p>
-        <div class="text-right">
-            <a class="btn btn-rounded btn-success" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="CreateDiscountCoupon"><i class="fa fa-lg fa-plus-square-o"></i></a>
-        </div>
-        <br />
-        <div class="bs-example" data-example-id="simple-table">
-            <table class="table table-bordered">
-                <caption>
-                    İndirim Kuponlar
-                </caption>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Kupon Kodu</th>
-                        <th>İndirim Oranı</th>
-                        <th>Kupon Durumu</th>
-                        <th>Kupon Geçerlilik Tarihi</th>
-                        <th style="width: 140px">İşlemler</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model)
-                    {
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>İndirim Kupon Listesi</h4>
+            <p>İndirim Kupon ile ilgili işlemlerinizi gerçekleştirebilirsiniz.</p>
+            <div class="text-right">
+                <a class="btn btn-rounded btn-success" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="CreateDiscountCoupon"><i class="fa fa-lg fa-plus-square-o"></i></a>
+            </div>
+            <br />
+            <div class="bs-example" data-example-id="simple-table">
+                <table class="table table-bordered">
+                    <caption>
+                        İndirim Kuponlar
+                    </caption>
+                    <thead>
                         <tr>
-                            <th scope="row">@counter</th>
-                            <td>@item.Code</td>
-                            <td>@item.Rate</td>
-                            <td>
-                                <label asp-for="@item.Status">
-                                    <input type="checkbox" asp-for="@item.Status">
-                                    @(@item.Status ? "Aktif" : "Pasif")
-                                </label>
-                            </td>
-                            <td>@item.ValidDate</td>
-                            <td class="text-center">
-                                <div class="btn-group">
-                                    <a class="btn btn-rounded btn-warning" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="UpdateDiscountCoupon" asp-route-id="@item.Id"><i class="fa fa-lg fa-pencil-square-o"></i></a>
-                                    <a class="btn btn-rounded btn-danger" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="DeleteDiscountCoupon" asp-route-id="@item.Id" onclick="return confirm('İndirim kuponu silinecektir, onaylıyor musunuz?')"><i class="fa fa-lg fa-trash-o"></i></a>
-                                </div>
-                            </td>
+                            <th>#</th>
+                            <th>Kupon Kodu</th>
+                            <th>İndirim Oranı</th>
+                            <th>Kupon Durumu</th>
+                            <th>Kupon Geçerlilik Tarihi</th>
+                            <th style="width: 140px">İşlemler</th>
                         </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@counter</th>
+                                <td>@item.Code</td>
+                                <td>@item.Rate</td>
+                                <td>
+                                    <label asp-for="@item.Status">
+                                        <input type="checkbox" asp-for="@item.Status">
+                                        @(@item.Status ? "Aktif" : "Pasif")
+                                    </label>
+                                </td>
+                                <td>@item.ValidDate</td>
+                                <td class="text-center">
+                                    <div class="btn-group">
+                                        <a class="btn btn-rounded btn-warning" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="UpdateDiscountCoupon" asp-route-id="@item.Id"><i class="fa fa-lg fa-pencil-square-o"></i></a>
+                                        <a class="btn btn-rounded btn-danger" asp-area="Admin" asp-controller="DiscountCoupon" asp-action="DeleteDiscountCoupon" asp-route-id="@item.Id" onclick="return confirm('İndirim kuponu silinecektir, onaylıyor musunuz?')"><i class="fa fa-lg fa-trash-o"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
 
-                        counter++;
-                    }
-                </tbody>
-            </table>
+                            counter++;
+                        }
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>

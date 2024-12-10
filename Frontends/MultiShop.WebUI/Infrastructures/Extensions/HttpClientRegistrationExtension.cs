@@ -20,6 +20,7 @@ using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
+using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using MultiShop.WebUI.Settings;
 
 namespace MultiShop.WebUI.Infrastructures.Extensions
@@ -135,6 +136,12 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             services.AddHttpClient<ICargoCustomerService, CargoCustomerService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Cargo.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            // Statistics from microservices
+            services.AddHttpClient<ICatalogStatisticService, CatalogStatisticService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             return services;

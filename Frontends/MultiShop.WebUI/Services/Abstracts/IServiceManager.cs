@@ -17,6 +17,7 @@ using MultiShop.WebUI.Services.IdentityServices;
 using MultiShop.WebUI.Services.MessageServices;
 using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
+using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
 {
@@ -56,5 +57,8 @@ namespace MultiShop.WebUI.Services.Abstracts
         // Cargo Microservice
         ICargoCompanyService CargoCompanyService { get; }
         ICargoCustomerService CargoCustomerService { get; }
+
+        // Statistics from microservices
+        ICatalogStatisticService CatalogStatisticServices { get; }
     }
 }
