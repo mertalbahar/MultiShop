@@ -1,31 +1,33 @@
 ﻿@model GetByIdUserMessageDto
 
-<div class="col-md-12">
-    <div class="chart-box">
-        <h4>Giden Mesaj Güncelleme</h4>
-        <p>Mevcut Giden mesaj bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
-        <br />
-        <form>
-            <div class="form-group d-flex justify-content-end">
-                <label class="control-label" asp-for="CreatedDate">@Model.CreatedDate</label>
-            </div>
-            <div class="form-group">
-                <label asp-for="ReceiverId">Alıcı</label>
-                <input type="text" class="form-control" asp-for="ReceiverId" readonly>
-            </div>
-            <div class="form-group">
-                <label asp-for="Subject">Konu</label>
-                <input type="text" class="form-control" asp-for="Subject" readonly>
-            </div>
-            <div class="form-group">
-                <fieldset class="form-group">
-                    <label class="control-label" asp-for="Detail">Detay</label>
-                    <textarea class="form-control" rows="5" asp-for="Detail" readonly></textarea>
-                </fieldset>
-            </div>
-            <div>
-                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Message" asp-action="Sendbox"><i class="fa fa-lg fa-long-arrow-left"></i></a>
-            </div>
-        </form>
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Giden Mesaj Güncelleme</h4>
+            <p>Mevcut Giden mesaj bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+            <br />
+            <form>
+                <div class="form-group d-flex justify-content-end">
+                    <label class="control-label" asp-for="CreatedDate">@Model.CreatedDate</label>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ReceiverId">Alıcı</label>
+                    <input type="text" class="form-control" asp-for="ReceiverId" readonly>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Subject">Konu</label>
+                    <input type="text" class="form-control" asp-for="Subject" readonly>
+                </div>
+                <div class="form-group">
+                    <fieldset class="form-group">
+                        <label class="control-label" asp-for="Detail">Detay</label>
+                        <textarea class="form-control" rows="5" asp-for="Detail" readonly></textarea>
+                    </fieldset>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="Message" asp-action="Sendbox"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

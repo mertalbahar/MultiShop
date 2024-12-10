@@ -1,33 +1,35 @@
 ﻿@model UpdateAboutDto
 
-<div class="col-md-12">
-    <div class="chart-box">
-        <h4>Hakkımızda Güncelleme</h4>
-        <p>Mevcut Hakkımızda bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
-        <br />
-        <form method="post">
-            <input type="hidden" asp-for="Id" readonly>
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Hakkımızda Güncelleme</h4>
+            <p>Mevcut Hakkımızda bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+            <br />
+            <form method="post">
+                <input type="hidden" asp-for="Id" readonly>
 
-            <div class="form-group">
-                <label class="control-label" asp-for="Description">Hakkımızda Açıklama</label>
-                <input type="text" class="form-control" placeholder="Hakkımızda açıklaması giriniz" asp-for="Description">
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="Address">Hakkımızda Adres</label>
-                <input type="text" class="form-control" placeholder="Hakkımızda adresi giriniz" asp-for="Address">
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="Phone">Hakkımızda Telefon</label>
-                <input type="text" class="form-control" placeholder="Hakkımızda telefonu giriniz" asp-for="Phone">
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="Email">Hakkımızda Email</label>
-                <input type="text" class="form-control" placeholder="Hakkımızda emaili giriniz" asp-for="Email">
-            </div>
-            <div>
-                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="About" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
-                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Description">Hakkımızda Açıklama</label>
+                    <input type="text" class="form-control" placeholder="Hakkımızda açıklaması giriniz" asp-for="Description">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Address">Hakkımızda Adres</label>
+                    <input type="text" class="form-control" placeholder="Hakkımızda adresi giriniz" asp-for="Address">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Phone">Hakkımızda Telefon</label>
+                    <input type="text" class="form-control" placeholder="Hakkımızda telefonu giriniz" asp-for="Phone">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Email">Hakkımızda Email</label>
+                    <input type="text" class="form-control" placeholder="Hakkımızda emaili giriniz" asp-for="Email">
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="About" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                    <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

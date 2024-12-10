@@ -1,37 +1,39 @@
 ﻿@model CreateFeatureSliderDto
 
-<div class="col-md-12">
-    <div class="chart-box">
-        <h4>Öne Çıkan Görsel Ekleme</h4>
-        <p>Yeni öne çıkan görsel eklemek için aşağıdaki formu kullanabilirsiniz.</p>
-        <br />
-        <form method="post">
-            <div class="form-group">
-                <label class="control-label" asp-for="Title">Öne Çıkan Görsel Adı</label>
-                <input type="text" class="form-control" placeholder="Öne Çıkan Görsel adını giriniz" asp-for="Title">
-            </div>
-            <div class="form-group">
-                <fieldset class="form-group">
-                    <label class="control-label" asp-for="Description">Öne Çıkan Görsel Açıklama</label>
-                    <textarea class="form-control" placeholder="Öne Çıkan Görsel açıklaması giriniz" id="basicTextarea" rows="3" asp-for="Description"></textarea>
-                </fieldset>
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="ImageUrl">Öne Çıkan Görsel Resmi</label>
-                <input type="text" class="form-control" placeholder="Öne Çıkan Görsel resmini giriniz" asp-for="ImageUrl">
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label asp-for="Status">
-                        <input type="checkbox"asp-for="Status">
-                        Öne Çıkan Görsel Durumu
-                    </label>
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Öne Çıkan Görsel Ekleme</h4>
+            <p>Yeni öne çıkan görsel eklemek için aşağıdaki formu kullanabilirsiniz.</p>
+            <br />
+            <form method="post">
+                <div class="form-group">
+                    <label class="control-label" asp-for="Title">Öne Çıkan Görsel Adı</label>
+                    <input type="text" class="form-control" placeholder="Öne Çıkan Görsel adını giriniz" asp-for="Title">
                 </div>
-            </div>
-            <div>
-                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="FeatureSlider" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
-                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <fieldset class="form-group">
+                        <label class="control-label" asp-for="Description">Öne Çıkan Görsel Açıklama</label>
+                        <textarea class="form-control" placeholder="Öne Çıkan Görsel açıklaması giriniz" id="basicTextarea" rows="3" asp-for="Description"></textarea>
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="ImageUrl">Öne Çıkan Görsel Resmi</label>
+                    <input type="text" class="form-control" placeholder="Öne Çıkan Görsel resmini giriniz" asp-for="ImageUrl">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="Status">
+                            <input type="checkbox" asp-for="Status">
+                            Öne Çıkan Görsel Durumu
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="FeatureSlider" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                    <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
