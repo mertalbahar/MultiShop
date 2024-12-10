@@ -46,16 +46,24 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
 
             CommentStatisticViewModel commentStatistics = new CommentStatisticViewModel
             {
-                GetActiveCommentCount = activeCommentCount,
-                GetPassiveCommentCount = passiveCommentCount,
-                GetTotalCommentCount = totalCommentCount
+                ActiveCommentCount = activeCommentCount,
+                PassiveCommentCount = passiveCommentCount,
+                TotalCommentCount = totalCommentCount
+            };
+
+            int discountCouponCount = await _manager.DiscountStatisticService.GetDiscountCouponCountAsync();
+
+            DiscountStatisticViewModel discountStatistics = new DiscountStatisticViewModel
+            {
+                DiscountCouponCount = discountCouponCount
             };
 
             StatisticViewModel statisticViewModel = new StatisticViewModel
             {
                 CatalogStatistics = catalogStatistics,
                 UserStatistics = userStatistics,
-                CommentStatistics = commentStatistics
+                CommentStatistics = commentStatistics,
+                DiscountStatistics = discountStatistics
             };
 
             return View(statisticViewModel);

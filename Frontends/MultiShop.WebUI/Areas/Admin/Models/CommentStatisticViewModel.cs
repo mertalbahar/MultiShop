@@ -2,8 +2,8 @@
 {
     public class CommentStatisticViewModel
     {
-        public int GetActiveCommentCount { get; set; }
-        public int GetPassiveCommentCount { get; set; }
-        public int GetTotalCommentCount { get; set; }
+        public int ActiveCommentCount { get; set; }
+        public int PassiveCommentCount { get; set; }
+        public int TotalCommentCount { get; set; }
     }
 }

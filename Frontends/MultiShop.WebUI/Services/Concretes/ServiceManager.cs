@@ -20,6 +20,7 @@ using MultiShop.WebUI.Services.OrderServices.OrderAddressServices;
 using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.DiscountStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 
 namespace MultiShop.WebUI.Services.Concretes
@@ -67,6 +68,7 @@ namespace MultiShop.WebUI.Services.Concretes
         private readonly Lazy<ICatalogStatisticService> _catalogStatisticServices;
         private readonly Lazy<IUserStatisticService> _userStatisticService;
         private readonly Lazy<ICommentStatisticService> _commentStatisticService;
+        private readonly Lazy<IDiscountStatisticService> _discountStatisticService;
 
         public ServiceManager(IClientCredentialsTokenService clientCredentialsTokenService,
             ICategoryService categoryService, IProductService productService, IAboutService aboutService,
@@ -76,7 +78,7 @@ namespace MultiShop.WebUI.Services.Concretes
             IDiscountService discountService, IOrderAddressService orderAddressService, IOrderingService orderingService,
             IMessageService messageService, ICargoCompanyService cargoCompanyService, ICargoCustomerService cargoCustomerService,
             ICatalogStatisticService catalogStatisticServices, IUserStatisticService userStatisticService,
-            ICommentStatisticService commentStatisticService)
+            ICommentStatisticService commentStatisticService, IDiscountStatisticService discountStatisticService)
         {
             _clientCredentialsTokenService = new Lazy<IClientCredentialsTokenService>(() => clientCredentialsTokenService);
 
@@ -119,6 +121,7 @@ namespace MultiShop.WebUI.Services.Concretes
             _catalogStatisticServices = new Lazy<ICatalogStatisticService>(() => catalogStatisticServices);
             _userStatisticService = new Lazy<IUserStatisticService>(() => userStatisticService);
             _commentStatisticService = new Lazy<ICommentStatisticService>(() => commentStatisticService);
+            _discountStatisticService = new Lazy<IDiscountStatisticService>(() => discountStatisticService);
         }
 
         public IClientCredentialsTokenService ClientCredentialsTokenService => _clientCredentialsTokenService.Value;
@@ -175,5 +178,7 @@ namespace MultiShop.WebUI.Services.Concretes
         public IUserStatisticService UserStatisticService => _userStatisticService.Value;
 
         public ICommentStatisticService CommentStatisticService => _commentStatisticService.Value;
+
+        public IDiscountStatisticService DiscountStatisticService => _discountStatisticService.Value;
     }
 }
