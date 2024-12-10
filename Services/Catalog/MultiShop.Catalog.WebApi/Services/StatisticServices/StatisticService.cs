@@ -30,6 +30,26 @@ namespace MultiShop.Catalog.WebApi.Services.StatisticServices
             return await _categoryCollection.CountDocumentsAsync(FilterDefinition<Category>.Empty);
         }
 
+        public async Task<string> GetMaxPriceProductName()
+        {
+            var filter = Builders<Product>.Filter.Empty;
+            var sort = Builders<Product>.Sort.Descending(x => x.Price);
+            var projection = Builders<Product>.Projection.Include(x => x.Name).Exclude("Id");
+            var product = await _productCollection.Find(filter).Sort(sort).Project(projection).FirstOrDefaultAsync();
+
+            return product.GetValue("Name").AsString;
+        }
+
+        public async Task<string> GetMinPriceProductName()
+        {
+            var filter = Builders<Product>.Filter.Empty;
+            var sort = Builders<Product>.Sort.Ascending(x => x.Price);
+            var projection = Builders<Product>.Projection.Include(x => x.Name).Exclude("Id");
+            var product = await _productCollection.Find(filter).Sort(sort).Project(projection).FirstOrDefaultAsync();
+
+            return product.GetValue("Name").AsString;
+        }
+
         public async Task<decimal> GetProductAvgPrice()
         {
             var pipeline = new BsonDocument[]

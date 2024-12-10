@@ -6,5 +6,7 @@
         Task<long> GetProductCount();
         Task<decimal> GetProductAvgPrice();
         Task<long> GetBrandCount();
+        Task<string> GetMaxPriceProductName();
+        Task<string> GetMinPriceProductName();
     }
 }

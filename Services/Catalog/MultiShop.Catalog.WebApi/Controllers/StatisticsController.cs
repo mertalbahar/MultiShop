@@ -15,7 +15,7 @@ namespace MultiShop.Catalog.WebApi.Controllers
             _manager = manager;
         }
 
-        [HttpGet("getbrandcount")]
+        [HttpGet("getBrandCount")]
         public async Task<IActionResult> GetBrandCount()
         {
             var value = await _manager.StatisticService.GetBrandCount();
@@ -23,7 +23,7 @@ namespace MultiShop.Catalog.WebApi.Controllers
             return Ok(value);
         }
 
-        [HttpGet("getcategorycount")]
+        [HttpGet("getCategoryCount")]
         public async Task<IActionResult> GetCategoryCount()
         {
             var value = await _manager.StatisticService.GetCategoryCount();
@@ -31,7 +31,7 @@ namespace MultiShop.Catalog.WebApi.Controllers
             return Ok(value);
         }
 
-        [HttpGet("getproductcount")]
+        [HttpGet("getProductCount")]
         public async Task<IActionResult> GetProductCount()
         {
             var value = await _manager.StatisticService.GetProductCount();
@@ -39,10 +39,26 @@ namespace MultiShop.Catalog.WebApi.Controllers
             return Ok(value);
         }
 
-        [HttpGet("getproductavgprice")]
+        [HttpGet("getProductAvgPrice")]
         public async Task<IActionResult> GetProductAvgPrice()
         {
             var value = await _manager.StatisticService.GetProductAvgPrice();
+
+            return Ok(value);
+        }
+
+        [HttpGet("getMaxPriceProductName")]
+        public async Task<IActionResult> GetMaxPriceProductName()
+        {
+            var value = await _manager.StatisticService.GetMaxPriceProductName();
+
+            return Ok(value);
+        }
+
+        [HttpGet("getMinPriceProductName")]
+        public async Task<IActionResult> GetMinPriceProductName()
+        {
+            var value = await _manager.StatisticService.GetMinPriceProductName();
 
             return Ok(value);
         }
