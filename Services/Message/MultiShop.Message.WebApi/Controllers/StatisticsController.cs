@@ -15,7 +15,7 @@ namespace MultiShop.Message.WebApi.Controllers
             _manager = manager;
         }
 
-        [HttpGet("getTotalMessageCountAsync")]
+        [HttpGet("getTotalMessageCount")]
         public async Task<IActionResult> GetTotalMessageCountAsync()
         {
             int value = await _manager.StatisticService.GetTotalMessageCountAsync();

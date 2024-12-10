@@ -23,6 +23,7 @@ using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.DiscountStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.MessageStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 using MultiShop.WebUI.Settings;
 
@@ -160,6 +161,11 @@ namespace MultiShop.WebUI.Infrastructures.Extensions
             services.AddHttpClient<IDiscountStatisticService, DiscountStatisticService>(opt =>
             {
                 opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}");
+            }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+            services.AddHttpClient<IMessageStatisticService, MessageStatisticService>(opt =>
+            {
+                opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Message.Path}");
             }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
             return services;

@@ -20,6 +20,7 @@ using MultiShop.WebUI.Services.OrderServices.OrderingServices;
 using MultiShop.WebUI.Services.StatisticServices.CatalogStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.CommentStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.DiscountStatisticServices;
+using MultiShop.WebUI.Services.StatisticServices.MessageStatisticServices;
 using MultiShop.WebUI.Services.StatisticServices.UserStatisticServices;
 
 namespace MultiShop.WebUI.Services.Abstracts
@@ -66,5 +67,6 @@ namespace MultiShop.WebUI.Services.Abstracts
         IUserStatisticService UserStatisticService { get; }
         ICommentStatisticService CommentStatisticService { get; }
         IDiscountStatisticService DiscountStatisticService { get; }
+        IMessageStatisticService MessageStatisticService { get; }
     }
 }

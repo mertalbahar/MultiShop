@@ -58,12 +58,20 @@ namespace MultiShop.WebUI.Areas.Admin.Controllers
                 DiscountCouponCount = discountCouponCount
             };
 
+            int totalMessageCount = await _manager.MessageStatisticService.GetTotalMessageCountAsync();
+
+            MessageStatisticViewModel messageStatistics = new MessageStatisticViewModel
+            {
+                TotalMessageCount = totalMessageCount
+            };
+
             StatisticViewModel statisticViewModel = new StatisticViewModel
             {
                 CatalogStatistics = catalogStatistics,
                 UserStatistics = userStatistics,
                 CommentStatistics = commentStatistics,
-                DiscountStatistics = discountStatistics
+                DiscountStatistics = discountStatistics,
+                MessageStatistics = messageStatistics
             };
 
             return View(statisticViewModel);
