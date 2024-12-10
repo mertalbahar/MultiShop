@@ -1,54 +1,56 @@
 ﻿@model UpdateUserCommentDto
 
-<div class="col-md-12">
-    <div class="chart-box">
-        <h4>Yorum Güncelleme</h4>
-        <p>Mevcut yorum bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
-        <br />
-        <form method="post">
-            <input type="hidden" asp-for="Id" readonly>
+<div class="row">
+    <div class="col-md-12">
+        <div class="chart-box">
+            <h4>Yorum Güncelleme</h4>
+            <p>Mevcut yorum bilgilerini güncellemek için aşağıdaki formu kullanabilirsiniz.</p>
+            <br />
+            <form method="post">
+                <input type="hidden" asp-for="Id" readonly>
 
-            <div class="form-group">
-                <label class="control-label" asp-for="ProductId">Ürün Kategori</label>
-                <select class="form-control" style="padding: 0 6px" asp-for="ProductId" asp-items="@(ViewBag.Products as SelectList)"></select>
-            </div>
-            <div class="form-group">
-                <img src="@Model.ImageUrl" class="img-thumbnail img-responsive" style="width: 150px" alt="@Model.FullName">
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="FullName">Kullanıcı Adı</label>
-                <input type="text" class="form-control" placeholder="Kullanıcı adı giriniz" asp-for="FullName">
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="Email">Kullanıcı Email</label>
-                <input type="text" class="form-control" placeholder="Kullanıcı email giriniz" asp-for="Email">
-            </div>
-            <div class="form-group">
-                <fieldset class="form-group">
-                    <label asp-for="CommentDetail">Yorum</label>
-                    <textarea class="form-control" placeholder="Yorum giriniz" id="basicTextarea" rows="3" asp-for="CommentDetail"></textarea>
-                </fieldset>
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="Rating">Puan</label>
-                <input type="text" class="form-control" placeholder="Yorum puanı giriniz" asp-for="Rating">
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label asp-for="Status">
-                        <input type="checkbox" asp-for="Status">
-                        @(Model.Status ? "Aktif" : "Pasif")
-                    </label>
+                <div class="form-group">
+                    <label class="control-label" asp-for="ProductId">Ürün Kategori</label>
+                    <select class="form-control" style="padding: 0 6px" asp-for="ProductId" asp-items="@(ViewBag.Products as SelectList)"></select>
                 </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label" asp-for="CreatedDate">Oluşturma Zamanı</label>
-                <input type="text" class="form-control" asp-for="CreatedDate" readonly>
-            </div>
-            <div>
-                <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="UserComment" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
-                <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
-            </div>
-        </form>
+                <div class="form-group">
+                    <img src="@Model.ImageUrl" class="img-thumbnail img-responsive" style="width: 150px" alt="@Model.FullName">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="FullName">Kullanıcı Adı</label>
+                    <input type="text" class="form-control" placeholder="Kullanıcı adı giriniz" asp-for="FullName">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Email">Kullanıcı Email</label>
+                    <input type="text" class="form-control" placeholder="Kullanıcı email giriniz" asp-for="Email">
+                </div>
+                <div class="form-group">
+                    <fieldset class="form-group">
+                        <label asp-for="CommentDetail">Yorum</label>
+                        <textarea class="form-control" placeholder="Yorum giriniz" id="basicTextarea" rows="3" asp-for="CommentDetail"></textarea>
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="Rating">Puan</label>
+                    <input type="text" class="form-control" placeholder="Yorum puanı giriniz" asp-for="Rating">
+                </div>
+                <div class="form-group">
+                    <div class="checkbox">
+                        <label asp-for="Status">
+                            <input type="checkbox" asp-for="Status">
+                            @(Model.Status ? "Aktif" : "Pasif")
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" asp-for="CreatedDate">Oluşturma Zamanı</label>
+                    <input type="text" class="form-control" asp-for="CreatedDate" readonly>
+                </div>
+                <div>
+                    <a class="btn btn-primary btn-outline" asp-area="Admin" asp-controller="UserComment" asp-action="Index"><i class="fa fa-lg fa-long-arrow-left"></i></a>
+                    <button type="submit" class="btn btn-success btn-outline pull-right"><i class="fa fa-lg fa-floppy-o"></i></button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
